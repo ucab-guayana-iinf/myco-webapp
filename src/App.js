@@ -1,28 +1,28 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
+import routes from './routes'
+import './assets/App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
-import routes from "./routes";
+class App extends Component {
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/shards-dashboards.1.1.0.min.css";
+	state = {
+		session : ['user', 'admin', 'guest']
+	}
 
-export default () => (
-  <Router basename={process.env.REACT_APP_BASENAME || ""}>
-    <div>
-      {
-        routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={() => (
-              <route.layout>
-                <route.component />
-              </route.layout>
-            )}
-          />
-        ))
-      }
-    </div>
-  </Router>
-);
+	render(){
+		return(
+			<BrowserRouter>
+				<div>
+					{
+						routes.map( (route,i) => (
+							<Route key={i} path={route.path} component={route.component} exact={route.exact}/>
+						))
+					}
+				</div>
+			</BrowserRouter>
+		);
+	}
+}
+
+export default App;

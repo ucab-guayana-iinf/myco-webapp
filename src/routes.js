@@ -1,58 +1,48 @@
-import React from "react";
+import React from 'react';
 import { Redirect } from "react-router-dom";
 
-// Layout Types
-import { DefaultLayout } from "./layouts";
+// Todas las vistas de la pagina
+import LandingPage from './views/LandingPage'
+import FAQs from './views/Administrar';
+import CargarPago from './views/CargarPago';
+import EstadoCuenta from './views/EstadoCuenta';
+import GenerarFactura from './views/GenerarFactura';
+import MiCondominio from './views/MiCondominio';
+import UserSelect from './views/UserSelect'
 
-// Route Views
-import BlogOverview from "./views/BlogOverview";
-import UserProfileLite from "./views/UserProfileLite";
-import AddNewPost from "./views/AddNewPost";
-import Errors from "./views/Errors";
-import ComponentsOverview from "./views/ComponentsOverview";
-import Tables from "./views/Tables";
-import BlogPosts from "./views/BlogPosts";
-
+//arr de obj de rutas de cada pagina
 export default [
-  {
-    path: "/",
-    exact: true,
-    layout: DefaultLayout,
-    component: () => <Redirect to="/blog-overview" />
-  },
-  {
-    path: "/blog-overview",
-    layout: DefaultLayout,
-    component: BlogOverview
-  },
-  {
-    path: "/user-profile-lite",
-    layout: DefaultLayout,
-    component: UserProfileLite
-  },
-  {
-    path: "/add-new-post",
-    layout: DefaultLayout,
-    component: AddNewPost
-  },
-  {
-    path: "/errors",
-    layout: DefaultLayout,
-    component: Errors
-  },
-  {
-    path: "/components-overview",
-    layout: DefaultLayout,
-    component: ComponentsOverview
-  },
-  {
-    path: "/tables",
-    layout: DefaultLayout,
-    component: Tables
-  },
-  {
-    path: "/blog-posts",
-    layout: DefaultLayout,
-    component: BlogPosts
-  }
-];
+    {
+        path: '/',
+        exact: true,
+        component: () => <Redirect to="/Landing" />
+    },
+    {
+        path: '/Landing',
+        component: LandingPage
+    },
+    {
+        path: '/FAQs',
+        component: FAQs
+    },
+    {
+        path: '/CargarPago',
+        component: CargarPago
+    },
+    {
+        path: '/EstadoCuenta',
+        component: EstadoCuenta
+    },
+    {
+        path: '/GenerarFactura',
+        component: GenerarFactura
+    },
+    {
+        path: '/MiCondominio',
+        component: MiCondominio
+    },
+    {
+        path: '/UserSelect',
+        component: UserSelect
+    }
+]

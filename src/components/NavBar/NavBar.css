@@ -1,0 +1,30 @@
+.navbar-bg {
+    background: #1bb98f;
+}
+
+.navbar {
+    align-items: center;
+    justify-content: center;
+    /*position: fixed;*/
+    width: 90%;
+    margin: auto;
+    margin-bottom: -10px;
+    height: 80px;
+    overflow: hidden;
+    background: #1bb98f;
+    z-index: 1;
+}
+
+.navbar-option {
+    margin: 0 25px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-option:hover {
+    border-bottom: 2px solid #3a3a3a;
+    color: #3a3a3a;
+    text-decoration: none;
+}
+
+

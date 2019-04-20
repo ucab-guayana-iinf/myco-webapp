@@ -1,0 +1,104 @@
+/*
+    .Paleta de colores (por ahora)
+
+        -PRINCIPALES:
+        #1bb98f
+        #54b89d
+        #4a5368
+
+        -GRISES:
+        #3a3a3a
+        #717171
+        #FFFFFF
+
+    .Opciones de fuentes
+        Para texto pequeño y botones
+        -Roboto
+        -Nunito
+        -Montserrat
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Nunito|Roboto" rel="stylesheet">
+
+        Para Headers y titulos
+        -Raleway 700/900
+        -Khula 800
+        -Poppins
+    
+        <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
+
+        Usadas en esta prueba:
+        Nunito y Poppins
+
+*/
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+}
+
+/* Clases de utilidad genericas*/
+
+/*colores de texto*/
+.white {
+    color: #fff;
+}
+
+.black {
+    color: #3a3a3a;
+}
+
+.gray {
+    color: #717171;
+}
+
+.aquamarine {
+    color: #1bb98f;
+}
+
+/*tamaños de texto*/
+.small {
+    font-size: 14px !important;
+}
+
+.medium {
+    font-size: 30px !important;
+}
+
+.big {
+    font-size: 42px !important;   
+}
+
+/*tipos de texto*/
+.title {
+    margin: 5px auto;
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+.text {
+    margin: 5px auto;
+    font-size: 16px;
+    text-align: left;
+}
+
+/*tipos de boton*/
+.myco-btn {
+    width: 170px;
+    height: 50px;
+    background: #fff;
+    color: #1bb98f;
+    box-shadow: 0 4px  #3ca186; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 1.5px;
+}
+
+.myco-btn:active {
+    box-shadow: 0 0 0 0 ;
+    transform: translateY(3px);
+    background: #fbfbfb;
+}
+
+.myco-btn:focus {
+    outline: 0;
+}
