@@ -19,7 +19,7 @@ const BlogOverview = ({ smallStats }) => (
 
     {/* Small Stats Blocks */}
     <Row>
-      {smallStats.map((stats, idx) => (
+      { smallStats.map((stats, idx) => (
         <Col className="col-lg mb-4" key={idx} {...stats.attrs}>
           <SmallStats
             id={`small-stats-${idx}`}

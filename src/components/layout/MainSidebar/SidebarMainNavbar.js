@@ -44,7 +44,7 @@ class SidebarMainNavbar extends React.Component {
                 </span>
               )}
             </div>
-          </NavbarBrand>
+          </NavbarBrand> {/*NavbarBrand es el logo de la barra de navegacion del side*/}
           {/* eslint-disable-next-line */}
           <a
             className="toggle-sidebar d-sm-inline d-md-none d-lg-none"

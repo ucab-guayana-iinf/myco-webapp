@@ -13,8 +13,8 @@ export default () => (
         routes.map((route, index) => (
           <Route
             key={index}
-            path={route.path}
             exact={route.exact}
+            path={route.path}
             component={() => (
               <route.layout>
                 <route.component />
