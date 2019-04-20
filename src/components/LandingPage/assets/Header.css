@@ -5,13 +5,13 @@
     justify-content: center;
     width: 100%;
     margin: 0 auto;
+    margin-top:-50px;
     background: #1bb98f;
 }
 
 .header-left{
     height: 650px;
     width: 800px;
-    margin-top: -70px;
     background: url('./blob-shape.svg') center no-repeat;
     background-size:850px; 
     z-index: 1;
@@ -33,14 +33,17 @@
     padding: 15px;
 }
 
+.btn-container {
+    min-width: 500px;
+}
+
 .header-right .myco-btn {
     display: inline-block;
     margin: 20px 35px;
 }
-
 .round-div {
     position: absolute;
-    top: 500px;
+    top: 600px;
     left: 0;
     height: 200px;
     width: 100%;

@@ -17,8 +17,10 @@ const Header = () => {
                         m eligendi harum neque te.m eligendi harum neque temporibus, mollitia repudiandae quae, enim cupiditate. Rerum, consectetur neque.
                         m eligendi harum neque te. 
                     </p>
-                    <button className="small myco-btn">Opcion 1</button>
-                    <button className="small myco-btn">Opcion 2</button>
+                    <div className="btn-container">
+                        <button className="small myco-btn">Opcion 1</button>
+                        <button className="small myco-btn">Opcion 2</button>
+                    </div>
                 </section>
 
                 <section className="round-div"></section>
