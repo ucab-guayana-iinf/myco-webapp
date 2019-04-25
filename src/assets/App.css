@@ -1,0 +1,127 @@
+/*
+    .Paleta de colores (por ahora)
+
+        -PRINCIPALES:
+        #1bb98f
+        #54b89d
+        #4a5368
+
+        -GRISES:
+        #3a3a3a
+        #717171
+        #FFFFFF
+
+    .fuentes
+        Para texto pequeño y botones
+        -Nunito
+
+        Para Headers y titulos
+        -Raleway 700
+
+*/
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+    background: #fff;
+}
+
+/* clases genericas*/
+.white {
+    color: #fff;
+}
+
+.black {
+    color: #3a3a3a;
+}
+
+.gray {
+    color: #717171;
+}
+
+.aquamarine {
+    color: #1bb98f;
+}
+
+/*tamaños de texto*/
+.small {
+    font-size: 14px !important;
+}
+
+.medium {
+    font-size: 30px !important;
+}
+
+.big {
+    font-size: 42px !important;   
+}
+
+/*tipos de texto*/
+
+.title {
+    margin: 5px auto;
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+.text {
+    margin: 5px auto;
+    font-size: 16px;
+    text-align: left;
+}
+
+
+/* sobreescritura de clases de bootstrap/shards */
+
+
+.modal-title {
+    margin: 5px auto;
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+.btn.btn-primary {
+    background: #64739b;
+    border-color:  #64739b;
+    width: 100px;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+}
+
+.btn.btn-primary:hover {
+    background: #4a5368;
+    border-color:  #4a5368;
+}
+
+input.form-control.form-control-med,
+span.input-group-text {
+    margin: 10px 0;
+}
+
+.btn.btn-secondary {
+    width: 100px;
+    height: 50px;
+    background: #fff;
+    color: #1bb98f;
+    box-shadow: 0 4px  #3ca186; 
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: auto 10px;
+}
+
+.btn.btn-secondary:hover {
+    background: #4a5368;
+}
+
+.btn.btn-secondary:active {
+    box-shadow: 0 0 0 0 ;
+    transform: translateY(3px);
+    background: #fbfbfb;
+}
+
+.btn.btn-secondary:focus {
+    outline: 0;
+}
