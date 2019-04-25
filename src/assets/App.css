@@ -11,32 +11,21 @@
         #717171
         #FFFFFF
 
-    .Opciones de fuentes
+    .fuentes
         Para texto pequeño y botones
-        -Roboto
         -Nunito
-        -Montserrat
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Nunito|Roboto" rel="stylesheet">
 
         Para Headers y titulos
-        -Raleway 700/900
-        -Khula 800
-        -Poppins
-    
-        <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
-
-        Usadas en esta prueba:
-        Nunito y Poppins
+        -Raleway 700
 
 */
 
 body {
     font-family: 'Nunito', sans-serif !important;
+    background: #fff;
 }
 
-/* Clases de utilidad genericas*/
-
-/*colores de texto*/
+/* clases genericas*/
 .white {
     color: #fff;
 }
@@ -67,6 +56,7 @@ body {
 }
 
 /*tipos de texto*/
+
 .title {
     margin: 5px auto;
     font-family: 'Raleway', sans-serif;
@@ -80,9 +70,38 @@ body {
     text-align: left;
 }
 
-/*tipos de boton*/
-.myco-btn {
-    width: 170px;
+
+/* sobreescritura de clases de bootstrap/shards */
+
+
+.modal-title {
+    margin: 5px auto;
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+.btn.btn-primary {
+    background: #64739b;
+    border-color:  #64739b;
+    width: 100px;
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+}
+
+.btn.btn-primary:hover {
+    background: #4a5368;
+    border-color:  #4a5368;
+}
+
+input.form-control.form-control-med,
+span.input-group-text {
+    margin: 10px 0;
+}
+
+.btn.btn-secondary {
+    width: 100px;
     height: 50px;
     background: #fff;
     color: #1bb98f;
@@ -90,15 +109,19 @@ body {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    letter-spacing: 1.5px;
+    margin: auto 10px;
 }
 
-.myco-btn:active {
+.btn.btn-secondary:hover {
+    background: #4a5368;
+}
+
+.btn.btn-secondary:active {
     box-shadow: 0 0 0 0 ;
     transform: translateY(3px);
     background: #fbfbfb;
 }
 
-.myco-btn:focus {
+.btn.btn-secondary:focus {
     outline: 0;
 }
