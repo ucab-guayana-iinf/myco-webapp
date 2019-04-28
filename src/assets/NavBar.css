@@ -1,0 +1,28 @@
+nav{
+    z-index: 2;
+} 
+
+nav.bg-primary {
+    background-color: #1bb98f!important;
+    font-family: 'Nunito',sans-serif;
+}
+
+a.navbar-brand {
+    font-family: 'Raleway',sans-serif;
+    font-size: 20px;
+}
+
+a.nav-link {
+    font-size: 16px;
+}
+
+@media (min-width:767px) {
+    ul.navbar-nav {
+        margin-left: 35vw;
+    }
+}
+@media (min-width:1100px) {
+    ul.navbar-nav {
+        margin-left: 55vw;
+    }
+}
