@@ -2,14 +2,18 @@
     .Paleta de colores (por ahora)
 
         -PRINCIPALES:
+    aquamarine
         #1bb98f
         #54b89d
+    navy
         #4a5368
+        #545D73
 
         -GRISES:
-        #3a3a3a
+    gray
         #717171
-        #FFFFFF
+    white
+        #FaFaFa
 
     .fuentes
         Para texto pequeño y botones
@@ -22,20 +26,16 @@
 
 body {
     font-family: 'Nunito', sans-serif !important;
-    background: #fff;
+    background: #fafafa;
 }
 
 /* clases genericas*/
 .white {
-    color: #fff;
+    color: #fafafa;
 }
 
-.black {
-    color: #3a3a3a;
-}
-
-.gray {
-    color: #717171;
+.navy {
+    color: #4a5368;
 }
 
 .aquamarine {
@@ -66,13 +66,12 @@ body {
 
 .text {
     margin: 5px auto;
-    font-size: 16px;
+    font-size: 15px;
     text-align: left;
 }
 
 
 /* sobreescritura de clases de bootstrap/shards */
-
 
 .modal-title {
     margin: 5px auto;
@@ -88,6 +87,8 @@ body {
     position: relative;
     left: 50%;
     margin-left: -50px;
+    border-radius: 50px;
+    font-family: 'Nunito',sans-serif;
 }
 
 .btn.btn-primary:hover {
@@ -95,21 +96,21 @@ body {
     border-color:  #4a5368;
 }
 
-input.form-control.form-control-med,
-span.input-group-text {
-    margin: 10px 0;
+.btn.btn-primary:active {
+    background: #64739b !important;
+    border-color:  #64739b !important;
 }
 
 .btn.btn-secondary {
     width: 100px;
     height: 50px;
-    background: #fff;
+    background: #fafafa;
     color: #1bb98f;
-    box-shadow: 0 4px  #3ca186; 
     border: none;
     border-radius: 50px;
     cursor: pointer;
     margin: auto 10px;
+    font-family: 'Nunito',sans-serif;
 }
 
 .btn.btn-secondary:hover {
@@ -117,11 +118,15 @@ span.input-group-text {
 }
 
 .btn.btn-secondary:active {
-    box-shadow: 0 0 0 0 ;
-    transform: translateY(3px);
-    background: #fbfbfb;
+    color: #4a5368 !important;
+    background: #3ca186 !important;
 }
 
 .btn.btn-secondary:focus {
     outline: 0;
+}
+
+input.form-control.form-control-med,
+span.input-group-text {
+    margin: 10px 0;
 }

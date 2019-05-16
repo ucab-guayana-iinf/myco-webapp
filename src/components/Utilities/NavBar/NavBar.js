@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {Component} from 'react'
 import {Navbar, NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Collapse} from "shards-react";
-import Login from '../Login/Login'
-import '../../assets/NavBar.css';
+import Login from '../../Login/Login'
+import './assets/NavBar.css';
 
 export default class NavBar extends Component {
 
@@ -54,6 +54,11 @@ export default class NavBar extends Component {
 
                 <Collapse open={this.state.collapseOpen} navbar>
                     <Nav navbar>
+                    <NavItem className="ml-3 mr-3">
+                            <NavLink href="/SignUp">
+                                Registrar Conominio
+                            </NavLink>
+                        </NavItem>
                         <NavItem className="ml-3 mr-3">
                             <NavLink onClick={this.toggle} href="javascript:void(0)">
                                 Iniciar Sesion

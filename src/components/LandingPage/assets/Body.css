@@ -1,6 +1,6 @@
 
 .body {
-    background: #fff;
+    background: #fafafa;
 }
 
 .body .title {
@@ -32,7 +32,7 @@
 }
 
 .text {
-    text-align: left;
     min-width: 80%;
-    max-width: 80%;
+    margin: auto;
+    text-align: justify;
 }
