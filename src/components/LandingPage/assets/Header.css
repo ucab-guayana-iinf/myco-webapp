@@ -7,11 +7,36 @@
 }
 
 @media (min-width:900px) {
-    .header-body {
+    .landing .header-body {
         display: flex;
         flex-direction: row;
     }
 } 
+
+.round-div {
+    position: relative;
+    top: 140px;
+    left: 0;
+    height: 250px;
+    background: url('./blob-round.svg') center no-repeat;
+    background-size: 600px;
+}
+
+@media (min-width:501px) {
+    .round-div {
+        background-size: 1200px;
+        z-index: -1;
+    }
+}
+
+@media (min-width:900px) {
+    .round-div {
+        position: absolute;
+        top: 600px;
+        background-size: 2080px;
+        z-index: -1;
+    }
+}
 
 .blob {
     height: 650px;
@@ -47,22 +72,4 @@
 
 .btn-container {
     min-width: 100%;
-}
-
-.round-div {
-    position: relative;
-    top: 140px;
-    left: 0;
-    height: 250px;
-    background: url('./blob-round.svg') center no-repeat;
-    background-size: 2080px;
-}
-
-@media (min-width:900px) {
-    .round-div {
-        position: absolute;
-        top: 500px;
-        height: 400px;
-        z-index: -1;
-    }
 }

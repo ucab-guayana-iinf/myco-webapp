@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import routes from './routes'
-
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/shards-dashboards.1.1.0.min.css'
+import NavBar from './components/Utilities/NavBar/NavBar'
 import './assets/App.css';
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
 		return(
 			<BrowserRouter>
 				<div>
+					<NavBar/>
 					{
 						routes.map( (route,i) => (
 							<Route key={i} path={route.path} component={route.component} exact={route.exact}/>
