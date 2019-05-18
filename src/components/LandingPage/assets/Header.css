@@ -1,3 +1,6 @@
+.landing .main-sidebar {
+    display: none;
+}
 
 .header-body {
     display: flex;

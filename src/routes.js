@@ -10,6 +10,7 @@ import GenerarFactura from './views/GenerarFactura'
 import Propiedades from './views/Propiedades'
 import Residencias from './views/Residencias'
 import CuentasPorCobrar from './views/CuentasPorCobrar'
+import TiposDePropiedades from './views/TiposDePropiedades'
 import SignUp from './views/SignUp'
 
 //arr de obj de rutas de cada pagina
@@ -54,5 +55,9 @@ export default [
     {
         path: '/CuentasPorCobrar',
         component: CuentasPorCobrar
+    },
+    {
+        path: '/TiposDePropiedades',
+        component: TiposDePropiedades
     }
 ]
