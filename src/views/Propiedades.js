@@ -5,7 +5,7 @@ const Propiedades = () => {
     return (
         <div className="propiedades">
             <MainSidebar/>
-            <GHeader/>
+            <GHeader ruta="Propiedades" title="Propiedades"/>
         </div>
     );
 };

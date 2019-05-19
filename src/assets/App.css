@@ -55,6 +55,9 @@ body {
     font-size: 42px !important;   
 }
 
+.bold {
+    font-weight: 700;
+}
 /*tipos de texto*/
 
 .title {
@@ -72,10 +75,39 @@ body {
 }
 
 
-/* sobreescritura de clases de bootstrap/shards */
+/* sobreescritura de clases/componentes de bootstrap/shards-react */
 
 .main-sidebar {
     box-shadow: none;
+    background: #545D73;
+}
+.main-sidebar .navbar-brand {
+    background: #4a5368;
+    color: #fafafa;
+}
+
+.main-sidebar .nav .nav-item .nav-link {
+    padding: 2rem 1.5rem;
+}
+
+.main-sidebar .nav .nav-item .nav-link {
+    color: #fafafa;
+}
+
+.main-sidebar .nav .nav-item .nav-link.active,
+.main-sidebar .nav .nav-item .nav-link:hover,
+.main-sidebar .nav .nav-item.active,
+.main-sidebar .nav .nav-item:hover {
+    box-shadow: inset 0.1875rem 0 0 #1bb98f;
+    background: #4a5368; 
+    color: #fafafa;
+}
+
+.main-sidebar .nav .nav-item .nav-link.active i,
+.main-sidebar .nav .nav-item .nav-link:hover i,
+.main-sidebar .nav .nav-item.active i,
+.main-sidebar .nav .nav-item:hover i {
+    color: #1bb98f;
 }
 
 .modal-title {
