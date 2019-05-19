@@ -6,7 +6,7 @@ const CuentasPorCobrar = () => {
     return (
         <div className="cuentaspc">
             <MainSidebar/>
-            <GHeader/>
+            <GHeader ruta="Cuentas por cobrar" title="Cuentas por cobrar"/>
         </div>
     );
 };

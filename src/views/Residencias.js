@@ -4,8 +4,8 @@ import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 const Residencias = () => {
     return (
         <div className="residencias">
-        <MainSidebar/>
-            <GHeader/>
+            <MainSidebar/>
+            <GHeader ruta="Residencias" title="Residencias"/>
         </div>
     );
 };
