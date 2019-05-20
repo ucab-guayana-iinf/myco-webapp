@@ -6,7 +6,7 @@ const Contabilidad = () => {
     return (
         <div className="contabilidad">
 			<MainSidebar/>
-            <GHeader ruta="Contabilidad" title="Contabilidad"/>
+            <GHeader title="Contabilidad"/>
         </div>
     );
 };

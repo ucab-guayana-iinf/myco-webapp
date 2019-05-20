@@ -6,7 +6,7 @@ const TiposDePropiedades = () => {
     return (
         <div className="tipos-propiedades">
             <MainSidebar/>
-            <GHeader ruta="Tipos de propiedades" title="Tipos de propiedades"/>
+            <GHeader title="Tipos de propiedades"/>
         </div>
     );
 };

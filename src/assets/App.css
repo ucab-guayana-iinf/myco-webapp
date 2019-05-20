@@ -23,11 +23,33 @@
         -Raleway 700
 
 */
-
 body {
     font-family: 'Nunito', sans-serif !important;
     background: #fafafa;
 }
+
+.myco-logo {
+    margin-top: -10px;
+    height: 41px;
+    width: 52px;
+}
+
+@media (min-width:768px) {
+    .admin {
+        position: relative;
+        left: 25%;
+        width: calc(100% - 25%);
+    }
+}
+
+@media (min-width:992px) {
+    .admin {
+        position: relative;
+        left: 16.666667%;
+        width: calc(100% - 16.666667%);
+    }
+}
+
 
 /* clases genericas*/
 .white {
@@ -86,8 +108,12 @@ body {
     color: #fafafa;
 }
 
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+    color: #1bb98f;
+}
 .main-sidebar .nav .nav-item .nav-link {
-    padding: 2rem 1.5rem;
+    padding: 1.2rem .5rem;
 }
 
 .main-sidebar .nav .nav-item .nav-link {

@@ -6,7 +6,7 @@ const GenerarFactura = () => {
     return (
         <div className="generar-factura">
             <MainSidebar/>
-            <GHeader ruta="Residencia  > Generar Factura" title="Generar Factura"/>
+            <GHeader title="Generar Factura"/>
         </div>
     );
 };
