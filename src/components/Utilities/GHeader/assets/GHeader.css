@@ -8,15 +8,16 @@
     display: flex;
     flex-direction: column;
     background: #1bb98f;
-    margin-bottom: 160px;
+    margin-bottom: 80px;
 }
 
 @media (min-width:768px) {
     .gheader {
-        background: none;
         display: flex;
         flex-direction: row;
         height: 60px;
+        background: none;
+        margin-bottom: 150px;
     }
 } 
 
@@ -30,12 +31,11 @@
     }
 }
 
-
 .ground-div {
     position: relative;
-    top: 140px;
+    top: 100px;
     left: 0px;
-    height: 250px;
+    height: 160px;
     background: url('./blob-round.svg') center no-repeat;
     background-size: 600px;
 }
@@ -51,7 +51,7 @@
         height: 350px;
         width: calc(100% - 25%);
         left: 25%;
-        top: -140px;
+        top: -160px;
         background-size: 3480px;
         z-index: -1;
     }
@@ -71,7 +71,7 @@
 
 @media (min-width:768px) {
     .ground-div .text {
-        margin-top: 150px;
+        margin-top: 170px;
         margin-left: 35px;
     }
 }

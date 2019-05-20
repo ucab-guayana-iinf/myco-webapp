@@ -1,13 +1,14 @@
 import React from 'react';
 import GHeader from '../components/Utilities/GHeader/GHeader'
 import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
-const Servicios = () => {
+
+const CargarPago = () => {
     return (
-        <div className="servicios">
-            <MainSidebar/>
-            <GHeader title="Servicios"/>
+        <div className="contabilidad">
+			<MainSidebar/>
+            <GHeader title="Cargar pago"/>
         </div>
     );
 };
 
-export default Servicios;
+export default CargarPago;

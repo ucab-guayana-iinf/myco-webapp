@@ -1,0 +1,19 @@
+.Litem {
+    width: 95%;
+    height: 80px;
+    margin: 10px auto;
+}
+
+.Litem i{
+    margin-top: -15px;
+}
+
+.add-property {
+    margin: 50px auto;
+}
+
+@media (min-width: 768px) {
+    .add-property {
+        margin: 70px auto;
+    }
+}
