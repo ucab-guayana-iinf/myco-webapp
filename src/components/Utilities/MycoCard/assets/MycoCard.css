@@ -1,0 +1,21 @@
+.MycoCard {
+    max-width: 50%;
+    min-width: 50%;
+    margin: 20px auto;
+}
+
+.lista{
+    list-style: none;
+    margin: auto;
+}
+
+.card-header {
+    background: #1bb98f!important;
+}
+
+@media (min-width:768px) {
+    .MycoCard {
+        max-width: 280px;
+        min-width: 280px;
+    }
+}

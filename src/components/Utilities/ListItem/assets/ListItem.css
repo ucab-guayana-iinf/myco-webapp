@@ -8,6 +8,19 @@
     margin-top: -15px;
 }
 
+@media (min-width: 768px) {
+    .Litem {
+        width: 85%;
+        height: 80px;
+        margin: 5px auto;        
+    }
+}
+
+.item {
+    max-width: 180px;
+    min-width: 180px;
+}
+
 .add-property {
     margin: 50px auto;
 }
@@ -15,5 +28,24 @@
 @media (min-width: 768px) {
     .add-property {
         margin: 70px auto;
+    }
+}
+
+.pen-container{
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .expand {
+        left: 0;
+    }
+
+    .pen-container{
+        display: inline;
+        margin-top: 30px;
+    }
+
+    .pen{
+        right: 15px;
     }
 }
