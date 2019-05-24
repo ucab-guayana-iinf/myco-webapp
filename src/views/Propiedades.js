@@ -7,7 +7,7 @@ const Propiedades = () => {
     
     const titulos = ['Numero','Nombre','Yardage']
 
-    //Simulacion de los objetos que se obtienen del backend
+    //se llamaria get /users y get /properties
     const propiedades = [
         {
             department_number : 'MH-30', 
@@ -48,7 +48,9 @@ const Propiedades = () => {
                 propietarios={Npropietarios}
                 endeudados={Nendeudados}
             />
-            <Body title="Propiedades" propiedades={propiedades} titulos={titulos}/>
+            <Body title="Propiedades" 
+                propiedades={propiedades}
+            />
         </div>
     );
 };

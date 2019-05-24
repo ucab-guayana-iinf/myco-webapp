@@ -19,7 +19,7 @@ export default class GHeader extends Component {
                     <React.Fragment>
                         <div className="white text-center mt-n3">
                             <div className="mb-n3 mt-n4">
-                                <span className="navy medium title">{this.props.propiedades}</span> propiedades <span>&nbsp;&nbsp;</span>
+                                <span className="navy medium title">{this.props.propiedades}</span> inmuebles <span>&nbsp;&nbsp;</span>
                                 <span className="navy medium title">{this.props.propietarios}</span> propietarios
                                 <br/>
                             </div>
@@ -29,7 +29,13 @@ export default class GHeader extends Component {
                         )
             }
             case 'Residencias': {
-                return <div></div>
+                return (
+                <React.Fragment>
+                    <div className="white text-center">
+                        Selecciona una de tus residencias para administrar<br></br>
+                        Residencia actual : <span className="navy medium title"> {this.props.residenciActual}</span>
+                    </div>    
+                </React.Fragment>)
             }
             case 'Contabilidad': {
                 return <div></div>
@@ -41,7 +47,13 @@ export default class GHeader extends Component {
                 return <div></div>
             }
             case 'Servicios': {
-                return <div></div>
+                return (
+                    <React.Fragment>
+                        <div className="white text-center">
+                            Total basico <span className="navy bold">Bs. {this.props.tBasico}</span> Total extraordinario <span className="navy bold">Bs. {this.props.tExtraordinario}</span> <br></br>
+                            <span className="bold">Total mensual </span><span className="navy medium title">Bs. {this.props.tMensual}</span>
+                        </div>    
+                    </React.Fragment>)
             }
             case 'Tipos de propiedades': {
                 return <div></div>

@@ -1,0 +1,9 @@
+.residencias-body {
+    display: block;
+}
+
+@media (min-width:768px) {
+    .residencias-body {
+        display: flex;
+    }
+}

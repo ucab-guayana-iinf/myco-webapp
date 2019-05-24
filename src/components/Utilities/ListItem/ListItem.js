@@ -19,9 +19,9 @@ export default class ListItem extends Component {
             case 'Propiedades': {
                 return( 
                 <React.Fragment>                    
-                    <span>{this.props.propiedad.department_number}</span>
-                    <span>{this.props.propiedad.username}</span>
-                    <span>{this.props.propiedad.yardage}</span>
+                    <span className="item text-left">{this.props.propiedad.department_number}</span>
+                    <span className="item text-left">{this.props.propiedad.username}</span>
+                    <span className="item text-left">{this.props.propiedad.yardage}</span>
                 </React.Fragment>)
             }
             case 'Residencias': {
@@ -37,7 +37,12 @@ export default class ListItem extends Component {
                 return <div></div>
             }
             case 'Servicios': {
-                return <div></div>
+                return( 
+                    <React.Fragment>                    
+                        <span className="item text-left">{this.props.servicios.name}</span>
+                        <span className="item text-left">{this.props.servicios.type}</span>
+                        <span className="item text-left">Bs. {this.props.servicios.price}</span>
+                    </React.Fragment>)
             }
             case 'Tipos de propiedades': {
                 return <div></div>
@@ -53,12 +58,15 @@ export default class ListItem extends Component {
     
     render() {
         return(
-            <Card className="Litem">
-                <CardBody className="navy d-flex justify-content-around">
-                    {this.viewCheck(this.props.title)}
-                    <a href="javascript:void(0)"><i className="navy big material-icons align-top">expand_more</i></a>
-                </CardBody>
-            </Card>
+            <div className="d-flex flex-row">
+                <Card className="Litem">
+                    <CardBody className="navy d-flex justify-content-around">
+                        {this.viewCheck(this.props.title)}
+                        <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
+                    </CardBody>
+                </Card>
+                <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">edit</i></a>
+            </div>
         );
     }
 }

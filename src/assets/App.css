@@ -39,7 +39,7 @@ body {
         position: relative;
         left: 25%;
         width: calc(100% - 25%);
-    }
+    } 
 }
 
 @media (min-width:992px) {
