@@ -4,8 +4,6 @@ import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/Propiedades/Body'
 
 const Propiedades = () => {
-    
-    const titulos = ['Numero','Nombre','Yardage']
 
     //se llamaria get /users y get /properties
     const propiedades = [
@@ -25,7 +23,7 @@ const Propiedades = () => {
             department_number : 'MH-30', 
             username : 'Jesus Perez',
             property_type_id : 'Penthouse',
-            yardage : 'Pagado'
+            yardage : 'Por Cobrar'
         },
         {
             department_number : 'MH-30', 

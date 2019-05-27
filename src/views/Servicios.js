@@ -2,6 +2,7 @@ import React from 'react';
 import GHeader from '../components/Utilities/GHeader/GHeader'
 import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/Servicios/Body'
+
 const Servicios = () => {
 
     //Se obtiene el obj a partir de get /service?

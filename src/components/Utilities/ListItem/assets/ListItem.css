@@ -8,6 +8,14 @@
     margin-top: -15px;
 }
 
+.extraO {
+    background: #1bb98f !important;
+}
+
+.deuda {
+    background: #F93131 !important;
+}
+
 @media (min-width: 768px) {
     .Litem {
         width: 85%;
@@ -17,9 +25,16 @@
 }
 
 .item {
-    max-width: 180px;
-    min-width: 180px;
+    min-width: 50px;
 }
+
+@media (min-width: 768px) {
+    .item {
+        max-width: 180px;
+        min-width: 180px;
+    }
+}
+
 
 .add-property {
     margin: 50px auto;

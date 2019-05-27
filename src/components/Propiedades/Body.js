@@ -10,12 +10,12 @@ export default class Body extends Component {
         return(
             <div className="admin text-center">
                 
-                <div className="add-property navy medium mb-4">
+                <div className="add-property navy medium mb-3">
                     <span className="title medium mr-2 align-middle">Añadir inmueble</span> 
                     <a href="javascript:void(0)"><i className="aquamarine material-icons align-middle">add_circle</i></a>
                 </div>
 
-                <div className="titulos-servicios bold navy d-flex justify-content-around mb-3 ">
+                <div className="titulos-servicios bold navy justify-content-around mb-3 ">
                     {titulos.map( (titulo,i) => 
                         <span className="item text-center" key={i}>{titulo}</span>        
                     )} 
