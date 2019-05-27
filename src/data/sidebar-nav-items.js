@@ -16,6 +16,11 @@ export default function() {
       to: "/Servicios",
     },
     {
+      title: "Gastos",
+      htmlBefore: '<i class="material-icons">account_balance_wallet</i>',
+      to: "/Gastos",
+    },
+    {
       title: "Contabilidad",
       htmlBefore: '<i class="material-icons">account_balance</i>',
       to: "/Contabilidad",

@@ -17,12 +17,28 @@ export default class ListItem extends Component {
     viewCheck = (title) => {
         switch(title){
             case 'Propiedades': {
-                return( 
-                <React.Fragment>                    
-                    <span className="item text-left">{this.props.propiedad.department_number}</span>
-                    <span className="item text-left">{this.props.propiedad.username}</span>
-                    <span className="item text-left">{this.props.propiedad.yardage}</span>
-                </React.Fragment>)
+                if (this.props.propiedad.yardage === 'Pagado'){
+                    return( 
+                        <Card className=" Litem">
+                            <CardBody className="navy d-flex justify-content-around">
+                                <span className="item text-left">{this.props.propiedad.department_number}</span>
+                                <span className="item text-left">{this.props.propiedad.username}</span>
+                                <span className="item text-left">{this.props.propiedad.yardage}</span>
+                                <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
+                            </CardBody>    
+                        </Card>)
+                }else{
+                    return( 
+                        <Card className="deuda Litem">                   
+                            <CardBody className=" white d-flex justify-content-around">
+                                <span className="item text-left">{this.props.propiedad.department_number}</span>
+                                <span className="item text-left">{this.props.propiedad.username}</span>
+                                <span className="item text-left">{this.props.propiedad.yardage}</span>
+                                <a href="javascript:void(0)"><i className=" expand white big material-icons align-top">expand_more</i></a>             
+                            </CardBody>
+                        </Card>)         
+                }
+
             }
             case 'Residencias': {
                 return <div></div>
@@ -31,18 +47,41 @@ export default class ListItem extends Component {
                 return <div></div>
             }
             case 'Cuentas por cobrar': {
-                return <div></div>
+                return(<Card className="Litem">                    
+                            <CardBody className="navy d-flex justify-content-around">
+                                <span className="item text-left">{this.props.cuentasPorCobrar.department_number}</span>
+                                <span className="item text-left">{this.props.cuentasPorCobrar.username}</span>
+                                <span className="item text-left">{this.props.cuentasPorCobrar.alicuota}</span>
+                                <span className="item text-left">Bs. {this.props.cuentasPorCobrar.price}</span>
+                                <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
+                            </CardBody>
+                        </Card>)      
             }
             case 'Generar factura': {
                 return <div></div>
             }
             case 'Servicios': {
-                return( 
-                    <React.Fragment>                    
-                        <span className="item text-left">{this.props.servicios.name}</span>
-                        <span className="item text-left">{this.props.servicios.type}</span>
-                        <span className="item text-left">Bs. {this.props.servicios.price}</span>
-                    </React.Fragment>)
+                if(this.props.servicios.type === 'Basico'){
+                    return( 
+                        <Card className="Litem">                    
+                            <CardBody className="navy d-flex justify-content-around">
+                                <span className="item text-left">{this.props.servicios.name}</span>
+                                <span className="item text-left">{this.props.servicios.type}</span>
+                                <span className="item text-left">Bs. {this.props.servicios.price}</span>
+                                <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
+                            </CardBody>
+                        </Card>)                   
+                }else{
+                    return( 
+                        <Card className="extraO Litem">                    
+                            <CardBody className="white d-flex justify-content-around">
+                                <span className="item text-left">{this.props.servicios.name}</span>
+                                <span className="item text-left">{this.props.servicios.type}</span>
+                                <span className="item text-left">Bs. {this.props.servicios.price}</span>
+                                <a href="javascript:void(0)"><i className=" expand white big material-icons align-top">expand_more</i></a>             
+                            </CardBody>
+                        </Card>)
+                }
             }
             case 'Tipos de propiedades': {
                 return <div></div>
@@ -59,12 +98,7 @@ export default class ListItem extends Component {
     render() {
         return(
             <div className="d-flex flex-row">
-                <Card className="Litem">
-                    <CardBody className="navy d-flex justify-content-around">
-                        {this.viewCheck(this.props.title)}
-                        <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
-                    </CardBody>
-                </Card>
+                {this.viewCheck(this.props.title)}
                 <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">edit</i></a>
             </div>
         );

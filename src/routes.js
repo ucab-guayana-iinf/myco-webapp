@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom"
 
 // Todas las vistas de la pagina
 import LandingPage from './views/LandingPage'
+import Gastos from './views/Gastos'
 import FAQs from './views/FAQs'
 import Servicios from './views/Servicios'
 import Contabilidad from './views/Contabilidad'
@@ -64,5 +65,9 @@ export default [
     {
         path: '/CargarPago',
         component: CargarPago
+    },
+    {
+        path: '/Gastos',
+        component: Gastos
     }
 ]
