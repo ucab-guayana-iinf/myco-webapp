@@ -1,10 +1,12 @@
 import React from 'react';
+import GHeader from '../components/Utilities/GHeader/GHeader'
+import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 
 const CargarPago = () => {
     return (
-        <div>
-            <img alt="a" src="https://files.gamebanana.com/img/ss/wips/530-90_57dc60b09621b.jpg"></img>
-            <h1>CargarPago en construccion xdxd</h1>
+        <div className="cargar-pago">
+			<MainSidebar/>
+            <GHeader title="Cargar pago"/>
         </div>
     );
 };

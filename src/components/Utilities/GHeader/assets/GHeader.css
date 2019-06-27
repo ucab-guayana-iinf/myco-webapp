@@ -1,0 +1,77 @@
+@media (min-width:768px) {
+    .gnav .navbar {
+        display: none !important;
+    }
+}
+
+.gheader {
+    display: flex;
+    flex-direction: column;
+    background: #1bb98f;
+    margin-bottom: 80px;
+}
+
+@media (min-width:768px) {
+    .gheader {
+        display: flex;
+        flex-direction: row;
+        height: 60px;
+        background: none;
+        margin-bottom: 150px;
+    }
+} 
+
+.gheader .title {
+    margin-top: 20px;
+}
+
+@media (min-width:768px) {
+    .gheader .title {
+        margin-top: -20px;
+    }
+}
+
+.ground-div {
+    position: relative;
+    top: 100px;
+    left: 0px;
+    height: 160px;
+    background: url('./blob-round.svg') center no-repeat;
+    background-size: 600px;
+}
+
+@media (min-width:501px) {
+    .ground-div {
+        background-size: 1200px;
+    }
+}
+
+@media (min-width:768px) {
+    .ground-div {
+        height: 350px;
+        width: calc(100% - 25%);
+        left: 25%;
+        top: -160px;
+        background-size: 3480px;
+        z-index: -1;
+    }
+}
+
+@media (min-width:992px) {
+    .ground-div {
+        left: 16.666667%;
+        width: calc(100% - 16.666667%);
+    }
+}
+
+.ground-div .text {
+    margin-top: -130px;
+    margin-left: 25px;
+}
+
+@media (min-width:768px) {
+    .ground-div .text {
+        margin-top: 170px;
+        margin-left: 35px;
+    }
+}

@@ -3,13 +3,17 @@ import { Redirect } from "react-router-dom"
 
 // Todas las vistas de la pagina
 import LandingPage from './views/LandingPage'
+import Gastos from './views/Gastos'
 import FAQs from './views/FAQs'
-import CargarPago from './views/CargarPago'
-import EstadoCuenta from './views/EstadoCuenta'
+import Servicios from './views/Servicios'
+import Contabilidad from './views/Contabilidad'
 import GenerarFactura from './views/GenerarFactura'
-import MiCondominio from './views/MiCondominio'
-import UserSelect from './views/UserSelect'
-import Administrar from './views/Administrar'
+import Propiedades from './views/Propiedades'
+import Residencias from './views/Residencias'
+import CuentasPorCobrar from './views/CuentasPorCobrar'
+import TiposDePropiedades from './views/TiposDePropiedades'
+import SignUp from './views/SignUp'
+import CargarPago from './views/CargarPago';
 
 //arr de obj de rutas de cada pagina
 export default [
@@ -23,31 +27,47 @@ export default [
         component: LandingPage
     },
     {
+        path: '/SignUp',
+        component: SignUp
+    },
+    {
         path: '/FAQs',
         component: FAQs
     },
     {
-        path: '/CargarPago',
-        component: CargarPago
+        path: '/Servicios',
+        component: Servicios
     },
     {
-        path: '/EstadoCuenta',
-        component: EstadoCuenta
+        path: '/Contabilidad',
+        component: Contabilidad
     },
     {
         path: '/GenerarFactura',
         component: GenerarFactura
     },
     {
-        path: '/MiCondominio',
-        component: MiCondominio
+        path: '/Propiedades',
+        component: Propiedades
     },
     {
-        path: '/UserSelect',
-        component: UserSelect
+        path: '/Residencias',
+        component: Residencias
     },
     {
-        path: '/Administrar',
-        component: Administrar
+        path: '/CuentasPorCobrar',
+        component: CuentasPorCobrar
+    },
+    {
+        path: '/TiposDePropiedades',
+        component: TiposDePropiedades
+    },
+    {
+        path: '/CargarPago',
+        component: CargarPago
+    },
+    {
+        path: '/Gastos',
+        component: Gastos
     }
 ]

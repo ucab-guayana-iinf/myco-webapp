@@ -1,0 +1,10 @@
+.titulos-servicios {
+    width: 70%;
+    display: none;
+}
+
+@media (min-width:768px) {
+    .titulos-servicios {
+        display: flex;
+    }
+}

@@ -1,0 +1,10 @@
+.titulos-cuentas {
+    width: 75%;
+    display: none;
+}
+
+@media (min-width:768px) {
+    .titulos-cuentas {
+        display: flex;
+    }
+}

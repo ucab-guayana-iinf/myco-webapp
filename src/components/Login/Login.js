@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
-import '../../assets/Login.css';
+import './assets/Login.css';
 
 export default class Login extends Component {
 
@@ -15,14 +15,14 @@ export default class Login extends Component {
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="black">Username</InputGroupText>
+										<InputGroupText className="navy">Username</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" onKeyUp={console.log(this.value)} type="text" placeholder="Nombre de Usuario ó e-mail"/>
+									<FormInput size="med" type="text" placeholder="Nombre de Usuario ó e-mail"/>
 								</InputGroup>
 
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="black">Contraseña</InputGroupText>
+										<InputGroupText className="navy">Contraseña</InputGroupText>
 									</InputGroupAddon>
 									<FormInput size="med" type="password" placeholder="Contraseña"/>
 								</InputGroup>
@@ -32,8 +32,8 @@ export default class Login extends Component {
 						</Form>
 					</CardBody>
 
-					<ModalFooter className=" mt-0 small text">
-							<a href="/FAQs" className="aquamarine">No posees una cuenta aun?</a>
+					<ModalFooter className="mt-0 small">
+							<a href="/FAQs" className="aquamarine text text-center">No posees una cuenta aun?</a>
 					</ModalFooter>
 				</Card>
 			</Modal>

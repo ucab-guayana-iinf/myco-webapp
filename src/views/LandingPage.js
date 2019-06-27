@@ -1,12 +1,13 @@
 import React from 'react';
 import Body from '../components/LandingPage/Body';
-import NavBar from '../components/NavBar/NavBar';
 import Header from '../components/LandingPage/Header';
-
+import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
+import NavBar from '../components/Utilities/NavBar/NavBar'
 const LandingPage = () => {
     return (
-        <div>
-            <NavBar/>
+        <div className="landing">
+			<NavBar/>
+			<MainSidebar/>
             <Header/>
             <Body/>
         </div>

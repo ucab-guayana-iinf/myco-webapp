@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import routes from './routes'
-
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/shards-dashboards.1.1.0.min.css'
 import './assets/App.css';
+
 
 class App extends Component {
 

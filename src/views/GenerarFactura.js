@@ -1,10 +1,12 @@
 import React from 'react';
+import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
+import GHeader from '../components/Utilities/GHeader/GHeader'
 
 const GenerarFactura = () => {
     return (
-        <div>
-            <img alt="a" src="https://files.gamebanana.com/img/ss/wips/530-90_57dc60b09621b.jpg"></img>
-            <h1>Generar Factura en construccion xdxd</h1>
+        <div className="generar-factura">
+            <MainSidebar/>
+            <GHeader title="Generar Factura"/>
         </div>
     );
 };
