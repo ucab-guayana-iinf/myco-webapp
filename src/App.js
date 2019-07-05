@@ -8,28 +8,6 @@ import './assets/App.css';
 
 class App extends Component {
 
-<<<<<<< HEAD
-export default () => (
-  <Router basename={process.env.REACT_APP_BASENAME || ""}>
-    <div>
-      {
-        routes.map((route, index) => (
-          <Route
-            key={index}
-            exact={route.exact}
-            path={route.path}
-            component={() => (
-              <route.layout>
-                <route.component />
-              </route.layout>
-            )}
-          />
-        ))
-      }
-    </div>
-  </Router>
-);
-=======
 	state = {
 		session : ['user', 'admin', 'guest']
 	}
@@ -50,4 +28,3 @@ export default () => (
 }
 
 export default App;
->>>>>>> 974741c92f9036d85537cc7f135396319d726ae2

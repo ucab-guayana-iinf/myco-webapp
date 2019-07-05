@@ -12,7 +12,7 @@ export default class Body extends Component {
             <div className="body">
                 <h1 className="big navy title">Algun titulo pero largo</h1>
                 <div className="body-container ">
-                    {this.state.titulos.map((titulo,i) =>{
+                    {this.state.titulos.map((titulo,i) => {
                         return  (
                             <div key={i} className="mb-5">
                                 
