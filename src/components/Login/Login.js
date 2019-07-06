@@ -9,12 +9,16 @@ export default class Login extends Component {
 	}
 
 	handleChange = (event) => {
-		//const campo = event.target.name;
+		const campo = event.target.name;
 
-		//this.setState({
-		//	[campo]: target.value 
-		//})
-		console.log(event);
+		this.setState({
+			[campo]: event.target.value 
+		})
+	}
+
+	fetchData = () => {
+		console.log("fetching data");
+		fetch()
 	}
 
 	render(){
@@ -24,7 +28,8 @@ export default class Login extends Component {
 					<ModalHeader>Inicio de Sesion</ModalHeader>
 
 					<CardBody className="mx-0 mb-n2">
-						<Form method="">
+						
+						<Form onSubmit={this.fetchData}>
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
