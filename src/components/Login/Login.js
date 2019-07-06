@@ -9,16 +9,32 @@ export default class Login extends Component {
 	}
 
 	handleChange = (event) => {
-		const campo = event.target.name;
+		const campo = event.target.name
 
 		this.setState({
 			[campo]: event.target.value 
 		})
 	}
-
-	fetchData = () => {
-		console.log("fetching data");
-		fetch()
+       
+	fetchData = (event) => {
+        event.preventDefault()
+        if (this.state.email === '' || this.state.password == '') {
+            alert('maricon llena la vaina pues')
+            return
+        }
+		fetch("https://myco-backend.herokuapp.com/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(resJson => resJson.json())
+        .then(res => {
+            console.log("token devuelto por el server: ", res.token)
+            localStorage.setItem("token", res.token)
+        })
+        .catch(error => console.error('Hubo un error mano:', error))
 	}
 
 	render(){
@@ -46,7 +62,7 @@ export default class Login extends Component {
 									<FormInput size="med" type="password" name="password" placeholder="Contraseña" onChange={this.handleChange} />
 								</InputGroup>
 								
-								<button className="btn btn-primary">Login</button>
+								<button type="submit" className="btn btn-primary">Login</button>
 							</FormGroup>
 						</Form>
 					</CardBody>
