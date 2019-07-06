@@ -7,7 +7,7 @@ export default class GHeader extends Component {
     constructor(props) {
         super(props);
 
-        this.viewCheck = this.viewCheck;
+        
     }
 
     //Dependiendo de que vista viene carga distintos elementos
@@ -26,7 +26,7 @@ export default class GHeader extends Component {
                             <span className="navy medium title"> {this.props.endeudados} </span> <span className="white"> propietarios en mora</span>
                         </div>
                     </React.Fragment>
-                        )
+                )
             }
             case 'Residencias': {
                 return (
@@ -35,7 +35,8 @@ export default class GHeader extends Component {
                         Selecciona una de tus residencias para administrar<br></br>
                         Residencia actual : <span className="navy medium title"> {this.props.residenciActual}</span>
                     </div>    
-                </React.Fragment>)  
+                </React.Fragment>
+                )  
             }
             case 'Contabilidad': {
                 return <div></div>
@@ -60,7 +61,8 @@ export default class GHeader extends Component {
                 return (
                     <React.Fragment>
                         <div className="white text-center">
-                            Total basico <span className="navy bold">Bs. {this.props.tBasico}</span>&nbsp;&nbsp;&nbsp;&nbsp; Total extraordinario <span className="navy bold">Bs. {this.props.tExtraordinario}</span> <br></br>
+                            Total basico <span className="navy bold">Bs. {this.props.tBasico}</span>&nbsp;&nbsp;&nbsp;&nbsp; Total extraordinario <span className="navy bold">Bs. {this.props.tExtraordinario}</span> 
+                            <br></br>
                             <span className="bold">Total mensual </span><span className="navy medium title">Bs. {this.props.tMensual}</span>
                         </div>    
                     </React.Fragment>)
@@ -88,7 +90,7 @@ export default class GHeader extends Component {
                 
                 <div className="gheader"> 
                     <div className="ground-div">
-                        <div className="white text">Residencia  <span className="navy bold">>  {title}</span></div>  
+                        <div className="white text">Residencia<span className="navy bold"> > {title} </span></div>  
                         <div className="white big title">{title}</div>
                         {this.viewCheck(title)}
                     </div>

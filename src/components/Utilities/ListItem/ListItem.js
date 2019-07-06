@@ -26,7 +26,8 @@ export default class ListItem extends Component {
                                 <span className="item text-left">{this.props.propiedad.yardage}</span>
                                 <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
                             </CardBody>    
-                        </Card>)
+                        </Card>
+                    )
                 }else{
                     return( 
                         <Card className="deuda Litem">                   
@@ -36,9 +37,9 @@ export default class ListItem extends Component {
                                 <span className="item text-left">{this.props.propiedad.yardage}</span>
                                 <a href="javascript:void(0)"><i className=" expand white big material-icons align-top">expand_more</i></a>             
                             </CardBody>
-                        </Card>)         
+                        </Card>
+                    )         
                 }
-
             }
             case 'Residencias': {
                 return <div></div>
@@ -55,7 +56,8 @@ export default class ListItem extends Component {
                                 <span className="item text-left">Bs. {this.props.cuentasPorCobrar.price}</span>
                                 <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
                             </CardBody>
-                        </Card>)      
+                        </Card>
+                )      
             }
             case 'Generar factura': {
                 return <div></div>
@@ -70,7 +72,8 @@ export default class ListItem extends Component {
                                 <span className="item text-left">Bs. {this.props.servicios.price}</span>
                                 <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
                             </CardBody>
-                        </Card>)                   
+                        </Card>
+                    )                   
                 }else{
                     return( 
                         <Card className="extraO Litem">                    
@@ -80,7 +83,8 @@ export default class ListItem extends Component {
                                 <span className="item text-left">Bs. {this.props.servicios.price}</span>
                                 <a href="javascript:void(0)"><i className=" expand white big material-icons align-top">expand_more</i></a>             
                             </CardBody>
-                        </Card>)
+                        </Card>
+                    )
                 }
             }
             case 'Tipos de propiedades': {

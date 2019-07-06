@@ -26,8 +26,8 @@ export default class Login extends Component {
 									</InputGroupAddon>
 									<FormInput size="med" type="password" placeholder="Contraseña"/>
 								</InputGroup>
-
-								<button className="btn btn-primary">Login</button>
+								
+								<button className="">Login</button>
 							</FormGroup>
 						</Form>
 					</CardBody>

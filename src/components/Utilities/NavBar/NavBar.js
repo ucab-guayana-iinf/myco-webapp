@@ -54,9 +54,9 @@ export default class NavBar extends Component {
 
                 <Collapse open={this.state.collapseOpen} navbar>
                     <Nav navbar>
-                    <NavItem className="ml-3 mr-3">
+                        <NavItem className="ml-3 mr-3">
                             <NavLink href="/SignUp">
-                                Registrar Conominio
+                                Registrar Condominio
                             </NavLink>
                         </NavItem>
                         <NavItem className="ml-3 mr-3">

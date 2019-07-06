@@ -37,13 +37,16 @@ const Servicios = () => {
     return (
         <div className="servicios">
             <MainSidebar/>
-            <GHeader title="Servicios"
+            <GHeader 
+                title="Servicios"
                 tBasico={1000}
                 tExtraordinario={1200}
-                tMensual={2200}
+                tMensual={6969}
             />
-            <Body title="Servicios"
-                servicios={servicios}/>
+            <Body 
+                title="Servicios"
+                servicios={servicios}
+            />
         </div>
     );
 };
