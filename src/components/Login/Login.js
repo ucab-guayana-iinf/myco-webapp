@@ -27,13 +27,13 @@ export default class Login extends Component {
 									<FormInput size="med" type="password" placeholder="Contraseña"/>
 								</InputGroup>
 								
-								<button className="">Login</button>
+								<button className="btn btn-primary">Login</button>
 							</FormGroup>
 						</Form>
 					</CardBody>
 
 					<ModalFooter className="mt-0 small">
-							<a href="/FAQs" className="aquamarine text text-center">No posees una cuenta aun?</a>
+							<a href="/SignUp" className="aquamarine text text-center">No posees una cuenta aun?</a>
 					</ModalFooter>
 				</Card>
 			</Modal>
