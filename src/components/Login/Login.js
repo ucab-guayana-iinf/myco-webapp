@@ -3,6 +3,19 @@ import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, Moda
 import './assets/Login.css';
 
 export default class Login extends Component {
+	state = {
+		email: '',
+		password: ''
+	}
+
+	handleChange = (event) => {
+		//const campo = event.target.name;
+
+		//this.setState({
+		//	[campo]: target.value 
+		//})
+		console.log(event);
+	}
 
 	render(){
 		return (
@@ -15,16 +28,17 @@ export default class Login extends Component {
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Username</InputGroupText>
+										<InputGroupText className="navy">Email</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" placeholder="Nombre de Usuario ó e-mail"/>
+									<FormInput size="med" type="email" name="email" placeholder="Tu correo electrónico" onChange={this.handleChange} />
 								</InputGroup>
-
+							</FormGroup>
+							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
 										<InputGroupText className="navy">Contraseña</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="password" placeholder="Contraseña"/>
+									<FormInput size="med" type="password" name="password" placeholder="Contraseña" onChange={this.handleChange} />
 								</InputGroup>
 								
 								<button className="btn btn-primary">Login</button>

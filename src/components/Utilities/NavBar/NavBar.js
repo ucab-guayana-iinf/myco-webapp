@@ -11,7 +11,7 @@ export default class NavBar extends Component {
         super(props);
         
         this.state = { 
-            open: false,
+            open: false, //open es para el modal de login
             dropdownOpen: false,
             collapseOpen: false 
         };

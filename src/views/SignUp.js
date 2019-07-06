@@ -3,6 +3,7 @@ import NavBar from '../components/Utilities/NavBar/NavBar'
 import { Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
 
 const SignUp = () => {
+    
     return (
         <div className="signup">
             <NavBar />
