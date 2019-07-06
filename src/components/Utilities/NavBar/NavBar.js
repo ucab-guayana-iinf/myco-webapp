@@ -15,10 +15,6 @@ export default class NavBar extends Component {
             dropdownOpen: false,
             collapseOpen: false 
         };
-        
-        this.toggle = this.toggle;
-        this.toggleDropdown = this.toggleDropdown;
-        this.toggleNavbar = this.toggleNavbar;
 	}
 	
 	toggle = () => {
