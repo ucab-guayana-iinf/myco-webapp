@@ -6,7 +6,7 @@ class SignUp extends Component {
     
 	state = {
         name : '',
-        picture_url : '',
+        picture_url : 'url',
         lastname: '',
         email : '',
         social_number : '',
@@ -24,12 +24,44 @@ class SignUp extends Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then( res => res.json())
+        .then( res => res.text())
         .then(res => {
             console.log("respuesta del server: ", res)
+            this.login()
         })
         .catch(error=> console.error('Hubo un error:',error))
     }
+
+    login = () => {
+        //post para login con la info que se acaba de registrar
+		fetch("https://myco-backend.herokuapp.com/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password
+                
+            })
+        })
+        .then(res => res.json()) //esta respuesta si viene en JSON asi que se usa .json()
+        .then(res => {
+            console.log("token de login: ", res.token)
+            localStorage.setItem("token", res.token)
+        })
+        .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)
+        .catch(error => console.error('Hubo un error en el login:', error))
+    }
+
+    handleChange = (event) => {
+        const campo = event.target.name
+
+        this.setState({
+            [campo] : event.target.value 
+        })
+    }
+
 
     handleChange = (event) => {
         const campo = event.target.name
