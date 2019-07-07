@@ -38,8 +38,22 @@ class Login extends Component {
             console.log("token devuelto por el server: ", res.token)
             localStorage.setItem("token", res.token)
         })
-        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard s
+        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard (por ahora va a faqs xd)
         .catch(error => console.error('Hubo un error mano:', error))
+        /* codigo del registro
+        fetch("https://myco-backend.herokuapp.com/register", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.obj)
+        })
+        .then(resJson => resJson.json())
+        .then(res => {
+            console.log("respuesta server: ", res)
+        })
+        .catch(error => console.error('Hubo un error mano:', error))
+        */
     }
 
 	render() {
