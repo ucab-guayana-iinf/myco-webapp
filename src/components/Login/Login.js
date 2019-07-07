@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import './assets/Login.css';
+import { withRouter } from 'react-router-dom'
 
-export default class Login extends Component {
+class Login extends Component {
 	state = {
 		email: '',
 		password: ''
@@ -17,11 +18,14 @@ export default class Login extends Component {
 	}
        
 	fetchData = (event) => {
+        //para que no se recargue la pagina en el submit
         event.preventDefault()
-        if (this.state.email === '' || this.state.password == '') {
+        //validacion de campos vacios
+        if (this.state.email === '' || this.state.password === '') {
             alert('maricon llena la vaina pues')
             return
         }
+        //post para login
 		fetch("https://myco-backend.herokuapp.com/login", {
             method: 'POST',
             headers: {
@@ -34,10 +38,11 @@ export default class Login extends Component {
             console.log("token devuelto por el server: ", res.token)
             localStorage.setItem("token", res.token)
         })
+        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard s
         .catch(error => console.error('Hubo un error mano:', error))
-	}
+    }
 
-	render(){
+	render() {
 		return (
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
@@ -75,3 +80,5 @@ export default class Login extends Component {
 		)
 	}
 }
+
+export default withRouter(Login)
