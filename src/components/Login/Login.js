@@ -20,14 +20,13 @@ class Login extends Component {
 	fetchData = (event) => {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
-        console.log(this.state)
         //validacion de campos vacios
         if (this.state.email === '' || this.state.password === '') {
             alert('maricon llena la vaina pues')
             return
         }
         //post para login
-		fetch("https://myco-backend.herokuapp.com/login", {
+		/*fetch("https://myco-backend.herokuapp.com/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +39,31 @@ class Login extends Component {
             localStorage.setItem("token", res.token)
         })
         .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard
+        .catch(error => console.error('Hubo un error mano:', error))*/
+        console.log(JSON.stringify(this.obj));
+        
+        fetch("https://myco-backend.herokuapp.com/register", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.obj)
+        })
+        .then(resJson => resJson.json())
+        .then(res => {
+            console.log("respuesta server: ", res)
+        })
         .catch(error => console.error('Hubo un error mano:', error))
+    }
+
+    obj = {
+        name:"maldi",
+        lastname:"tasea",
+        social_number:"27375479",
+        picture_url:"pipi",
+        email:"maldiasdwasdqf@gmail.com",
+        password:"12345",
+        role:"ADMIN"
     }
 
 	render() {
