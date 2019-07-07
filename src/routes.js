@@ -12,7 +12,6 @@ import Propiedades from './views/Propiedades'
 import Residencias from './views/Residencias'
 import CuentasPorCobrar from './views/CuentasPorCobrar'
 import TiposDePropiedades from './views/TiposDePropiedades'
-import SignUp from './views/SignUp'
 import CargarPago from './views/CargarPago';
 
 //arr de obj de rutas de cada pagina
@@ -25,10 +24,6 @@ export default [
     {
         path: '/Landing',
         component: LandingPage
-    },
-    {
-        path: '/SignUp',
-        component: SignUp
     },
     {
         path: '/FAQs',

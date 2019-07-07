@@ -1,12 +1,12 @@
-import React, { Redirect, Component } from 'react';
-import NavBar from '../components/Utilities/NavBar/NavBar'
-import { Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
+import React, { Component } from 'react';
+import { Modal,ModalHeader, Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
+import { withRouter } from 'react-router-dom'
 
-export default class SignUp extends Component {
+class SignUp extends Component {
     
 	state = {
         name : '',
-        picture_url : 'aaaaa',
+        picture_url : '',
         lastname: '',
         email : '',
         social_number : '',
@@ -14,25 +14,15 @@ export default class SignUp extends Component {
         role: 'ADMIN'
     }
     
-    obj = {
-        name: "pene",
-        lastname: "rico",
-        social_number: "69",
-        picture_url: "aaaaa",
-        email: "asdjaj@gmail.com",
-        password: "pene",
-        role: "ADMIN"
-    }
-
     fetchState = (event) => {
-        console.log(JSON.stringify(this.obj))
+        console.log(JSON.stringify(this.state))
         event.preventDefault()
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
             headers:{
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(this.obj)
+            body: JSON.stringify(this.state)
         })
         .then( res => res.json())
         .then(res => {
@@ -51,11 +41,9 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <div className="signup">
-                <NavBar/>
-                <h1 className="big navy title mt-5">Registro</h1>
-                
-                <Card className="mx-auto" style={{width: 750}}>
+            <Modal size="med" className="signup" open={this.props.open} toggle={this.props.toggle}>
+                <Card >
+                    <ModalHeader className="big navy title mx-0">Registro</ModalHeader>
                     <CardBody className="mx-0">
                         <Form onSubmit={this.fetchState}>
                             <FormGroup >
@@ -99,14 +87,15 @@ export default class SignUp extends Component {
                                     <FormInput size="med" onChange={this.handleChange} type="file" placeholder="Nombre de Usuario ó e-mail" />
                                 </InputGroup>
     
-    
                                 <button className="btn btn-primary" >Registrarse</button>
                             </FormGroup>
                         </Form>
                     </CardBody>
                 </Card>
-            </div>
+            </Modal>
         );
     }
     
 };
+
+export default withRouter(SignUp)

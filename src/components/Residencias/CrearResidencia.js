@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
-import './assets/Login.css';
 import { withRouter } from 'react-router-dom'
 
-class Login extends Component {
-	state = {
-		email: '',
-		password: ''
-	}
+class CrearResidencia extends Component {
+
+    state = {
+        admin_id : '',
+        name : '',
+        yardage : 0
+    }
 
 	handleChange = (event) => {
 		const campo = event.target.name
@@ -26,20 +27,15 @@ class Login extends Component {
             return
         }
         //post para login
-		fetch("https://myco-backend.herokuapp.com/login", {
+		fetch("https://myco-backend.herokuapp.com/residency/create", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem("token")
             },
             body: JSON.stringify(this.state)
         })
         .then(resJson => resJson.json())
-        .then(res => {
-            console.log("token devuelto por el server: ", res.token)
-            localStorage.setItem("token", res.token)
-            localStorage.setItem("logged", true)
-        })
-        .then( () => this.props.history.push('/Residencias') )
         .catch(error => console.error('Hubo un error mano:', error))
     }
 
@@ -47,7 +43,7 @@ class Login extends Component {
 		return (
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
-					<ModalHeader>Inicio de Sesion</ModalHeader>
+					<ModalHeader>Crear Residencia</ModalHeader>
 
 					<CardBody className="mx-0 mb-n2">
 						
@@ -55,31 +51,29 @@ class Login extends Component {
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Email</InputGroupText>
+										<InputGroupText className="navy">Nombre</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="email" name="email" placeholder="Tu correo electrónico" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="name" placeholder="Nombre de Residencia" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="admin_id" placeholder="id" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
+
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Contraseña</InputGroupText>
+										<InputGroupText className="navy">Metros Cuadrados</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="password" name="password" placeholder="Contraseña" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="yardage" placeholder="2000" onChange={this.handleChange} />
 								</InputGroup>
-								
-								<button type="submit" className="btn btn-primary">Login</button>
 							</FormGroup>
+
+                            <button type="submit" className="btn btn-primary">Crear</button>
 						</Form>
 					</CardBody>
-
-					<ModalFooter className="mt-0 small">
-							<a href="/SignUp" className="aquamarine text text-center">No posees una cuenta aun?</a>
-					</ModalFooter>
 				</Card>
 			</Modal>
 		)
 	}
 }
 
-export default withRouter(Login)
+export default withRouter(CrearResidencia)

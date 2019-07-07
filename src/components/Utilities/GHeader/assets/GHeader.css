@@ -33,7 +33,7 @@
 
 .ground-div {
     position: relative;
-    top: 100px;
+    top: 140px;
     left: 0px;
     height: 160px;
     background: url('./blob-round.svg') center no-repeat;
@@ -74,4 +74,9 @@
         margin-top: 170px;
         margin-left: 35px;
     }
+}
+
+.logoff:hover {
+    color: rgba(249, 49, 49, 0.932);
+    cursor: pointer;
 }
