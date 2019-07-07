@@ -1,27 +1,62 @@
 import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import './assets/Login.css';
+import { withRouter } from 'react-router-dom'
 
-export default class Login extends Component {
+class Login extends Component {
 	state = {
 		email: '',
 		password: ''
 	}
 
 	handleChange = (event) => {
-		const campo = event.target.name;
+		const campo = event.target.name
 
 		this.setState({
 			[campo]: event.target.value 
 		})
 	}
+       
+	fetchData = (event) => {
+        //para que no se recargue la pagina en el submit
+        event.preventDefault()
+        //validacion de campos vacios
+        if (this.state.email === '' || this.state.password === '') {
+            alert('maricon llena la vaina pues')
+            return
+        }
+        //post para login
+		fetch("https://myco-backend.herokuapp.com/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(resJson => resJson.json())
+        .then(res => {
+            console.log("token devuelto por el server: ", res.token)
+            localStorage.setItem("token", res.token)
+        })
+        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard (por ahora va a faqs xd)
+        .catch(error => console.error('Hubo un error mano:', error))
+        /* codigo del registro
+        fetch("https://myco-backend.herokuapp.com/register", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.obj)
+        })
+        .then(resJson => resJson.json())
+        .then(res => {
+            console.log("respuesta server: ", res)
+        })
+        .catch(error => console.error('Hubo un error mano:', error))
+        */
+    }
 
-	fetchData = () => {
-		console.log("fetching data");
-		fetch()
-	}
-
-	render(){
+	render() {
 		return (
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
@@ -46,7 +81,7 @@ export default class Login extends Component {
 									<FormInput size="med" type="password" name="password" placeholder="Contraseña" onChange={this.handleChange} />
 								</InputGroup>
 								
-								<button className="btn btn-primary">Login</button>
+								<button type="submit" className="btn btn-primary">Login</button>
 							</FormGroup>
 						</Form>
 					</CardBody>
@@ -59,3 +94,5 @@ export default class Login extends Component {
 		)
 	}
 }
+
+export default withRouter(Login)
