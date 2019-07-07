@@ -5,8 +5,7 @@ import Body from '../components/Residencias/Body'
 
 const Residencias = () => {
 
-
-    const residenciActual = "Loma Linda";
+    const residenciActual = "Resi dencia";
     //se llamaria get /residencies
     const residencias = [
         {
@@ -43,14 +42,13 @@ const Residencias = () => {
         }
     ]
 
-
     return (
         <div className="residencias">
             <MainSidebar/>
             <GHeader title="Residencias"
                 residenciActual={residenciActual}
-                />
-            <Body residencias = {residencias} />
+            />
+            <Body residencias={residencias} />
         </div>
     );
 };
