@@ -4,7 +4,7 @@ import NavBar from '../NavBar/NavBar'
 
 export default class GHeader extends Component {
 
-    //Dependiendo de que vista viene carga distintos elementos
+    //Dependiendo de que vista viene carga distintos elementos COñO
 
     viewCheck = (title) => {
         switch(title){
