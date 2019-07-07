@@ -20,6 +20,7 @@ class Login extends Component {
 	fetchData = (event) => {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
+        console.log(this.state)
         //validacion de campos vacios
         if (this.state.email === '' || this.state.password === '') {
             alert('maricon llena la vaina pues')
@@ -38,7 +39,7 @@ class Login extends Component {
             console.log("token devuelto por el server: ", res.token)
             localStorage.setItem("token", res.token)
         })
-        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard s
+        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard
         .catch(error => console.error('Hubo un error mano:', error))
     }
 
