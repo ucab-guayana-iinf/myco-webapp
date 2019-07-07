@@ -26,7 +26,7 @@ class Login extends Component {
             return
         }
         //post para login
-		/*fetch("https://myco-backend.herokuapp.com/login", {
+		fetch("https://myco-backend.herokuapp.com/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,10 +38,9 @@ class Login extends Component {
             console.log("token devuelto por el server: ", res.token)
             localStorage.setItem("token", res.token)
         })
-        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard
-        .catch(error => console.error('Hubo un error mano:', error))*/
-        console.log(JSON.stringify(this.obj));
-        
+        .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard (por ahora va a faqs xd)
+        .catch(error => console.error('Hubo un error mano:', error))
+        /* codigo del registro
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
             headers: {
@@ -54,16 +53,7 @@ class Login extends Component {
             console.log("respuesta server: ", res)
         })
         .catch(error => console.error('Hubo un error mano:', error))
-    }
-
-    obj = {
-        name:"maldi",
-        lastname:"tasea",
-        social_number:"27375479",
-        picture_url:"pipi",
-        email:"maldiasdwasdqf@gmail.com",
-        password:"12345",
-        role:"ADMIN"
+        */
     }
 
 	render() {
