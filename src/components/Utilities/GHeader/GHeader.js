@@ -4,6 +4,7 @@ import NavBar from '../NavBar/NavBar'
 import { withRouter } from 'react-router-dom'
 
 class GHeader extends Component { 
+    
     logoff = () => {
         localStorage.clear()
 
