@@ -49,6 +49,7 @@ class SignUp extends Component {
         .then(res => {
             console.log("token de login: ", res.token)
             localStorage.setItem("token", res.token)
+            localStorage.setItem("logged", true)
         })
         .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)
         .catch(error => console.error('Hubo un error en el login:', error))
