@@ -10,7 +10,7 @@ export default class SignUp extends Component {
         email : '',
         password : '',
         social_number : '',
-        picture_url : 'aaaaa',
+        picture_url : 'url',
         role: 'ADMIN'
     }
 
@@ -18,15 +18,14 @@ export default class SignUp extends Component {
         event.preventDefault()
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
         })
-        .then(resJ => {
-            //return resJ.json() aqui se produciria el error "SyntaxError: Unexpected token R in JSON at position 0" y se va al catch
-        })
-        .then(res => { //no envio nada desde el then anterior para que no se vaya al catch y se logee
+        .then(res => res.text()) //esta respuesta es HTML, no JSON. Por eso se usa .text() en vez de .json()
+        .then(res => { 
+            console.log(res)
             this.login()    //logearse luego de registrarse
         })
         .catch(error => console.error('Hubo un error en el registro:', error))
@@ -44,9 +43,9 @@ export default class SignUp extends Component {
                 password: this.state.password
             })
         })
-        .then(resJ => resJ.json())
+        .then(res => res.json()) //esta respuesta si viene en JSON asi que se usa .json()
         .then(res => {
-            console.log("token devuelto por el server: ", res.token)
+            console.log("token de login: ", res.token)
             localStorage.setItem("token", res.token)
         })
         .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)

@@ -5,30 +5,26 @@ import './assets/Body.css'
 export default class Residencias extends Component {
     
     addResidency = () => {
-        //fetch para crear residencia (hay que pedirle al usuario los datos en un modal y crear el objeto) NO SIRVEAAAAA
+        //fetch para crear residencia (hay que pedirle al usuario los datos en un modal y crear el objeto)  
         fetch("https://myco-backend.herokuapp.com/residency/create", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer' + ' ' + localStorage.getItem('token') ,
-                'Access-Control-Allow-Headers': "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+                'Authorization': 'bearer ' + localStorage.getItem('token')
             },
-            body: JSON.stringify({
-                admin_id: "idjuan", //npi de donde sacar la id del admin
-	            name: "residenciaCreada",
-	            yardage: "6969"
+            body: JSON.stringify({ //objeto de prueba
+                admin_id: "idprueba", //el admin id hay que sacarlo del localstorage cuando podamos guardarlo en el login xd
+                name: "residenciaCreada",
+                yardage: "6969"
             })
         })
-        .then(resJ => {
-            return resJ.json()
-            //return resJ.json() aqui se produciria el error "SyntaxError: Unexpected token R in JSON at position 0" y se va al catch
-        })
-        .then(res => { //no envio nada desde el then anterior para que no se vaya al catch y se logee
-            console.log('resultado de crear residencia ', res)   //logearse luego de registrarse
+        .then(res => res.text()) //esta es una respuesta html asi que se usa .text
+        .then(res => { 
+            console.log('respuesta crear residencia: ', res)  
         })
         .catch(error => console.error('Hubo un error creando la residencia:', error))
     }
-
+    
     render() { //el boton antes era un <a href="javascript:void(0)"> lo cambie para llamar la funcion
         return (    
             <div className="admin text-center">

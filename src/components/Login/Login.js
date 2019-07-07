@@ -35,7 +35,7 @@ class Login extends Component {
         })
         .then(resJson => resJson.json())
         .then(res => {
-            console.log("token devuelto por el server: ", res.token)
+            console.log("token de login: ", res.token)
             localStorage.setItem("token", res.token)
         })
         .then( () => this.props.history.push('/Residencias') ) //redireccionar al dashboard (por ahora va a residencias)
