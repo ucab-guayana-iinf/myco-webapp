@@ -40,6 +40,7 @@ class Login extends Component {
         })
         .then( () => this.props.history.push('/FAQs') ) //redireccionar al dashboard (por ahora va a faqs xd)
         .catch(error => console.error('Hubo un error mano:', error))
+
         /* codigo del registro
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
