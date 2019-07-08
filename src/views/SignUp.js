@@ -1,4 +1,4 @@
-import React, { Redirect, Component } from 'react';
+import React, { Component } from 'react';
 import NavBar from '../components/Utilities/NavBar/NavBar'
 import { Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
 
@@ -23,9 +23,9 @@ export default class SignUp extends Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then(res => res.text()) //esta respuesta es HTML, no JSON. Por eso se usa .text() en vez de .json()
+        .then(res => res.json()) //esta respuesta es HTML, no JSON. Por eso se usa .text() en vez de .json()
         .then(res => { 
-            console.log(res)
+            console.log("respuesa registro: ", res)
             this.login()    //logearse luego de registrarse
         })
         .catch(error => console.error('Hubo un error en el registro:', error))

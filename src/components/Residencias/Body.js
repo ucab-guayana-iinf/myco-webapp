@@ -18,11 +18,27 @@ export default class Residencias extends Component {
                 yardage: "6969"
             })
         })
-        .then(res => res.text()) //esta es una respuesta html asi que se usa .text
+        .then(res => res.json()) 
         .then(res => { 
             console.log('respuesta crear residencia: ', res)  
         })
         .catch(error => console.error('Hubo un error creando la residencia:', error))
+    }
+
+    addResidency2 = () => {
+        fetch("https://myco-backend.herokuapp.com/residency/residencies?residency_id=1", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem('token')
+            }
+            
+        })
+        .then(res => res.text()) 
+        .then(res => { 
+            console.log('respuesta crear residencia: ', res)  
+        })
+        .catch(error => console.error('Hubo un error con el get de la residencia:', error))
     }
     
     render() { //el boton antes era un <a href="javascript:void(0)"> lo cambie para llamar la funcion
@@ -30,7 +46,7 @@ export default class Residencias extends Component {
             <div className="admin text-center">
                 <div className="add-property navy medium mb-4">
                     <span className="title medium mr-2 align-middle">Añadir Residencia</span> 
-                    <button style={{backgroundColor: 'transparent', border: 'none'}} onClick={this.addResidency}>
+                    <button style={{backgroundColor: 'transparent', border: 'none'}} onClick={this.addResidency2}>
                         <i className="aquamarine material-icons align-middle">add_circle</i>
                     </button>
                 </div>
