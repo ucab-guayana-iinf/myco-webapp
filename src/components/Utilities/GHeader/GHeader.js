@@ -8,13 +8,9 @@ class GHeader extends Component {
     logoff = () => {
         localStorage.clear()
 
-<<<<<<< HEAD
-    //Dependiendo de que vista viene carga distintos elementos COñO
-=======
         console.log("token en almacenamiento local al cerrar sesion:", localStorage.getItem("token"));
         this.props.history.push('/Landing')
     }
->>>>>>> 0d9e991d2a457e88724a61e3463214e1ff495d8c
 
     viewCheck = (title) => {
         var logged = localStorage.getItem("logged")
