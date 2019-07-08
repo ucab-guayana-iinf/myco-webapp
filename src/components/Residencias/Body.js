@@ -29,8 +29,8 @@ export default class Residencias extends Component {
                     onClick={this.toggle}>add_circle</i></a>
                 </div>
                 <div className="fill residencias-body">
-                    {this.props.residencias.map( (residencia,i) => 
-                        <MycoCard key={i} residencia={residencia}/>
+                    {this.props.residencias.map( (residencia, i) => 
+                        <MycoCard key={i} residencia={residencia} />
                     )}
                 </div>
                 <CrearResidencia open={this.state.open} toggle={this.toggle} />
