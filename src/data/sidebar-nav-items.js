@@ -21,9 +21,9 @@ export default function() {
       to: "/Gastos",
     },
     {
-      title: "Contabilidad",
+      title: "Ingresos y Egresos",
       htmlBefore: '<i class="material-icons">account_balance</i>',
-      to: "/Contabilidad",
+      to: "/IngresosYegresos",
     },
     {
       title: "Cuentas por cobrar",

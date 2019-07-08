@@ -6,13 +6,12 @@ import LandingPage from './views/LandingPage'
 import Gastos from './views/Gastos'
 import FAQs from './views/FAQs'
 import Servicios from './views/Servicios'
-import Contabilidad from './views/Contabilidad'
+import IngresosYegresos from './views/IngresosYegresos'
 import GenerarFactura from './views/GenerarFactura'
 import Propiedades from './views/Propiedades'
 import Residencias from './views/Residencias'
 import CuentasPorCobrar from './views/CuentasPorCobrar'
 import TiposDePropiedades from './views/TiposDePropiedades'
-import SignUp from './views/SignUp'
 import CargarPago from './views/CargarPago';
 
 //arr de obj de rutas de cada pagina
@@ -27,10 +26,6 @@ export default [
         component: LandingPage
     },
     {
-        path: '/SignUp',
-        component: SignUp
-    },
-    {
         path: '/FAQs',
         component: FAQs
     },
@@ -39,8 +34,8 @@ export default [
         component: Servicios
     },
     {
-        path: '/Contabilidad',
-        component: Contabilidad
+        path: '/IngresosYegresos',
+        component: IngresosYegresos
     },
     {
         path: '/GenerarFactura',

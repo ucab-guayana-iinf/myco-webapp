@@ -5,8 +5,10 @@ import Body from '../components/Residencias/Body'
 
 const Residencias = () => {
 
-    const residenciActual = "Resi dencia";
-    //se llamaria get /residencies
+
+    const residenciActual = "Loma Linda";
+    //hacer fetch de residencies
+    
     const residencias = [
         {
             id: "e1ac73f8-c39e-46bc-b047-6bbd523acc4b",

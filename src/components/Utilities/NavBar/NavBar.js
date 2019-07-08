@@ -2,16 +2,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {Component} from 'react'
 import {Navbar, NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Collapse} from "shards-react";
+import { withRouter } from 'react-router-dom'
+
 import Login from '../../Login/Login'
+import SignUp from '../../SignUp/SignUp'
 import './assets/NavBar.css';
 
-export default class NavBar extends Component {
+
+class NavBar extends Component {
 
 	constructor(props) {
         super(props);
         
         this.state = { 
             open: false, //open es para el modal de login
+            sign: false, //sign es para el modal de signup
             dropdownOpen: false,
             collapseOpen: false 
         };
@@ -20,6 +25,12 @@ export default class NavBar extends Component {
 	toggle = () => {
 		this.setState({
 			open: !this.state.open
+		});
+    }
+    
+	toggle2 = () => {
+		this.setState({
+			sign: !this.state.sign
 		});
 	}
 
@@ -41,6 +52,41 @@ export default class NavBar extends Component {
         });
     }
 
+    logoff = () => {
+        localStorage.clear()
+        console.log("token en almacenamiento local al cerrar sesion:", localStorage.getItem("token"));
+        this.props.history.push('/Landing')
+        console.log("sesion cerrada")
+    }
+
+    viewCheck = () => {
+        var logged = localStorage.getItem("logged")
+        if(!logged){
+            return(
+                <React.Fragment>
+                    <NavItem className="mx-3">
+                    <NavLink onClick={this.toggle2} href="javascript:void(0)">
+                        Registrar
+                    </NavLink>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink onClick={this.toggle} href="javascript:void(0)">
+                            Iniciar Sesion
+                        </NavLink>
+                    </NavItem>
+                </React.Fragment>
+            )
+        }else{
+            return(
+                <NavItem className="mx-3">
+                    <NavLink onClick={this.logoff} href="javascript:void(0)">
+                        Cerrar Sesion
+                    </NavLink>
+                </NavItem>
+            )       
+        }
+    }
+
     render() {
         return ( 
             <Navbar type="dark" theme="primary" expand="md">
@@ -50,16 +96,7 @@ export default class NavBar extends Component {
 
                 <Collapse open={this.state.collapseOpen} navbar>
                     <Nav navbar>
-                        <NavItem className="mx-3">
-                            <NavLink href="/SignUp">
-                                Registrar Condominio
-                            </NavLink>
-                        </NavItem>
-                        <NavItem className="mx-3">
-                            <NavLink onClick={this.toggle} href="javascript:void(0)">
-                                Iniciar Sesion
-                            </NavLink>
-                        </NavItem>
+                        {this.viewCheck()}
                         <NavItem className="mx-3">
                             <NavLink href="/FAQs">
                                 Como Empezar
@@ -69,8 +106,11 @@ export default class NavBar extends Component {
                 </Collapse>
 
                 <Login open={this.state.open} toggle={this.toggle}/>
+                <SignUp open={this.state.sign} toggle={this.toggle2}/>
 
             </Navbar>
         );
     }
 }
+
+export default withRouter(NavBar)
