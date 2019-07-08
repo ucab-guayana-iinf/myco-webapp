@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
-class CrearResidencia extends Component {
+class CrearServicio extends Component {
 
     state = {
-        admin_id : '',
-        name : '',
-        yardage : 0
+        id : '1',
+        amount : 0,
+        name : ''
     }
 
 	handleChange = (event) => {
@@ -22,12 +22,12 @@ class CrearResidencia extends Component {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.state.name === '' || this.state.yardage === '') {
+        if (this.state.amount === '' || this.state.name === '') {
             alert('debes llenar ambos campos')
             return
         }
         //post para login
-		fetch("https://myco-backend.herokuapp.com/residency/create", {
+		fetch("https://myco-backend.herokuapp.com/residency/service", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ class CrearResidencia extends Component {
 		return (
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
-					<ModalHeader>Crear Residencia</ModalHeader>
+					<ModalHeader>Crear Servicio</ModalHeader>
 
 					<CardBody className="mx-0 mb-n2">
 						
@@ -53,17 +53,16 @@ class CrearResidencia extends Component {
 									<InputGroupAddon type="prepend" >
 										<InputGroupText className="navy">Nombre</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="name" placeholder="Nombre de Residencia" onChange={this.handleChange} />
-									<FormInput size="med" type="text" name="admin_id" placeholder="id" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="name" placeholder="Nombre del Servicio" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Metros Cuadrados</InputGroupText>
+										<InputGroupText className="navy">Costo</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="yardage" placeholder="2000" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="amount" placeholder="Costo mensual del servicio" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
@@ -76,4 +75,4 @@ class CrearResidencia extends Component {
 	}
 }
 
-export default withRouter(CrearResidencia)
+export default withRouter(CrearServicio)
