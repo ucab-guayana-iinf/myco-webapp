@@ -6,10 +6,7 @@ class SignUp extends Component {
     
 	state = {
         name : '',
-<<<<<<< HEAD:src/views/SignUp.js
-=======
         picture_url : 'url',
->>>>>>> lara_mita:src/components/SignUp/SignUp.js
         lastname: '',
         email : '',
         password : '',
@@ -17,14 +14,9 @@ class SignUp extends Component {
         picture_url : 'url',
         role: 'ADMIN'
     }
-<<<<<<< HEAD:src/views/SignUp.js
-
-    fetchState = (event) => {
-=======
     
     fetchState = (event) => {
         console.log(JSON.stringify(this.state))
->>>>>>> lara_mita:src/components/SignUp/SignUp.js
         event.preventDefault()
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
@@ -48,25 +40,12 @@ class SignUp extends Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-<<<<<<< HEAD:src/views/SignUp.js
-            body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password
-                
-            })
-        })
-        .then(res => res.json()) //esta respuesta si viene en JSON asi que se usa .json()
-        .then(res => {
-            console.log("token de login: ", res.token)
-            localStorage.setItem("token", res.token)
-=======
             body: JSON.stringify(this.state)
         })
         .then( res => res.text())
         .then(res => {
             console.log("respuesta del server: ", res)
             this.login()
->>>>>>> lara_mita:src/components/SignUp/SignUp.js
         })
         .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)
         .catch(error => console.error('Hubo un error en el login:', error))
