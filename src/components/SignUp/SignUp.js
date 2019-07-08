@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD:src/views/SignUp.js
 import NavBar from '../components/Utilities/NavBar/NavBar'
 import { Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
+=======
+import { Modal,ModalHeader, Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
+import { withRouter } from 'react-router-dom'
+>>>>>>> 0d9e991d2a457e88724a61e3463214e1ff495d8c:src/components/SignUp/SignUp.js
 
-export default class SignUp extends Component {
+class SignUp extends Component {
     
 	state = {
         name : '',
+<<<<<<< HEAD:src/views/SignUp.js
+=======
+        picture_url : 'url',
+>>>>>>> 0d9e991d2a457e88724a61e3463214e1ff495d8c:src/components/SignUp/SignUp.js
         lastname: '',
         email : '',
         password : '',
@@ -13,8 +22,14 @@ export default class SignUp extends Component {
         picture_url : 'url',
         role: 'ADMIN'
     }
+<<<<<<< HEAD:src/views/SignUp.js
 
     fetchState = (event) => {
+=======
+    
+    fetchState = (event) => {
+        console.log(JSON.stringify(this.state))
+>>>>>>> 0d9e991d2a457e88724a61e3463214e1ff495d8c:src/components/SignUp/SignUp.js
         event.preventDefault()
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
@@ -38,6 +53,7 @@ export default class SignUp extends Component {
             headers: {
                 'Content-Type': 'application/json'
             },
+<<<<<<< HEAD:src/views/SignUp.js
             body: JSON.stringify({
                 email: this.state.email,
                 password: this.state.password
@@ -48,6 +64,37 @@ export default class SignUp extends Component {
         .then(res => {
             console.log("token de login: ", res.token)
             localStorage.setItem("token", res.token)
+=======
+            body: JSON.stringify(this.state)
+        })
+        .then( res => res.text())
+        .then(res => {
+            console.log("respuesta del server: ", res)
+            this.login()
+>>>>>>> 0d9e991d2a457e88724a61e3463214e1ff495d8c:src/components/SignUp/SignUp.js
+        })
+        .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)
+        .catch(error => console.error('Hubo un error en el login:', error))
+    }
+
+    login = () => {
+        //post para login con la info que se acaba de registrar
+		fetch("https://myco-backend.herokuapp.com/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password
+                
+            })
+        })
+        .then(res => res.json()) //esta respuesta si viene en JSON asi que se usa .json()
+        .then(res => {
+            console.log("token de login: ", res.token)
+            localStorage.setItem("token", res.token)
+            localStorage.setItem("logged", true)
         })
         .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)
         .catch(error => console.error('Hubo un error en el login:', error))
@@ -61,13 +108,20 @@ export default class SignUp extends Component {
         })
     }
 
+
+    handleChange = (event) => {
+        const campo = event.target.name
+
+        this.setState({
+            [campo] : event.target.value 
+        })
+    }
+
     render() {
         return (
-            <div className="signup">
-                <NavBar/>
-                <h1 className="big navy title mt-5">Registro</h1>
-                
-                <Card className="mx-auto" style={{width: 750}}>
+            <Modal size="med" className="signup" open={this.props.open} toggle={this.props.toggle}>
+                <Card >
+                    <ModalHeader className="big navy title mx-0">Registro</ModalHeader>
                     <CardBody className="mx-0">
                         <Form onSubmit={this.fetchState}>
                             <FormGroup >
@@ -111,14 +165,15 @@ export default class SignUp extends Component {
                                     <FormInput size="med" onChange={this.handleChange} type="file" placeholder="Foto" />
                                 </InputGroup>
     
-    
                                 <button className="btn btn-primary" >Registrarse</button>
                             </FormGroup>
                         </Form>
                     </CardBody>
                 </Card>
-            </div>
+            </Modal>
         );
     }
     
 };
+
+export default withRouter(SignUp)

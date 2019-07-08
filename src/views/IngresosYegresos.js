@@ -2,13 +2,13 @@ import React from 'react';
 import GHeader from '../components/Utilities/GHeader/GHeader'
 import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 
-const Contabilidad = () => {
+const IngresosYegresos = () => {
     return (
-        <div className="contabilidad">
+        <div className="IngresosYegresos">
 			<MainSidebar/>
-            <GHeader title="Contabilidad"/>
+            <GHeader title="Ingresos y Egresos"/>
         </div>
     );
 };
 
-export default Contabilidad;
+export default IngresosYegresos;
