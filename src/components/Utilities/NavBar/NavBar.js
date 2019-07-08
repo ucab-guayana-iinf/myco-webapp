@@ -54,7 +54,6 @@ class NavBar extends Component {
 
     logoff = () => {
         localStorage.clear()
-        localStorage.setItem("logged",false)
         console.log("token en almacenamiento local al cerrar sesion:", localStorage.getItem("token"));
         this.props.history.push('/Landing')
         console.log("sesion cerrada")
@@ -62,7 +61,7 @@ class NavBar extends Component {
 
     viewCheck = () => {
         var logged = localStorage.getItem("logged")
-        if(logged){
+        if(!logged){
             return(
                 <React.Fragment>
                     <NavItem className="mx-3">

@@ -100,7 +100,8 @@ class GHeader extends Component {
                         <div className="white big title">{title}</div>
                         {this.viewCheck(title)}
                     </div>
-                    <i className="navy bold medium material-icons mt-2 ml-5 logoff" onClick={this.logoff}>exit_to_app</i>
+                    <div onClick={this.logoff}><i className="navy bold big material-icons mt-2 ml-5 logoff" >exit_to_app</i></div>
+                    
                 </div>
             </React.Fragment>
         )
