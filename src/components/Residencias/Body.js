@@ -30,9 +30,8 @@ export default class Residencias extends Component {
                 </div>
                 <div className="fill residencias-body">
                     {this.props.residencias.map( (residencia,i) => 
-                            <MycoCard key={i} residencia={residencia}/>
-                        )
-                    }
+                        <MycoCard key={i} residencia={residencia}/>
+                    )}
                 </div>
                 <CrearResidencia open={this.state.open} toggle={this.toggle} />
             </div>

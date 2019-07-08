@@ -9,8 +9,9 @@ class SignUp extends Component {
         picture_url : 'url',
         lastname: '',
         email : '',
-        social_number : '',
         password : '',
+        social_number : '',
+        picture_url : 'url',
         role: 'ADMIN'
     }
     
@@ -19,8 +20,25 @@ class SignUp extends Component {
         event.preventDefault()
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
-            headers:{
-                'Content-type': 'application/json'
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then(res => res.text()) //esta respuesta es HTML, no JSON. Por eso se usa .text() en vez de .json()
+        .then(res => { 
+            console.log(res)
+            this.login()    //logearse luego de registrarse
+        })
+        .catch(error => console.error('Hubo un error en el registro:', error))
+    }
+
+    login = () => {
+        //post para login con la info que se acaba de registrar
+		fetch("https://myco-backend.herokuapp.com/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
         })
@@ -29,7 +47,8 @@ class SignUp extends Component {
             console.log("respuesta del server: ", res)
             this.login()
         })
-        .catch(error=> console.error('Hubo un error:',error))
+        .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)
+        .catch(error => console.error('Hubo un error en el login:', error))
     }
 
     login = () => {
@@ -66,7 +85,7 @@ class SignUp extends Component {
 
     handleChange = (event) => {
         const campo = event.target.name
-        console.log(campo, " ", event.target.value)
+
         this.setState({
             [campo] : event.target.value 
         })
@@ -117,7 +136,7 @@ class SignUp extends Component {
                                     <InputGroupAddon type="prepend" >
                                         <InputGroupText className="navy">Foto de perfil</InputGroupText>
                                     </InputGroupAddon>
-                                    <FormInput size="med" onChange={this.handleChange} type="file" placeholder="Nombre de Usuario ó e-mail" />
+                                    <FormInput size="med" onChange={this.handleChange} type="file" placeholder="Foto" />
                                 </InputGroup>
     
                                 <button className="btn btn-primary" >Registrarse</button>

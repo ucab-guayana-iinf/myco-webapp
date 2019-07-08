@@ -44,14 +44,13 @@ const Residencias = () => {
         }
     ]
 
-
     return (
         <div className="residencias">
             <MainSidebar/>
             <GHeader title="Residencias"
                 residenciActual={residenciActual}
-                />
-            <Body residencias = {residencias} />
+            />
+            <Body residencias={residencias} />
         </div>
     );
 };
