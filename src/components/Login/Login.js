@@ -50,14 +50,13 @@ class Login extends Component {
         })
         .then(resJson => resJson.json())
         .then(res => {
-            
             localStorage.setItem("token", res.token)
 			localStorage.setItem("logged", true)
 			console.log("token devuelto por el server: ", res.token, "logged: ",localStorage.getItem("logged"))
         })
         .then( () => this.props.history.push('/Residencias') )
         .catch(error => console.error('Hubo un error mano:', error))
-    }
+	}
 
 	render() {
 		return (

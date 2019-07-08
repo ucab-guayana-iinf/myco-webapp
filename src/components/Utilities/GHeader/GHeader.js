@@ -40,7 +40,7 @@ class GHeader extends Component {
                     </React.Fragment>
                     )  
                 }
-                case 'Contabilidad': {
+                case 'Ingresos y Egresos': {
                     return <div></div>
                 }
                 case 'Cuentas por cobrar': {

@@ -44,7 +44,7 @@ export default class ListItem extends Component {
             case 'Residencias': {
                 return <div></div>
             }
-            case 'Contabilidad': {
+            case 'Ingresos y Egresos': {
                 return <div></div>
             }
             case 'Cuentas por cobrar': {

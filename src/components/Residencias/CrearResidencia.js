@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
-import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
 class CrearResidencia extends Component {
 
     state = {
-        admin_id : '',
+        admin_id : '123', //obtener de localstorage almacenar cuando se logee
         name : '',
-        yardage : 0
-    }
+        yardage : ''
+	}
+	
+	obj = {
+        admin_id : '1', //obtener de localstorage almacenar cuando se logee
+        name : 'casa',
+        yardage : 300		
+	}
 
 	handleChange = (event) => {
 		const campo = event.target.name
@@ -22,7 +28,7 @@ class CrearResidencia extends Component {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.state.name === '' || this.state.yardage === '') {
+        if (this.obj.name === '' || this.obj.yardage === '') {
             alert('debes llenar ambos campos')
             return
         }
@@ -33,9 +39,12 @@ class CrearResidencia extends Component {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + localStorage.getItem("token")
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(this.obj)
         })
-		.then(resJson => resJson.text())
+		.then(resJson => resJson.json())
+		.then(res => {
+            console.log("Residencia creada",this.state)
+        })
         .catch(error => console.error('Hubo un error mano:', error))
     }
 
@@ -54,7 +63,6 @@ class CrearResidencia extends Component {
 										<InputGroupText className="navy">Nombre</InputGroupText>
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="name" placeholder="Nombre de Residencia" onChange={this.handleChange} />
-									<FormInput size="med" type="text" name="admin_id" placeholder="id" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
