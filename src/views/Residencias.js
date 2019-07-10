@@ -69,7 +69,8 @@ class Residencias extends Component {
         return (
             <div className="residencias">
                 <MainSidebar/>
-                <GHeader title="Residencias"
+                <GHeader 
+                    title="Residencias"
                     residenciActual={this.residenciActual}
                 />
                 <Body residencias={this.state.residencies} />
