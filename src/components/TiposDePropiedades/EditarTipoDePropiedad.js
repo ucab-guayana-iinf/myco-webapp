@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
-class CrearTipoDePropiedad extends Component {
+class EditarTipoDePropiedad extends Component {
+    constructor(props) {
+        super(props)
 
-    state = {
-		residency_id : localStorage.getItem("residency_id"),
-        name : '',
-	}
+        this.state = {
+            name : '',
+        }
+
+    }
 
 	handleChange = (event) => {
 		const campo = event.target.name
@@ -22,21 +25,25 @@ class CrearTipoDePropiedad extends Component {
         event.preventDefault()
         //validacion de campos vacios
         if (this.state.name === '') {
-            alert('debes llenar ambos campos')
+            alert('debes ingresar un nombre')
             return 
         }
-        //post para crear residencia
+        
+        //post para editar tipo de propiedad (no guardo el id en state porque no carga a tiempo y explota)
 		fetch("https://myco-backend.herokuapp.com/residency/property-types", {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + localStorage.getItem("token")
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify({
+                name: this.state.name,
+                id: this.props.id
+            })
         })
 		.then(res => res.json())
 		.then(() => window.location.reload())
-        .catch(error => console.error('Hubo un error creando el tipo de propiedad:', error))
+        .catch(error => console.error('Hubo un error editando el tipo de propiedad:', error))
     }
 
 	render() {
@@ -44,8 +51,7 @@ class CrearTipoDePropiedad extends Component {
 		return (
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
-
-                    <ModalHeader>Crear Tipo de Propiedad</ModalHeader>
+                    <ModalHeader>Editar Tipo de Propiedad</ModalHeader>
 					<CardBody className="mx-0 mb-n2">
 
 						<Form onSubmit={this.fetchData}>
@@ -54,11 +60,11 @@ class CrearTipoDePropiedad extends Component {
 									<InputGroupAddon type="prepend">
 										<InputGroupText className="navy">Tipo de Propiedad</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="name" placeholder="Tipo de Propiedad" onChange={this.handleChange}/>
+									<FormInput size="med" type="text" name="name" placeholder="Nuevo tipo de propiedad" onChange={this.handleChange}/>
 								</InputGroup>
 							</FormGroup>
 
-                            <button type="submit" className="btn btn-primary">Crear</button>
+                            <button type="submit" className="btn btn-primary">Editar</button>
 
 						</Form>
 					</CardBody>
@@ -68,4 +74,4 @@ class CrearTipoDePropiedad extends Component {
 	}
 }
 
-export default withRouter(CrearTipoDePropiedad)
+export default withRouter(EditarTipoDePropiedad)

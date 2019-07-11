@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
-import { withRouter } from 'react-router-dom'
 
 class CrearPropiedad extends Component {
 
@@ -82,4 +81,4 @@ class CrearPropiedad extends Component {
 	}
 }
 
-export default withRouter(CrearPropiedad)
+export default CrearPropiedad

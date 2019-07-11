@@ -22,10 +22,9 @@ class TiposDePropiedades extends Component {
 		.then(res => res.json())
 		.then(res => {
             console.log("respuesta tipo de propiedades", res)
-            this.setState({propertyTypes: res.property_types}) //en res.residency esta el array con las residencias
-            //console.log(this.state.residencies) descomenta esto si quieres ver que trajo el array
+            this.setState({propertyTypes: res.property_types}) 
         })
-        .catch(error => console.error('Hubo un error cargando las residencias:', error))
+        .catch(error => console.error('Hubo un error cargando los tipos de propiedades:', error))
     }
 
     render() {

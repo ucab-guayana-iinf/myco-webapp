@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import GHeader from '../components/Utilities/GHeader/GHeader'
 import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/Servicios/Body'
 
-const Servicios = () => {
+class Servicios extends Component {
+
+    state = {
+        services: []
+    }
+
+    componentDidMount() {
+        const query = localStorage.getItem("residency_id")
+
+        fetch(`https://myco-backend.herokuapp.com/residency/service?residency_id=${encodeURIComponent(query)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem("token")
+            }
+        })
+		.then(res => res.json())
+		.then(res => {
+            console.log("respuesta cargarServicios", res)
+            this.setState({services: res.services}) 
+        })
+        .catch(error => console.error('Hubo un error cargando los servicios:', error))
+    }
 
     //Se obtiene el obj a partir de get /service?
-    const servicios = [
+    serviciosDefault = [
         {
             id: 12345,
             price: 1300,
@@ -34,21 +56,23 @@ const Servicios = () => {
 
     ]
 
-    return (
-        <div className="servicios">
-            <MainSidebar/>
-            <GHeader 
-                title="Servicios"
-                tBasico={1000}
-                tExtraordinario={1200}
-                tMensual={6969}
-            />
-            <Body 
-                title="Servicios"
-                servicios={servicios}
-            />
-        </div>
-    );
-};
+    render() {
+        return (
+            <div className="servicios">
+                <MainSidebar/>
+                <GHeader 
+                    title="Servicios"
+                    tBasico={1000}
+                    tExtraordinario={1200}
+                    tMensual={6969}
+                />
+                <Body 
+                    title="Servicios"
+                    servicios={this.state.services}
+                />
+            </div>
+        );
+    }
+}
 
 export default Servicios;
