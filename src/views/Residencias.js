@@ -8,43 +8,6 @@ class Residencias extends Component {
     state = {
         residencies: []
     }
-
-    residenciActual = "Loma Linda";
-    
-    residenciasDefault = [
-        {
-            id: "e1ac73f8-c39e-46bc-b047-6bbd523acc4b",
-            admin_id: "6bbd523acc4a-b047-46bc-c39e-",
-            name: "Residencias Arivana",
-            yardage: 2000,
-            users: 60,
-            properties: 43
-        },
-        {
-            id: "e1ac73f8-c39e-46bc-b047-6bbd523acc4b",
-            admin_id: "6bbd523acc4a-b047-46bc-c39e-",
-            name: "Loma Linda",
-            yardage: 2000,
-            users: 50,
-            properties: 35
-        },
-        {
-            id: "e1ac73f8-c39e-46bc-b047-6bbd523acc4b",
-            admin_id: "6bbd523acc4a-b047-46bc-c39e-",
-            name: "La Cascada",
-            yardage: 2000,
-            users: 45,
-            properties: 30
-        },
-        {
-            id: "e1ac73f8-c39e-46bc-b047-6bbd523acc4b",
-            admin_id: "6bbd523acc4a-b047-46bc-c39e-",
-            name: "Apamate",
-            yardage: 2000,
-            users: 69,
-            properties: 53
-        }
-    ]
     
     componentDidMount() {
         const query = localStorage.getItem("admin_id")
@@ -71,7 +34,6 @@ class Residencias extends Component {
                 <MainSidebar/>
                 <GHeader 
                     title="Residencias"
-                    residenciActual={this.residenciActual}
                 />
                 <Body residencias={this.state.residencies} />
             </div>

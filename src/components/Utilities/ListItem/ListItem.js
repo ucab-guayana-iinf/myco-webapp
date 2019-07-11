@@ -41,6 +41,18 @@ export default class ListItem extends Component {
                     )         
                 }
             }
+            case 'Gastos': {
+                return(
+                    <Card className="Litem">                    
+                        <CardBody className="white d-flex justify-content-around">
+                            <span className="item text-left">A</span>
+                            <span className="item text-left">B</span>
+                            <span className="item text-left">C</span>
+                            <a href="javascript:void(0)"><i className=" expand white big material-icons align-top">expand_more</i></a>             
+                        </CardBody>
+                    </Card>
+                )
+            }
             case 'Residencias': {
                 return <div></div>
             }
@@ -104,6 +116,7 @@ export default class ListItem extends Component {
             <div className="d-flex flex-row">
                 {this.viewCheck(this.props.title)}
                 <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">edit</i></a>
+                <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">delete</i></a>
             </div>
         );
     }
