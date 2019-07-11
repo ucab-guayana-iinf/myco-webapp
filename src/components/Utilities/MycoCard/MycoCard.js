@@ -8,7 +8,7 @@ import {
 import './assets/MycoCard.css'
 
 export default class MycoCard extends Component {
-
+    //probando gaykraken
     render() {
         const {name,yardage,properties,users} = this.props.residencia;
         return(
