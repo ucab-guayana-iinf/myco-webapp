@@ -1,21 +1,15 @@
 import React, { Component } from 'react'
-import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
 class CrearResidencia extends Component {
 
     state = {
-        admin_id : '123', //obtener de localstorage almacenar cuando se logee
+        admin_id : localStorage.getItem("admin_id"), 
         name : '',
         yardage : ''
 	}
 	
-	obj = {
-        admin_id : '1', //obtener de localstorage almacenar cuando se logee
-        name : 'casa',
-        yardage : 300		
-	}
-
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -28,24 +22,24 @@ class CrearResidencia extends Component {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.obj.name === '' || this.obj.yardage === '') {
+        if (this.state.name === '' || this.state.yardage === '') {
             alert('debes llenar ambos campos')
             return
         }
-        //post para login
+        //post para crear residencia
 		fetch("https://myco-backend.herokuapp.com/residency/create", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + localStorage.getItem("token")
             },
-            body: JSON.stringify(this.obj)
+            body: JSON.stringify(this.state)
         })
-		.then(resJson => resJson.json())
+		.then(res => res.json())
 		.then(res => {
-            console.log("Residencia creada",this.state)
+            console.log("respuesta crearResidencia", res)
         })
-        .catch(error => console.error('Hubo un error mano:', error))
+        .catch(error => console.error('Hubo un error creando la residencia:', error))
     }
 
 	render() {

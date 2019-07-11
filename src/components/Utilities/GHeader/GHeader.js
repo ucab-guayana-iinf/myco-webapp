@@ -7,8 +7,7 @@ class GHeader extends Component {
     
     logoff = () => {
         localStorage.clear()
-
-        console.log("token en almacenamiento local al cerrar sesion:", localStorage.getItem("token"));
+        console.log("sesion cerrada")
         this.props.history.push('/Landing')
     }
 
@@ -82,7 +81,6 @@ class GHeader extends Component {
         }else{
             this.props.history.push('/Landing')
         }
-        
     }
 
     render() {
