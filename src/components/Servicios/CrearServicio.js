@@ -3,7 +3,7 @@ import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,Modal
 import { withRouter } from 'react-router-dom'
 
 class CrearServicio extends Component {
-	//CAMBIO EN LILBRANCH
+	
     state = {
         residency_id : localStorage.getItem("residency_id"),
         price : '',
