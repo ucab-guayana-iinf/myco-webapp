@@ -45,10 +45,10 @@ export default class ListItem extends Component {
                 return(
                     <Card className="Litem">                    
                         <CardBody className="white d-flex justify-content-around">
-                            <span className="item text-left">A</span>
-                            <span className="item text-left">B</span>
-                            <span className="item text-left">C</span>
-                            <a href="javascript:void(0)"><i className=" expand white big material-icons align-top">expand_more</i></a>             
+                            <span className="item navy text-left">{this.props.expense.concept}</span>
+                            <span className="item navy text-left">{this.props.expense.creation_date}</span>
+                            <span className="item navy text-left">{this.props.expense.amount} Bs.</span>
+                            <a href="javascript:void(0)"><i className="navy expand white big material-icons align-top">expand_more</i></a>             
                         </CardBody>
                     </Card>
                 )

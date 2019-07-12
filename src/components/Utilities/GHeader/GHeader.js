@@ -81,6 +81,14 @@ class GHeader extends Component {
                 case 'Cargar pago': {
                     return <div></div>
                 }
+                case 'Gastos': {
+                    return (
+                        <React.Fragment>
+                            <div className="white text-center mt-n3">
+                                <span className="bold white"> Total en Gastos</span> <span className="navy medium title"> Bs. {this.props.total}</span>
+                            </div>
+                        </React.Fragment>)
+                }
                 default:{
                     break;
                 }

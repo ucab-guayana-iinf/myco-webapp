@@ -5,13 +5,13 @@ import { withRouter } from 'react-router-dom'
 class CrearPropiedad extends Component {
 
     state = {
-        residency_id : '', // obtener de local storage almacenar al seleccionar una residencia
-        property_type_id : '', // ni puta idea, supongo que al seleccionar el tipo de propiedad de unas opciones te devuelve el id de la seleccionada 
-        user_id : '', //ni puta idea 2
-        yardage : '',
-        department_number: ''
+        id : '', 
+        responsible_user_id : '',  
+        amount : '',
+        concept : '',
+        creation_date: localStorage.getItem("creation_date")
     }
-
+    
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -24,12 +24,12 @@ class CrearPropiedad extends Component {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.state.name === '' || this.state.yardage === '') {
+        if (this.state.concept === '' || this.state.amount === '' || this.state.creation_date === '') {
             alert('debes llenar ambos campos')
             return
         }
         //post para login
-		fetch("https://myco-backend.herokuapp.com/residency/create", {
+		fetch("https://myco-backend.herokuapp.com/residency/expense", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,37 +39,40 @@ class CrearPropiedad extends Component {
         })
         .then(resJson => resJson.json())
 		.then(res => {
-            console.log("Propiedad creada:",this.state)
+            console.log("Gasto creado:",this.state)
         })
         .catch(error => console.error('Hubo un error mano:', error))
     }
 
 	render() {
+
+        var fecha = new Date()
+        fecha = fecha.toISOString().slice(0,10)
+        localStorage.setItem("creation_date", fecha)
 		return (
+            
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
-					<ModalHeader>Crear Residencia</ModalHeader>
-
+                    <ModalHeader>Crear Gasto</ModalHeader>
+                    <i className="navy">Fecha de Creacion</i><div className="navy small title">{this.state.creation_date}</div>
 					<CardBody className="mx-0 mb-n2">
 						
 						<Form onSubmit={this.fetchData}>
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Numero</InputGroupText>
+										<InputGroupText className="navy">Concepto de Gasto</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="department_number" placeholder="Numero de Departamento" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="concept" placeholder="Concepto de Gasto" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Metros Cuadrados</InputGroupText>
+										<InputGroupText className="navy">Costo(Bs.)</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="yardage" placeholder="2000" onChange={this.handleChange} />
-                                    <InputGroupText className="navy">Tipo de Propiedad</InputGroupText>
-                                    <FormInput size="med" type="text" name="property_type_id" placeholder="2000" onChange={this.handleChange} />
+                                    <FormInput size="med" type="text" name="amount" placeholder="2000" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 

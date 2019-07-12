@@ -5,42 +5,42 @@ import Body from '../components/Gastos/Body'
 
 class Gastos extends Component {
     state = {
-        propiedades : [
+        expenses : [
             {
-                department_number : 'MH-30', 
-                username : 'Jesus Perez',
-                property_type_id : 'Penthouse',
-                yardage : 'Pagado'
+                id : '', 
+                responsible_user_id : '',  
+                amount : '1000',
+                concept : 'boy',
+                creation_date: localStorage.getItem("creation_date")
             },
             {
-                department_number : 'MH-30', 
-                username  : 'Jesus Perez',
-                property_type_id : 'Penthouse',
-                yardage : 'Pagado'
+                id : '', 
+                responsible_user_id : '',  
+                amount : '421',
+                concept : 'gang',
+                creation_date: localStorage.getItem("creation_date")
             },
             {
-                department_number : 'MH-30', 
-                username : 'Jesus Perez',
-                property_type_id : 'Penthouse',
-                yardage : 'Por Cobrar'
-            },
-            {
-                department_number : 'MH-30', 
-                username : 'Jesus Perez',
-                property_type_id : 'Penthouse',
-                yardage : 'Pagado'
+                id : '', 
+                responsible_user_id : '',  
+                amount : '3423',
+                concept : 'damn',
+                creation_date: localStorage.getItem("creation_date")
             }
-        ]
+
+        ],
+        total: 'nose wn'
     }
+
 
     render() {
         return (
             <div className="gastos">
                 <MainSidebar/>
                 <GHeader title="Gastos"
-                total=''/>
-                <Body title="Propiedades" 
-                propiedades={this.state.propiedades}
+                total={this.state.total}/>
+                <Body title="Gastos" 
+                expenses={this.state.expenses}
             />
             </div>
         );

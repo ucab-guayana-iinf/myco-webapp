@@ -19,7 +19,7 @@ export default class Body extends Component {
     }
 
     render() {
-        const titulos = ['Propietario','Fecha de Pago','Costo Total']
+        const titulos = ['Concepto','Fecha de Creacion','Costo Total']
 
         return(
             <div className="admin text-center">
@@ -35,8 +35,8 @@ export default class Body extends Component {
                     )} 
                 </div>
 
-                {this.props.propiedades.map( (propiedad,i) => 
-                    <ListItem title='Gastos' key={i} propiedad={propiedad}/>)
+                {this.props.expenses.map( (expense,i) => 
+                    <ListItem title='Gastos' key={i} expense={expense}/>)
                 }
 
                 <CrearPropiedad open={this.state.open} toggle={this.state.toggle} ></CrearPropiedad>
