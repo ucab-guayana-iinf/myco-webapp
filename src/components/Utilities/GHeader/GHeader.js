@@ -7,8 +7,7 @@ class GHeader extends Component {
     
     logoff = () => {
         localStorage.clear()
-
-        console.log("token en almacenamiento local al cerrar sesion:", localStorage.getItem("token"));
+        console.log("sesion cerrada")
         this.props.history.push('/Landing')
     }
 
@@ -35,7 +34,7 @@ class GHeader extends Component {
                     <React.Fragment>
                         <div className="white text-center">
                             Selecciona una de tus residencias para administrar<br></br>
-                            Residencia actual : <span className="navy medium title"> {this.props.residenciActual}</span>
+                            Residencia actual : <span className="navy medium title"> {localStorage.getItem("residenciActual")}</span>
                         </div>    
                     </React.Fragment>
                     )  
@@ -70,10 +69,25 @@ class GHeader extends Component {
                         </React.Fragment>)
                 }
                 case 'Tipos de propiedades': {
-                    return <div></div>
+                    return (
+                        <React.Fragment>
+                            <div className="white text-center">
+                                Tipos de propiedades en<br></br>
+                                <span className="navy medium title"> {localStorage.getItem("residenciActual")}</span>
+                            </div>    
+                        </React.Fragment>
+                        )  
                 }
                 case 'Cargar pago': {
                     return <div></div>
+                }
+                case 'Gastos': {
+                    return (
+                        <React.Fragment>
+                            <div className="white text-center mt-n3">
+                                <span className="bold white"> Total en Gastos</span> <span className="navy medium title"> Bs. {this.props.total}</span>
+                            </div>
+                        </React.Fragment>)
                 }
                 default:{
                     break;
@@ -82,7 +96,6 @@ class GHeader extends Component {
         }else{
             this.props.history.push('/Landing')
         }
-        
     }
 
     render() {
