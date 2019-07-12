@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MycoCard from '../Utilities/MycoCard/MycoCard';
-import CrearTiposDePropiedad from './CrearTipoDePropiedad'
+import CrearTipoDePropiedad from './CrearTipoDePropiedad'
+import EditarTipoDePropiedad from './EditarTipoDePropiedad'
 import './assets/Body.css'
 
 export default class Body extends Component {
@@ -9,14 +10,25 @@ export default class Body extends Component {
         super(props);
         
         this.state = { 
-            open: false
+            open: false, //para modal de crear tipo de propiedad
+            open2: false //para modal de editar tipo de propiedad
         }
+
+        this.idTipoDePropiedad = 0
 	}
 
 	toggle = () => {
 		this.setState({
 			open: !this.state.open
 		});
+    }
+
+    //para abrir el modal de editar tipo de propiedad (se llama desde mycoCard y recibe el id del tipo de propiedad elegido)
+    toggle2 = (id) => {
+        this.idTipoDePropiedad = id
+        this.setState({
+            open2: !this.state.open2
+        });
     }
 
     render() {
@@ -30,10 +42,11 @@ export default class Body extends Component {
                 </div>
                 <div className="fill residencias-body">
                     {this.props.propertyTypes.map( (propertyType, i) => 
-                        <MycoCard key={i} title='Tipos de Propiedades' propertyType={propertyType} />
+                        <MycoCard key={i} title='Tipos de Propiedades' propertyType={propertyType} toggle2={this.toggle2} />
                     )}
                 </div>
-                <CrearTiposDePropiedad open={this.state.open} toggle={this.toggle}/>
+                <CrearTipoDePropiedad open={this.state.open} toggle={this.toggle} />
+                <EditarTipoDePropiedad open={this.state.open2} toggle={this.toggle2} id={this.idTipoDePropiedad}/>
             </div>
         );
     }

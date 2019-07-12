@@ -23,7 +23,6 @@ class Residencias extends Component {
 		.then(res => {
             console.log("respuesta cargarResidencias", res)
             this.setState({residencies: res.residency}) //en res.residency esta el array con las residencias
-            //console.log(this.state.residencies) descomenta esto si quieres ver que trajo el array
         })
         .catch(error => console.error('Hubo un error cargando las residencias:', error))
     }

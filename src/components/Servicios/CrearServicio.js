@@ -3,9 +3,9 @@ import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,Modal
 import { withRouter } from 'react-router-dom'
 
 class CrearServicio extends Component {
-
+	//cambio hecho en lilbranch que va para laramita
     state = {
-        residency_id : '4', //id asignado en backend/primary key
+        residency_id : localStorage.getItem("residency_id"),
         price : '',
         name : ''
     }
@@ -25,8 +25,8 @@ class CrearServicio extends Component {
         if (this.state.amount === '' || this.state.name === '') {
             alert('debes llenar ambos campos')
             return
-        }
-        //post para login
+		}
+		
 		fetch("https://myco-backend.herokuapp.com/residency/service", {
             method: 'POST',
             headers: {
@@ -35,11 +35,12 @@ class CrearServicio extends Component {
             },
             body: JSON.stringify(this.state)
         })
-		.then(resJson => resJson.json())
+		.then(res => res.json())
 		.then(res => {
-            console.log("Servicio creado",this.state)
+			console.log("Servicio creado", this.state)
+			window.location.reload()
         })
-        .catch(error => console.error('Hubo un error mano:', error))
+        .catch(error => console.error('Hubo un error creando el servicio:', error))
     }
 
 	render() {

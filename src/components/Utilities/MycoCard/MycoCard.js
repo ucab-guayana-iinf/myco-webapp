@@ -21,9 +21,11 @@ class MycoCard extends Component {
             }
             case 'Residencias': {
                 const {name, yardage} = this.props.residencia;
-                return(
+                return (
                     <div>
-                        <CardHeader onClick={this.selected} className="card-header fill"><CardTitle className="white mb-0">{name}<i className=" ml-2 navy material-icons"> edit</i></CardTitle></CardHeader>
+                        <CardHeader onClick={this.selected} className="card-header fill">
+                            <CardTitle className="white mb-0">{name}<i className=" ml-2 navy material-icons"> edit</i></CardTitle>
+                        </CardHeader>
                         <CardBody>
                             <div className="navy bold"><i className="medium align-bottom material-icons">home</i> X propiedades</div><br></br>
                             <ul className="px-0 lista text-center">
@@ -58,12 +60,14 @@ class MycoCard extends Component {
                 )
             }
             
-            case 'Tipos de Propiedades': {
-                const {name, yardage} = this.props.propertyType;
+            case 'Tipos de Propiedades': { //recibe la funcion pa abrir el modal de editar como prop para que mande el id desde aqui
+                const {name, id} = this.props.propertyType;
                 return(     
                     <div>               
                         <CardBody className="">
-                            <CardTitle className="aquamarine mb-0 fill">{name}<i className=" ml-2 navy material-icons"> edit</i></CardTitle>
+                            <CardTitle className="aquamarine mb-0 fill">
+                                {name}<a href="javascript:void(0)"><i onClick={()=>this.props.toggle2(id)} className=" ml-2 navy material-icons"> edit</i></a>
+                            </CardTitle>
                         </CardBody>
                     </div>   
                 )
@@ -84,10 +88,10 @@ class MycoCard extends Component {
 
     //metodo que guarda el id y el nombre de la residencia actual seleccionada
     selected = () => {
-        localStorage.setItem("residency_id",this.props.residencia.id)
-        localStorage.setItem("residenciActual",this.props.residencia.name)
+        localStorage.setItem("residency_id", this.props.residencia.id)
+        localStorage.setItem("residenciActual", this.props.residencia.name)
         this.props.history.push('/Residencias')
-        console.log( localStorage.getItem("residenciActual",this.props.residencia.name))
+        console.log('residencia actual: ', localStorage.getItem("residenciActual"))
     }    
 
     render() { //le quite la variable users y properties y les puse valores fijos pq aun esas vainas no estan

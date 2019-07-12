@@ -36,10 +36,10 @@ export default class Body extends Component {
                 </div>
 
                 {this.props.propiedades.map( (propiedad,i) => 
-                    <ListItem title={this.props.title} key={i} propiedad={propiedad}/>)
-                }
+                    <ListItem title={this.props.title} key={i} propiedad={propiedad} />
+                )}
 
-                <CrearPropiedad open={this.state.open} toggle={this.state.toggle} ></CrearPropiedad>
+                <CrearPropiedad open={this.state.open} toggle={this.state.toggle} />
             </div>
         );
     }
