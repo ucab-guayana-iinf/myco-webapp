@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
-import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import { withRouter } from 'react-router-dom'
 
-class CrearResidencia extends Component {
+class CrearPropiedad extends Component {
 
     state = {
-        admin_id : localStorage.getItem("admin_id"), 
-        name : '',
-        yardage : ''
-	}
-	
+        residency_id : '', // obtener de local storage almacenar al seleccionar una residencia
+        property_type_id : '', // ni puta idea, supongo que al seleccionar el tipo de propiedad de unas opciones te devuelve el id de la seleccionada 
+        user_id : '', //ni puta idea 2
+        yardage : '',
+        department_number: ''
+    }
+
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -25,7 +28,7 @@ class CrearResidencia extends Component {
             alert('debes llenar ambos campos')
             return
         }
-        //post para crear residencia
+        //post para login
 		fetch("https://myco-backend.herokuapp.com/residency/create", {
             method: 'POST',
             headers: {
@@ -34,11 +37,11 @@ class CrearResidencia extends Component {
             },
             body: JSON.stringify(this.state)
         })
-		.then(res => res.json())
+        .then(resJson => resJson.json())
 		.then(res => {
-            console.log("respuesta crearResidencia", res)
+            console.log("Propiedad creada:",this.state)
         })
-        .catch(error => console.error('Hubo un error creando la residencia:', error))
+        .catch(error => console.error('Hubo un error mano:', error))
     }
 
 	render() {
@@ -53,9 +56,9 @@ class CrearResidencia extends Component {
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Nombre</InputGroupText>
+										<InputGroupText className="navy">Numero</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="name" placeholder="Nombre de Residencia" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="department_number" placeholder="Numero de Departamento" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
@@ -65,6 +68,8 @@ class CrearResidencia extends Component {
 										<InputGroupText className="navy">Metros Cuadrados</InputGroupText>
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="yardage" placeholder="2000" onChange={this.handleChange} />
+                                    <InputGroupText className="navy">Tipo de Propiedad</InputGroupText>
+                                    <FormInput size="med" type="text" name="property_type_id" placeholder="2000" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
@@ -77,4 +82,4 @@ class CrearResidencia extends Component {
 	}
 }
 
-export default CrearResidencia
+export default withRouter(CrearPropiedad)
