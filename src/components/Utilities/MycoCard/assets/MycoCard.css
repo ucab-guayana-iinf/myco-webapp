@@ -13,6 +13,15 @@
     background: #1bb98f!important;
 }
 
+.card-prop {
+    background: #1bb98f!important;
+}
+
+.card-header:hover {
+    cursor: pointer;
+    background: #158d6d!important;
+}
+
 @media (min-width:768px) {
     .MycoCard {
         max-width: 280px;

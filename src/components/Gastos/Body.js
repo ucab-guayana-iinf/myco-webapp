@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListItem from '../Utilities/ListItem/ListItem'
-import CrearPropiedad from './CrearPropiedad'
+import CrearPropiedad from './CrearGasto'
 
 export default class Body extends Component {
 
@@ -19,13 +19,13 @@ export default class Body extends Component {
     }
 
     render() {
-        const titulos = ['Propiedad','Propietario','Estado de pago']
+        const titulos = ['Propietario','Fecha de Pago','Costo Total']
 
         return(
             <div className="admin text-center">
                 
                 <div className="add-property navy medium mb-3">
-                    <span className="title medium mr-2 align-middle">Añadir inmueble</span> 
+                    <span className="title medium mr-2 align-middle">Añadir gasto</span> 
                     <a href="javascript:void(0)"><i className="aquamarine material-icons align-middle" onClick={this.toggle}>add_circle</i></a>
                 </div>
 
@@ -36,10 +36,10 @@ export default class Body extends Component {
                 </div>
 
                 {this.props.propiedades.map( (propiedad,i) => 
-                    <ListItem title={this.props.title} key={i} propiedad={propiedad} />
-                )}
+                    <ListItem title='Gastos' key={i} propiedad={propiedad}/>)
+                }
 
-                <CrearPropiedad open={this.state.open} toggle={this.state.toggle} />
+                <CrearPropiedad open={this.state.open} toggle={this.state.toggle} ></CrearPropiedad>
             </div>
         );
     }
