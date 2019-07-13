@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {Card, CardBody, FormRadio ,Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
 class CrearServicio extends Component {
@@ -7,8 +7,16 @@ class CrearServicio extends Component {
     state = {
         residency_id : localStorage.getItem("residency_id"),
         price : '',
-        name : ''
-    }
+		name : '',
+		type: ''
+	}
+
+	changeType(type) {
+		this.setState({
+		  type: type
+		});
+	  }
+	
 
 	handleChange = (event) => {
 		const campo = event.target.name
@@ -52,6 +60,7 @@ class CrearServicio extends Component {
 					<CardBody className="mx-0 mb-n2">
 						
 						<Form onSubmit={this.fetchData}>
+							
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
@@ -68,6 +77,29 @@ class CrearServicio extends Component {
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="price" placeholder="Costo mensual del servicio" onChange={this.handleChange} />
 								</InputGroup>
+							</FormGroup>
+
+							<FormGroup>
+								<FormRadio
+									inline
+									name="type"
+									checked={this.state.type === "0"}
+									onChange={() => {
+										this.changeType("0");
+									}}
+								>
+								Basico
+								</FormRadio>
+								<FormRadio
+									inline
+									name="type"
+									checked={this.state.type === "1"}
+									onChange={() => {
+										this.changeType("1");
+									}}
+								>
+								Extraordinario
+								</FormRadio>
 							</FormGroup>
 
                             <button type="submit" className="btn btn-primary">Crear</button>
