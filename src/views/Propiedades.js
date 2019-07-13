@@ -6,7 +6,7 @@ import Body from '../components/Propiedades/Body'
 class Propiedades extends Component {
 
     state = {
-        Propiedades: [],
+        properties: [],
         propertyTypes: []
     }
 
@@ -25,6 +25,9 @@ class Propiedades extends Component {
         })
 		.then(res => res.json())
 		.then(res => {
+            this.setState({
+                properties: res.properties
+            })
         })
         .catch(error => console.error('Hubo un error cargando las propiedades:', error))
 
@@ -45,6 +48,7 @@ class Propiedades extends Component {
 				}
             })
             console.log("users: ", this.users)
+            localStorage.setItem("users", JSON.stringify(this.users)) //guardarlos en localstorage
         })
         .catch(error => console.error('Hubo un error filtrando los usuarios:', error))
 
@@ -58,7 +62,7 @@ class Propiedades extends Component {
         })
 		.then(res => res.json())
 		.then(res => {
-            console.log("respuesta tipo de propiedades (en propiedades)", res)
+            console.log("tipos de propiedades (en propiedades)", res)
             this.setState({propertyTypes: res.property_types}) 
         })
         .catch(error => console.error('Hubo un error cargando los tipos de propiedades:', error))
@@ -91,9 +95,9 @@ class Propiedades extends Component {
         }
     ]
 
-    Npropiedades = 34
-    Npropietarios = 45
-    Nendeudados = 4
+    Npropiedades = 99
+    Npropietarios = 99
+    Nendeudados = 99
 
     render() {
         return (
@@ -101,13 +105,13 @@ class Propiedades extends Component {
                 <MainSidebar/>
                 <GHeader 
                     title="Propiedades"
-                    propiedades={this.Npropiedades}
-                    propietarios={this.Npropietarios}
+                    propiedades={this.state.properties.length}
+                    propietarios={this.users.length}
                     endeudados={this.Nendeudados}
                 />
                 <Body 
                     title="Propiedades" 
-                    propiedades={this.propiedadesDefault}
+                    propiedades={this.state.properties}
                     users={this.users}
                     propertyTypes={this.state.propertyTypes}
                 />

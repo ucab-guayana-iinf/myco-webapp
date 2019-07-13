@@ -4,11 +4,11 @@ import { FormSelect, Card, CardBody, Modal, InputGroup, InputGroupText, InputGro
 class CrearPropiedad extends Component {
 
     state = {
-        residency_id : localStorage.getItem("residency_id"), // obtener de local storage almacenar al seleccionar una residencia
-        property_type_id: '', // ni puta idea, supongo que al seleccionar el tipo de propiedad de unas opciones te devuelve el id de la seleccionada 
+        residency_id : localStorage.getItem("residency_id"), 
+        property_type_id: '',  
         user_id : '',
         yardage : '',
-        departament_number: ''
+        department_num: ''
 	}
 
 	handleChange = (event) => {
@@ -24,7 +24,7 @@ class CrearPropiedad extends Component {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.state.property_type_id === '' || this.state.user_id === '' || this.state.yardage === '' || this.state.departament_number === '') {
+        if (this.state.property_type_id === '' || this.state.user_id === '' || this.state.yardage === '' || this.state.department_num === '') {
             alert('debes llenar todos los campos')
             return
         }
@@ -37,9 +37,10 @@ class CrearPropiedad extends Component {
             },
             body: JSON.stringify(this.state)
         })
-        .then(resJson => resJson.json())
+        .then(res => res.text()) //esta respuesta no es un json 
 		.then(res => {
-            console.log("Propiedad creada:", this.state)
+			console.log(res)
+			window.location.reload()
         })
         .catch(error => console.error('Hubo un error creando la propiedad:', error))
     }
@@ -51,14 +52,13 @@ class CrearPropiedad extends Component {
 					<ModalHeader>Crear Propiedad</ModalHeader>
 
 					<CardBody className="mx-0 mb-n2">
-						
 						<Form onSubmit={this.fetchData}>
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
 										<InputGroupText className="navy">Numero</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="departament_number" placeholder="Numero de Departamento" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="department_num" placeholder="Numero de Departamento" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
