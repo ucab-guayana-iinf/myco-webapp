@@ -41,6 +41,13 @@
     }
 }
 
+.mycopic {
+    height: 650px;
+    background: url('./myco.png') center no-repeat;
+    background-size:400px; 
+    z-index: 3;
+}
+
 .blob {
     height: 650px;
     background: url('./blob-shape.svg') center no-repeat;

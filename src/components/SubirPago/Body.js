@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput} from 'shards-react'
-
+import { InputGroup,Modal, InputGroupText, ModalFooter, CardBody, Card, ModalHeader, InputGroupAddon, Form, FormGroup, FormInput} from 'shards-react'
+import Exito from './Exito'
 export default class Body extends Component {
 
     state = {
@@ -9,7 +9,21 @@ export default class Body extends Component {
         description : '',
         user_id: localStorage.getItem("admin_id")
 	}
-	
+
+	constructor(props) {
+        super(props);
+        
+        this.state = { 
+            open: false, 
+        };
+	}
+
+	toggle = () => {
+		this.setState({
+			open: !this.state.open
+		});		
+	}
+
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -25,21 +39,24 @@ export default class Body extends Component {
         if (this.state.bill_id === '' || this.state.amount === '' || this.state.description === '') {
             alert('debes llenar ambos campos')
             return
-        }
-        //post para crear residencia
-		fetch("https://myco-backend.herokuapp.com/residency/payments", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer ' + localStorage.getItem("token")
-            },
-            body: JSON.stringify(this.state)
-        })
-		.then(res => res.text())
-		.then(res => {
-			console.log("respuesta subir pago",  res)
-        })
-        .catch(error => console.error('Hubo un error subiendo el pago:', error))
+        }else{
+			//post para crear residencia
+			fetch("https://myco-backend.herokuapp.com/residency/payments", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': 'bearer ' + localStorage.getItem("token")
+				},
+				body: JSON.stringify(this.state)
+			})
+			.then(res => res.text())
+			.then(res => {
+				console.log('Respuesta de cargo de pago',res)
+				this.toggle()
+			})
+			.catch(error => console.error('Hubo un error subiendo el pago:', error))
+		}
+
     }
 
     render() {
@@ -72,6 +89,7 @@ export default class Body extends Component {
 					</FormGroup>
                     <button type="submit" className="btn btn-primary">Subir</button>
 				</Form>
+				<Exito open={this.state.open} toggle={this.toggle}></Exito>
             </div>
         );
     }

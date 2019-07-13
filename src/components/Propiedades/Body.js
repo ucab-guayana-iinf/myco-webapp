@@ -22,7 +22,7 @@ export default class Body extends Component {
         // eslint-disable-next-line eqeqeq
         if(this.props.propiedades != ''){
             return(
-                <div className="titulos-servicios bold navy justify-content-around mb-3 ">
+                <div className="titulos-propiedades bold navy justify-content-around mb-3 ">
                     {titulos.map( (titulo,i) => 
                         <span className="item text-center" key={i}>{titulo}</span>        
                     )} 

@@ -1,14 +1,30 @@
 .titulos-servicios {
-    width: 100%;
+    width: 95%;
     display: none;
 }
-
-
+.titulos-cargar {
+    width: 76%;
+    display: none;
+}
+.titulos-gastos {
+    width: 89%;
+    display: none;
+}
+.titulos-propiedades {
+    width: 88%;
+    display: none;
+}
 @media (min-width:768px) {
     .titulos-servicios {
         display: flex;
     }
     .titulos-cargar {
+        display: flex;
+    }
+    .titulos-gastos {
+        display: flex;
+    }
+    .titulos-propiedades {
         display: flex;
     }
 }

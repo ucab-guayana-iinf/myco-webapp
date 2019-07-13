@@ -14,17 +14,12 @@ class MycoCard extends Component {
     viewCheck = (title) => {
         
         switch(title){
-            case 'Propiedades': {
-                return(
-                    <div></div>
-                )
-            }
             case 'Residencias': {
                 const {name, yardage} = this.props.residencia;
                 return (
                     <div>
                         <CardHeader onClick={this.selected} className="card-header fill">
-                            <CardTitle className="white mb-0">{name}<i className=" ml-2 navy material-icons"> edit</i></CardTitle>
+                            <CardTitle className="white mb-0">{name}</CardTitle>
                         </CardHeader>
                         <CardBody>
                             <div className="navy bold">
@@ -33,37 +28,12 @@ class MycoCard extends Component {
                             </div>
                             <br></br>
                             <ul className="px-0 lista text-center">
-                                <li>X deudas</li>
-                                <li>{yardage} metros</li>
+                                <li>{yardage} metros cuadrados</li>
                             </ul>
                         </CardBody>
                     </div>
                 )
             }
-            case 'Ingresos Y Egresos': {
-                return(
-                    <div></div>
-                    )
-            }
-
-            case 'Cuentas por cobrar': {
-                return(
-                    <div></div>
-                    )
-            }
-
-            case 'Generar Factura': {
-                return(
-                    <div></div>
-                )
-            }
-
-            case 'Servicios': {
-                return(
-                    <div></div>
-                )
-            }
-            
             case 'Tipos de Propiedades': { //recibe la funcion pa abrir el modal de editar como prop para que mande el id desde aqui
                 const {name, id} = this.props.propertyType;
                 return(     

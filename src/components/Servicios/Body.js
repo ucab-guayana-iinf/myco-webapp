@@ -24,7 +24,7 @@ export default class Body extends Component {
             return(
                 <div className="titulos-servicios bold navy justify-content-around mb-3 ">
                 {titulos.map( (titulo,i) => 
-                    <span className="item text-center " key={i}>{titulo}</span>        
+                    <span className="item text-left " key={i}>{titulo}</span>        
                 )} 
                 </div>
             )

@@ -11,6 +11,50 @@ export default class ListItem extends Component {
         super(props);
         this.users = JSON.parse(localStorage.getItem("users"))
     }
+    
+    state = {
+        user_id : '',
+        bill_id : '',
+        amount : '',
+        confirmation : '',
+        description : ''
+    }
+
+
+	fetchData = (event) => {
+        //para que no se recargue la pagina en el submit
+        event.preventDefault()
+        //validacion de campos vacios
+        if (this.state.name === '') {
+            alert('debes ingresar un nombre')
+            return 
+        }
+        
+        //post para editar tipo de propiedad (no guardo el id en state porque no carga a tiempo y explota)
+		fetch("https://myco-backend.herokuapp.com/residency/payments", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                id: this.props.payment.user_id,
+                user_id: this.props.payment.user_id,
+                bill_id: this.props.payment.bill_id,
+                amount : this.props.payment.amount,
+                description:this.props.payment.description,
+                property_id:'1',
+                monthly_payment:'2',
+                debt:'3',
+                special_fee:'4',
+                other:'5',
+                confirmation: '1'
+            })
+        })
+		.then(res => res.json())
+		.then(() => window.location.reload())
+        .catch(error => console.error('Hubo un error editando el tipo de propiedad:', error))
+    }
 
     //busca el nombre de un usuario basado en el id     
     buscarNombre = (id) => {
@@ -53,14 +97,30 @@ export default class ListItem extends Component {
                 }
             }
             case 'Gastos': {
+                var fecha = new Date(this.props.expense.creation_date)
+                fecha = fecha.toISOString().slice(0,10)
                 return(
                     <div className="d-flex flex-row">
                         <Card className="Litem">                    
                             <CardBody className="white d-flex justify-content-around">
                                 <span className="item navy text-left">{this.props.expense.concept}</span>
-                                <span className="item navy text-left">{this.buscarNombre(this.props.expense.user_id)}</span>
-                                <span className="item navy text-left">{this.props.expense.amount} Bs.</span>
-                                <a href="javascript:void(0)"><i className="navy expand white big material-icons align-top">expand_more</i></a>             
+                                <span className="item navy text-left">{fecha}</span>
+                                <span className="item navy text-left">Bs. {this.props.expense.amount}</span>            
+                            </CardBody>
+                        </Card>
+                    </div>
+                )
+            }
+            case 'Ver Gastos': {
+                var fecha = new Date(this.props.expense.creation_date)
+                
+                return(
+                    <div className="d-flex flex-row">
+                        <Card className="Litem">                    
+                            <CardBody className="white d-flex justify-content-around">
+                                <span className="item navy text-left">{this.props.expense.concept}</span>
+                                <span className="item navy text-left">{fecha.toISOString().slice(0,10)}</span>
+                                <span className="item navy text-left">Bs. {this.props.expense.amount}</span>           
                             </CardBody>
                         </Card>
                     </div>
@@ -111,6 +171,9 @@ export default class ListItem extends Component {
                 }
             }
             case 'Cargar Pago': {
+                var fecha = new Date(this.props.payment.creation_date)
+                fecha = fecha.toISOString().slice(0,10)
+
                 if(this.props.payment.confirmation == '0'){
                     return (
                         <div className="d-flex flex-row">
@@ -118,10 +181,10 @@ export default class ListItem extends Component {
                                 <CardBody className="navy d-flex justify-content-around ">
                                     <span className="item text-left">{this.props.payment.description} </span>
                                     <span className="item text-left">{this.props.payment.bill_id}</span>
-                                    <span className="item text-left">{this.props.payment.creation_date}</span>
+                                    <span className="item text-left">{fecha}</span>
                                     <span className="item text-left">{this.props.payment.amount}</span>
                                     
-                                    <a href="javascript:void(0)"><i className=" expand navy medium material-icons align-bottom">check_circle_outline</i></a>             
+                                    <a href="javascript:void(0)" onClick={this.fetchData}><i className=" expand aquamarine medium material-icons align-bottom">check_circle_outline</i></a>             
                                 </CardBody>
                             </Card>
                             <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">cancel_presentation</i></a>
@@ -134,13 +197,10 @@ export default class ListItem extends Component {
                                 <CardBody className="navy d-flex justify-content-around ">
                                     <span className="item text-left">{this.props.payment.description} </span>
                                     <span className="item text-left">{this.props.payment.bill_id}</span>
-                                    <span className="item text-left">{this.props.payment.creation_date}</span>
+                                    <span className="item text-left">{fecha}</span>
                                     <span className="item text-left">Bs. {this.props.payment.amount}</span>
-                                    
-                                    <a href="javascript:void(0)"><i className=" expand navy medium material-icons align-bottom">check_circle_outline</i></a>             
                                 </CardBody>
                             </Card>
-                            <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">cancel_presentation</i></a>
                         </div>
                     )        
                 }else if(this.props.payment.confirmation == '-1'){
@@ -150,13 +210,10 @@ export default class ListItem extends Component {
                                 <CardBody className="navy d-flex justify-content-around ">
                                     <span className="item text-left">{this.props.payment.description} </span>
                                     <span className="item text-left">{this.props.payment.bill_id}</span>
-                                    <span className="item text-left">{this.props.payment.creation_date}</span>
+                                    <span className="item text-left">{fecha}</span>
                                     <span className="item text-left">{this.props.payment.amount}</span>
-                                    
-                                    <a href="javascript:void(0)"><i className=" expand navy medium material-icons align-bottom">check_circle_outline</i></a>             
-                                </CardBody>
-                            </Card>
-                            <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">cancel_presentation</i></a>
+                                 </CardBody>
+                            </Card> 
                         </div>
                     )        
                 }

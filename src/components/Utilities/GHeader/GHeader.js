@@ -102,7 +102,7 @@ class GHeader extends Component {
                     case 'Cargar pago': {
                         return(
                             <div className="white text-center mt-2">
-                                <span className=" white"> Confirma o Niega los pagos subidos por los propietarios</span>
+                                <span className=" white"> Confirma los pagos subidos por los propietarios</span>
                             </div>
                             )
                     }

@@ -35,6 +35,7 @@ class CuentasPorCobrar extends Component {
 		.then(res => res.json())
 		.then(res => {
             console.log("respuesta cargarServicios", res)
+            this.setState({debts:res.debts})
         })
         .catch(error => console.error('Hubo un error cargando los servicios:', error))
     }

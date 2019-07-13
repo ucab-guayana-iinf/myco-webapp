@@ -7,19 +7,17 @@ const Header = () => {
                 <div className="visible-lg mt-n5 align-items-center header-body">
 
                     <section className="blob w-100">
+                        <div className="mycopic"></div>
                     </section>
 
                     <section className="info text-center px-0 mt-0">
-                        <h1 className="white big title">Titulo de la promocion</h1>
+                        <h1 className="white big title">Moderniza tu condominio</h1>
                         <p className="white text">
-                            Lorem ipsum dolor sit ame reprehenderit facere. Quis omnis ab, aliqua
-                            m eligendi harum neque temporibus, mollitia repudiandae quae, enim cupiditate. Rerum, consectetur neque.
-                            m eligendi harum neque te
+                            Convivir en un condominio jamas fue tan facil,
+                            Myco te ofrece herramientas tecnologicas multiplataformas que facilitan el dia a dia 
+                            de la administracion de condominios, olvidate de cuadernos, recibos manuales y 
+                            tediosas hojas de calculo.
                         </p>
-                        <div className="btn-container">
-                            <button className="small btn btn-secondary">opcion</button>
-                            <button className="small btn btn-secondary">opcion</button>
-                        </div>
                     </section>
 
                     <section className="round-div w-100"></section>

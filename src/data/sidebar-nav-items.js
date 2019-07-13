@@ -36,11 +36,6 @@ export default function() {
       title: "Cargar pago",
       htmlBefore: '<i class="material-icons">payment</i>',
       to: "/CargarPago",
-    },
-    {
-      title: "Generar factura",
-      htmlBefore: '<i class="material-icons">receipt</i>',
-      to: "/GenerarFactura",
     }
   ];
   }else{
@@ -54,11 +49,6 @@ export default function() {
         title: "Formular Pago",
         htmlBefore: '<i class="material-icons">payment</i>',
         to: "/SubirPago",
-      },      
-      {
-        title: "Recibos",
-        htmlBefore: '<i class="material-icons">receipt</i>',
-        to: "/Recibos",
       }, 
       {
         title: "Ver Gastos",
