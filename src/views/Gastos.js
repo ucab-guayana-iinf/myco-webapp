@@ -4,34 +4,39 @@ import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/Gastos/Body'
 
 class Gastos extends Component {
-    state = {
-        expenses : [
+    
+/*
             {
                 id : '', 
                 responsible_user_id : '',  
-                amount : '1000',
-                concept : 'boy',
-                creation_date: localStorage.getItem("creation_date")
-            },
-            {
-                id : '', 
-                responsible_user_id : '',  
-                amount : '421',
-                concept : 'gang',
-                creation_date: localStorage.getItem("creation_date")
-            },
-            {
-                id : '', 
-                responsible_user_id : '',  
-                amount : '3423',
-                concept : 'damn',
+                amount : '',
+                concept : '',
                 creation_date: localStorage.getItem("creation_date")
             }
+*/
 
-        ],
-        total: 'nose wn'
+    state = {
+        expenses : [],
+        total: 0
     }
 
+    componentDidMount() {
+        const query = localStorage.getItem("admin_id")
+
+        fetch(`https://myco-backend.herokuapp.com/resident/expenses?user_id=${encodeURIComponent(query)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem("token")
+            }
+        })
+		.then(res => res.json())
+		.then(res => {
+            console.log("respuesta cargarResidencias", res)
+            this.setState({residencies: res.residency}) //en res.residency esta el array con las residencias
+        })
+        .catch(error => console.error('Hubo un error cargando las residencias:', error))
+    }
 
     render() {
         return (

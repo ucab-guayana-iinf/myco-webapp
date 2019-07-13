@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component } from 'react';
 import './assets/GHeader.css'
 import NavBar from '../NavBar/NavBar'
@@ -9,6 +10,33 @@ class GHeader extends Component {
         localStorage.clear()
         console.log("sesion cerrada")
         this.props.history.push('/Landing')
+    }
+
+    emptyResidencias = () => {
+        const residenciActual = localStorage.getItem("residenciActual")
+        if(residenciActual === ''){
+            return(
+                <div className="white text-center">
+                    Selecciona una de tus residencias para administrar<br></br>
+                </div>    
+            )
+        }else{
+            return(
+                <div className="white text-center">
+                    Selecciona una de tus residencias para administrar<br></br>
+                    Residencia actual : <span className="navy medium title"> {localStorage.getItem("residenciActual")}</span>
+                </div>
+            ) 
+        }
+    }
+
+    isEmptyTypes = () => {
+        const residenciActual = localStorage.getItem("residenciActual")
+        if(residenciActual != '')
+        return(<div className="white text-center">
+            Tipos de propiedades en<br></br>
+            <span className="navy medium title"> {localStorage.getItem("residenciActual")}</span>
+        </div> )          
     }
 
     viewCheck = (title) => {
@@ -32,15 +60,9 @@ class GHeader extends Component {
                 case 'Residencias': {
                     return (
                     <React.Fragment>
-                        <div className="white text-center">
-                            Selecciona una de tus residencias para administrar<br></br>
-                            Residencia actual : <span className="navy medium title"> {localStorage.getItem("residenciActual")}</span>
-                        </div>    
+                        {this.emptyResidencias()}
                     </React.Fragment>
                     )  
-                }
-                case 'Ingresos y Egresos': {
-                    return <div></div>
                 }
                 case 'Cuentas por cobrar': {
                     return (
@@ -71,21 +93,22 @@ class GHeader extends Component {
                 case 'Tipos de propiedades': {
                     return (
                         <React.Fragment>
-                            <div className="white text-center">
-                                Tipos de propiedades en<br></br>
-                                <span className="navy medium title"> {localStorage.getItem("residenciActual")}</span>
-                            </div>    
+                            {this.isEmptyTypes()}
                         </React.Fragment>
                         )  
                 }
                 case 'Cargar pago': {
-                    return <div></div>
+                    return(
+                        <div className="white text-center mt-2">
+                            <span className=" white"> Confirma o Niega los pagos subidos por los propietarios</span>
+                        </div>
+                        )
                 }
                 case 'Gastos': {
                     return (
                         <React.Fragment>
                             <div className="white text-center mt-n3">
-                                <span className="bold white"> Total en Gastos</span> <span className="navy medium title"> Bs. {this.props.total}</span>
+                                <span className=" white">Total en Gastos </span> <span className="navy medium title"> Bs. {this.props.total}</span>
                             </div>
                         </React.Fragment>)
                 }

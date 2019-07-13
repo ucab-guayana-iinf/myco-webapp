@@ -148,8 +148,6 @@ body {
     border-color:  #64739b;
     width: 100px;
     position: relative;
-    left: 50%;
-    margin-left: -50px;
     border-radius: 50px;
     font-family: 'Nunito',sans-serif;
 }

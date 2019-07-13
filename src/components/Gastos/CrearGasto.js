@@ -1,17 +1,24 @@
 import React, { Component } from 'react'
-import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {Card, CardBody,FormRadio, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
 class CrearPropiedad extends Component {
 
     state = {
         id : '', 
-        responsible_user_id : '',  
+        user_id : '',  
         amount : '',
         concept : '',
-        creation_date: localStorage.getItem("creation_date")
+		creation_date: localStorage.getItem("creation_date"),
+		type : ''
     }
-    
+	
+	changeType(type) {
+		this.setState({
+		  type: type
+		});
+	  }
+	
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -27,28 +34,44 @@ class CrearPropiedad extends Component {
         if (this.state.concept === '' || this.state.amount === '' || this.state.creation_date === '') {
             alert('debes llenar ambos campos')
             return
-        }
-        //post para login
-		fetch("https://myco-backend.herokuapp.com/residency/expense", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer ' + localStorage.getItem("token")
-            },
-            body: JSON.stringify(this.state)
-        })
-        .then(resJson => resJson.json())
-		.then(res => {
-            console.log("Gasto creado:",this.state)
-        })
-        .catch(error => console.error('Hubo un error mano:', error))
+		}
+		
+		if(this.state.type === 'resident'){
+			fetch("https://myco-backend.herokuapp.com/resident/expense", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': 'bearer ' + localStorage.getItem("token")
+				},
+				body: JSON.stringify(this.state)
+			})
+			.then(resJson => resJson.json())
+			.then(res => {
+				console.log("Gasto creado:",this.state)
+			})
+			.catch(error => console.error('Hubo un error mano:', error))
+		}else{
+			fetch("https://myco-backend.herokuapp.com/residency/expense", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': 'bearer ' + localStorage.getItem("token")
+				},
+				body: JSON.stringify(this.state)
+			})
+			.then(resJson => resJson.json())
+			.then(res => {
+				console.log("Gasto creado:",this.state)
+			})
+			.catch(error => console.error('Hubo un error mano:', error))
+		}
     }
 
 	render() {
 
-        var fecha = new Date()
-        fecha = fecha.toISOString().slice(0,10)
-        localStorage.setItem("creation_date", fecha)
+        var fecha = new Date() //fecha del dia de hoy
+        fecha = fecha.toISOString().slice(0,10)//se pasa a formato ISO
+        localStorage.setItem("creation_date", fecha)//se guarda en almacenamiento local
 		return (
             
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
@@ -65,6 +88,29 @@ class CrearPropiedad extends Component {
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="concept" placeholder="Concepto de Gasto" onChange={this.handleChange} />
 								</InputGroup>
+							</FormGroup>
+
+							<FormGroup>
+								<FormRadio
+									inline
+									name="type"
+									checked={this.state.type === "resident"}
+									onChange={() => {
+										this.changeType("resident");
+									}}
+								>
+								Residente
+								</FormRadio>
+								<FormRadio
+									inline
+									name="type"
+									checked={this.state.type === "residency"}
+									onChange={() => {
+										this.changeType("residency");
+									}}
+								>
+								Residencia
+								</FormRadio>
 							</FormGroup>
 
 							<FormGroup>

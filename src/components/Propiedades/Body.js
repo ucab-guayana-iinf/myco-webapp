@@ -39,7 +39,7 @@ export default class Body extends Component {
                     <ListItem title={this.props.title} key={i} propiedad={propiedad} />
                 )}
 
-                <CrearPropiedad open={this.state.open} toggle={this.state.toggle} />
+                <CrearPropiedad open={this.state.open} toggle={this.toggle} />
             </div>
         );
     }

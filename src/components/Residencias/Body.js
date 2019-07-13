@@ -19,6 +19,25 @@ export default class Residencias extends Component {
 		});
     }
 
+    isEmpty = (titulos) => {
+        const residencias = this.props.residencias
+        if( residencias != ''){
+            return(
+                <div className="fill residencias-body">
+                    {residencias.map( (residencia, i) => 
+                        <MycoCard key={i} title='Residencias' residencia={residencia} />
+                    )}
+                </div>
+            )
+        }else{
+            return (
+                <div className="medium aquamarine title">
+                    No existen residencias creadas
+                </div>
+            )
+        }
+    }
+
     render() {
         return (    
             <div className="admin text-center">
@@ -28,11 +47,8 @@ export default class Residencias extends Component {
                     className="aquamarine material-icons align-middle" 
                     onClick={this.toggle}>add_circle</i></a>
                 </div>
-                <div className="fill residencias-body">
-                    {this.props.residencias.map( (residencia, i) => 
-                        <MycoCard key={i} title='Residencias' residencia={residencia} />
-                    )}
-                </div>
+                {this.isEmpty(this.titulo)}
+
                 <CrearResidencia open={this.state.open} toggle={this.toggle}/>
             </div>
         );

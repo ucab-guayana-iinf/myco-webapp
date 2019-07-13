@@ -30,8 +30,8 @@ export default class Body extends Component {
             )
         }else{
             return (
-            <div className="big navy title">
-                No existen servicios registrados en esta residencia
+            <div className="medium aquamarine title">
+                No se ha creado ningun servicio
             </div>)
         }
     }

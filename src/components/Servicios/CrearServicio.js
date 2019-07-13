@@ -101,8 +101,10 @@ class CrearServicio extends Component {
 								Extraordinario
 								</FormRadio>
 							</FormGroup>
-
-                            <button type="submit" className="btn btn-primary">Crear</button>
+							
+							<FormGroup>
+								<button type="submit" className="btn btn-primary">Crear</button>
+							</FormGroup>
 						</Form>
 					</CardBody>
 				</Card>

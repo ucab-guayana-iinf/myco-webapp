@@ -6,7 +6,6 @@ import LandingPage from './views/LandingPage'
 import Gastos from './views/Gastos'
 import FAQs from './views/FAQs'
 import Servicios from './views/Servicios'
-import IngresosYegresos from './views/IngresosYegresos'
 import GenerarFactura from './views/GenerarFactura'
 import Propiedades from './views/Propiedades'
 import Residencias from './views/Residencias'
@@ -32,10 +31,6 @@ export default [
     {
         path: '/Servicios',
         component: Servicios
-    },
-    {
-        path: '/IngresosYegresos',
-        component: IngresosYegresos
     },
     {
         path: '/GenerarFactura',
