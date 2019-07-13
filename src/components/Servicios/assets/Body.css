@@ -1,12 +1,8 @@
 .titulos-servicios {
-    width: 70%;
+    width: 100%;
     display: none;
 }
 
-.titulos-cargar {
-    width: 75%;
-    display: none;
-}
 
 @media (min-width:768px) {
     .titulos-servicios {

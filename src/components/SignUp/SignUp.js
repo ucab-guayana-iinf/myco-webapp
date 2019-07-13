@@ -53,6 +53,7 @@ class SignUp extends Component {
             localStorage.setItem("token", res.token)
             localStorage.setItem("logged", true)
             localStorage.setItem("admin_id", res.id)
+            localStorage.setItem("role", this.state.role)
             console.log("respuesta login: ", res)
         })
         .then( () => this.props.history.push('/Residencias') ) //navegar al dashboard (por ahora va a residencias)

@@ -1,4 +1,6 @@
 export default function() {
+
+  if(localStorage.getItem("role") === 'ADMIN'){
   return [
     {
       title: "Residencias",
@@ -41,4 +43,28 @@ export default function() {
       to: "/GenerarFactura",
     }
   ];
+  }else{
+    return[
+      {
+        title: "Deudas",
+        htmlBefore: '<i class="material-icons">attach_money</i>',
+        to: "/Deudas",
+      },      
+      {
+        title: "Formular Pago",
+        htmlBefore: '<i class="material-icons">payment</i>',
+        to: "/SubirPago",
+      },      
+      {
+        title: "Recibos",
+        htmlBefore: '<i class="material-icons">receipt</i>',
+        to: "/Recibos",
+      }, 
+      {
+        title: "Ver Gastos",
+        htmlBefore: '<i class="material-icons">account_balance</i>',
+        to: "/VerGastos",
+      }  
+    ]
+  }
 }

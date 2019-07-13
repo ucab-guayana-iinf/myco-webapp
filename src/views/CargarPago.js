@@ -12,7 +12,8 @@ class CargarPago extends Component{
                 bill_id:'',
                 amount:'',
                 payment_date:'',
-                confirmacion:'',
+                description:'',
+                confirmation:''
             }
 */
 
@@ -20,6 +21,21 @@ class CargarPago extends Component{
         payments: []
     }
 
+    componentDidMount() {
+
+        fetch(`https://myco-backend.herokuapp.com/residency/payments`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem("token")
+            }
+        })
+		.then(res => res.json())
+		.then(res => {
+            console.log("respuesta cargarServicios", res)
+        })
+        .catch(error => console.error('Hubo un error cargando los servicios:', error))
+    }
 
     render(){
         return (

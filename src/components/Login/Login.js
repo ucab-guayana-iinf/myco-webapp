@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Card, CardBody, Modal, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {Card, CardBody, Modal,FormRadio, InputGroup, InputGroupText, InputGroupAddon, ModalFooter,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import './assets/Login.css';
 import SignUp from '../SignUp/SignUp'
 import { withRouter } from 'react-router-dom'
@@ -7,7 +7,8 @@ import { withRouter } from 'react-router-dom'
 class Login extends Component {
 	state = {
 		email: '',
-		password: ''
+		password: '',
+		role:''
 	}
 
 	constructor(props) {
@@ -31,13 +32,17 @@ class Login extends Component {
 			[campo]: event.target.value 
 		})
 	}
-       
+	changeRole = (rol) => {
+        this.setState({
+            role: rol
+        })
+    }
 	fetchData = (event) => {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.state.email === '' || this.state.password === '') {
-            alert('debes llenar ambos campos')
+        if (this.state.email === '' || this.state.password === '' || this.state.role === '') {
+            alert('debes llenar todos los campos')
             return
         }
         //post para login
@@ -53,9 +58,17 @@ class Login extends Component {
             localStorage.setItem("token", res.token)
 			localStorage.setItem("logged", true)
 			localStorage.setItem("admin_id", res.id)
+			localStorage.setItem("role",this.state.role)
 			console.log("respuesta login: ", res)
         })
-        .then( () => this.props.history.push('/Residencias') )
+		.then( () =>{
+			if(this.state.role === 'ADMIN'){
+				this.props.history.push('/Residencias')
+			}else{
+				this.props.history.push('/Deudas')
+			}
+			 
+		})
         .catch(error => console.error('Hubo un error mano:', error))
 	}
 
@@ -84,9 +97,28 @@ class Login extends Component {
 										</InputGroupAddon>
 										<FormInput size="med" type="password" name="password" placeholder="Contraseña" onChange={this.handleChange} />
 									</InputGroup>
-									
-									<button type="submit" className="btn btn-primary">Login</button>
 								</FormGroup>
+
+								<FormGroup>
+									<FormRadio
+										inline
+										name="role"
+										checked={this.state.role === "RESIDENT"}
+										onChange={() => this.changeRole("RESIDENT")}
+									>
+										Residente
+									</FormRadio>
+									<FormRadio
+										inline
+										name="role"
+										checked={this.state.role === "ADMIN"}
+										onChange={() => this.changeRole("ADMIN")}
+									>
+										Admin
+									</FormRadio>
+								</FormGroup>
+									
+								<button type="submit" className="btn btn-primary">Login</button>
 							</Form>
 						</CardBody>
 

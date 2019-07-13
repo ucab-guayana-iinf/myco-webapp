@@ -78,11 +78,43 @@ class NavBar extends Component {
             )
         }else{
             return(
-                <NavItem className="mx-3">
+                <div>
+                    <NavItem className="mx-3">
                     <NavLink onClick={this.logoff} href="javascript:void(0)">
                         Cerrar Sesion
                     </NavLink>
-                </NavItem>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink href="/Servicios">
+                            Servicios
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink href="/TiposDePropiedades">
+                            Tipos de Propiedades
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink href="/Propiedades">
+                            Propiedades
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink href="/Gastos">
+                            Gastos
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink href="/CuentasPorCobrar">
+                            Cuentas Por Cobrar
+                        </NavLink>
+                    </NavItem>
+                    <NavItem className="mx-3">
+                        <NavLink href="/CargarPago">
+                            Cargar Pago
+                        </NavLink>
+                    </NavItem>
+                </div>
             )       
         }
     }
@@ -97,11 +129,6 @@ class NavBar extends Component {
                 <Collapse open={this.state.collapseOpen} navbar>
                     <Nav navbar>
                         {this.viewCheck()}
-                        <NavItem className="mx-3">
-                            <NavLink href="/FAQs">
-                                Como Empezar
-                            </NavLink>
-                        </NavItem>
                     </Nav>
                 </Collapse>
 
