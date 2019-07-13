@@ -15,9 +15,8 @@ class CrearServicio extends Component {
 		this.setState({
 		  type: type
 		});
-	  }
+	}
 	
-
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -56,11 +55,9 @@ class CrearServicio extends Component {
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
 					<ModalHeader>Crear Servicio</ModalHeader>
-
-					<CardBody className="mx-0 mb-n2">
-						
+					
+					<CardBody className="mx-0">
 						<Form onSubmit={this.fetchData}>
-							
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >

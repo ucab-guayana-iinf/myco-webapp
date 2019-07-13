@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal,ModalHeader, Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
+import { FormRadio, Modal,ModalHeader, Card, CardBody, InputGroup, InputGroupText, InputGroupAddon, Form, FormGroup, FormInput } from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
 class SignUp extends Component {
@@ -11,13 +11,16 @@ class SignUp extends Component {
         email : '',
         password : '',
         social_number : '',
-        picture_url : 'url',
-        role: 'ADMIN'
+        role: ''
     }
     
     //registro
     fetchState = (event) => {
         event.preventDefault()
+        if (this.state.email === '' || this.state.password === '' || this.state.lastname === '' || this.state.name === '' || this.state.role === '' || this.state.social_number === '') {
+            alert('debes llenar todos los campos')
+            return
+        }
         fetch("https://myco-backend.herokuapp.com/register", {
             method: 'POST',
             headers: {
@@ -64,14 +67,20 @@ class SignUp extends Component {
         })
     }
 
+    changeRole = (rol) => {
+        this.setState({
+            role: rol
+        })
+    }
+
     render() {
         return (
             <Modal size="med" className="signup" open={this.props.open} toggle={this.props.toggle}>
-                <Card >
-                    <ModalHeader className="big navy title mx-0">Registro</ModalHeader>
+                <Card>
+                    <ModalHeader>Registro</ModalHeader>
                     <CardBody className="mx-0">
                         <Form onSubmit={this.fetchState}>
-                            <FormGroup >
+                            <FormGroup>
                                 <InputGroup className="mb-1">
                                     <InputGroupAddon type="prepend" >
                                         <InputGroupText className="navy">Nombre</InputGroupText>
@@ -104,16 +113,34 @@ class SignUp extends Component {
                                     </InputGroupAddon>
                                     <FormInput size="med" onChange={this.handleChange} type="password" name="password" placeholder="Contraseña" />
                                 </InputGroup>
-    
+                            </FormGroup>
+                            <FormGroup>
                                 <InputGroup className="mb-1">
                                     <InputGroupAddon type="prepend" >
                                         <InputGroupText className="navy">Foto de perfil</InputGroupText>
                                     </InputGroupAddon>
                                     <FormInput size="med" onChange={this.handleChange} type="file" placeholder="Foto" />
                                 </InputGroup>
-    
-                                <button className="btn btn-primary" >Registrarse</button>
                             </FormGroup>
+                            <FormGroup>
+                                <FormRadio
+									inline
+									name="role"
+									checked={this.state.role === "RESIDENT"}
+									onChange={() => this.changeRole("RESIDENT")}
+								>
+								    Residente
+								</FormRadio>
+								<FormRadio
+									inline
+									name="role"
+									checked={this.state.role === "ADMIN"}
+									onChange={() => this.changeRole("ADMIN")}
+								>
+								    Admin
+								</FormRadio>
+                            </FormGroup>
+                            <button className="btn btn-primary">Registrarse</button>
                         </Form>
                     </CardBody>
                 </Card>

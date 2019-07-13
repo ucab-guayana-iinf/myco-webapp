@@ -7,25 +7,35 @@ import './assets/ListItem.css'
 
 export default class ListItem extends Component {
 
+    constructor(props) {
+        super(props);
+        this.users = JSON.parse(localStorage.getItem("users"))
+    }
+
+    //busca el nombre de un usuario basado en el id     
+    buscarNombre = (id) => {
+        
+        for (let i=0; i<this.users.length; i++ ) {
+            if (id == this.users[i].id)
+                return this.users[i].name + ' ' + this.users[i].lastname
+        }
+        return '?'
+    }
+
     //Dependiendo de que vista viene carga distintos componentes de distinta manera
     viewCheck = (title) => {
         switch(title){
             case 'Propiedades': {
-                if (this.props.propiedad.yardage === 'Pagado'){
+                if (this.props.propiedad.yardage){ //aqui lo cambie mientras decidimos lo del estado de pago
                     return( 
-                        <div className="d-flex flex-row">
-                            <Card className=" Litem">
-                                <CardBody className="navy d-flex justify-content-around">
-                                    <span className="item text-left">{this.props.propiedad.department_number}</span>
-                                    <span className="item text-left">{this.props.propiedad.username}</span>
-                                    <span className="item text-left">{this.props.propiedad.yardage}</span>
-                                    <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
-                                </CardBody>    
-                            </Card>
-                            <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">edit</i></a>
-                            <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">delete</i></a>
-                        </div>
-
+                        <Card className=" Litem">
+                            <CardBody className="navy d-flex justify-content-around">
+                                <span className="item text-left">{this.props.propiedad.department_num}</span>
+                                <span className="item text-left">{this.buscarNombre(this.props.propiedad.user_id)}</span>
+                                <span className="item text-left">{this.props.propiedad.yardage}</span>
+                                <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
+                            </CardBody>    
+                        </Card>
                     )
                 }else {
                     return( 
