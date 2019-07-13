@@ -6,9 +6,9 @@ class CrearPropiedad extends Component {
     state = {
         residency_id : localStorage.getItem("residency_id"), // obtener de local storage almacenar al seleccionar una residencia
         property_type_id: '', // ni puta idea, supongo que al seleccionar el tipo de propiedad de unas opciones te devuelve el id de la seleccionada 
-        user_id : 'def',
+        user_id : '',
         yardage : '',
-        department_number: ''
+        departament_number: ''
 	}
 
 	handleChange = (event) => {
@@ -24,12 +24,12 @@ class CrearPropiedad extends Component {
         //para que no se recargue la pagina en el submit
         event.preventDefault()
         //validacion de campos vacios
-        if (this.state.name === '' || this.state.yardage === '') {
-            alert('debes llenar ambos campos')
+        if (this.state.property_type_id === '' || this.state.user_id === '' || this.state.yardage === '' || this.state.departament_number === '') {
+            alert('debes llenar todos los campos')
             return
         }
         //post para crear una propiedad
-		fetch("https://myco-backend.herokuapp.com/residency/create", {
+		fetch("https://myco-backend.herokuapp.com/residency/properties", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ class CrearPropiedad extends Component {
         })
         .then(resJson => resJson.json())
 		.then(res => {
-            console.log("Propiedad creada:",this.state)
+            console.log("Propiedad creada:", this.state)
         })
         .catch(error => console.error('Hubo un error creando la propiedad:', error))
     }
@@ -58,7 +58,7 @@ class CrearPropiedad extends Component {
 									<InputGroupAddon type="prepend" >
 										<InputGroupText className="navy">Numero</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="department_number" placeholder="Numero de Departamento" onChange={this.handleChange} />
+									<FormInput size="med" type="text" name="departament_number" placeholder="Numero de Departamento" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
 
@@ -69,8 +69,8 @@ class CrearPropiedad extends Component {
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="yardage" placeholder="2000" onChange={this.handleChange} />
 
-									<FormSelect name="property_type_id" onChange={this.handleChange} className="mt-2">
-										<option value="defa">Tipo de Propiedad</option>
+									<FormSelect name="property_type_id" onChange={this.handleChange} style={{marginTop: 9.5}}>
+										<option value="def">Tipo de Propiedad</option>
 										{this.props.propertyTypes.map((propType, i) => 
 											<option key={i} value={propType.id}>{propType.name}</option>
 										)}
@@ -80,7 +80,7 @@ class CrearPropiedad extends Component {
 
 							<FormGroup>
 									<FormSelect name="user_id" onChange={this.handleChange}>
-										<option value="defa">Seleccione al propietario</option>
+										<option value="def">Seleccione al propietario</option>
 										{this.props.users.map((user, i) => 
 											<option key={i} value={user.id}>{user.name}{' '}{user.lastname}</option>
 										)}
