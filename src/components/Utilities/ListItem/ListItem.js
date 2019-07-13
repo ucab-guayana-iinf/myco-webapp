@@ -64,7 +64,7 @@ export default class ListItem extends Component {
                         <Card className="Litem">                    
                             <CardBody className="white d-flex justify-content-around">
                                 <span className="item navy text-left">{this.props.expense.concept}</span>
-                                <span className="item navy text-left">{this.props.expense.creation_date}</span>
+                                <span className="item navy text-left">{this.buscarNombre(this.props.expense.user_id)}</span>
                                 <span className="item navy text-left">{this.props.expense.amount} Bs.</span>
                                 <a href="javascript:void(0)"><i className="navy expand white big material-icons align-top">expand_more</i></a>             
                             </CardBody>

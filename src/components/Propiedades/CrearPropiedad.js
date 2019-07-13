@@ -11,6 +11,8 @@ class CrearPropiedad extends Component {
         department_num: ''
 	}
 
+	users = JSON.parse(localStorage.getItem("users"))
+	
 	handleChange = (event) => {
 		const campo = event.target.name
 
@@ -81,7 +83,7 @@ class CrearPropiedad extends Component {
 							<FormGroup>
 									<FormSelect name="user_id" onChange={this.handleChange}>
 										<option value="def">Seleccione al propietario</option>
-										{this.props.users.map((user, i) => 
+										{this.users.map((user, i) => 
 											<option key={i} value={user.id}>{user.name}{' '}{user.lastname}</option>
 										)}
 									</FormSelect>

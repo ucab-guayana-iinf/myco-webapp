@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {Card, CardBody,FormRadio, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
+import {FormSelect, Card, CardBody,FormRadio, Modal, InputGroup, InputGroupText, InputGroupAddon,ModalHeader, Form, FormGroup, FormInput} from 'shards-react'
 import { withRouter } from 'react-router-dom'
 
-class CrearPropiedad extends Component {
+class CrearGasto extends Component {
 
     state = {
         id : '', 
@@ -11,7 +11,9 @@ class CrearPropiedad extends Component {
         concept : '',
 		creation_date: localStorage.getItem("creation_date"),
 		type : ''
-    }
+	}
+	
+	users = JSON.parse(localStorage.getItem("users"))
 	
 	changeType(type) {
 		this.setState({
@@ -32,25 +34,30 @@ class CrearPropiedad extends Component {
         event.preventDefault()
         //validacion de campos vacios
         if (this.state.concept === '' || this.state.amount === '' || this.state.creation_date === '') {
-            alert('debes llenar ambos campos')
+            alert('debes llenar todos los campos')
             return
 		}
 		
-		if(this.state.type === 'resident'){
+		if(this.state.type === 'resident') {
 			fetch("https://myco-backend.herokuapp.com/resident/expense", {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 					'Authorization': 'bearer ' + localStorage.getItem("token")
 				},
-				body: JSON.stringify(this.state)
+				body: JSON.stringify({
+					user_id: this.state.user_id,
+					amount: this.state.amount,
+					concept: this.state.concept
+				})
 			})
-			.then(resJson => resJson.json())
+			.then(res => res.json())
 			.then(res => {
-				console.log("Gasto creado:",this.state)
+				console.log("Gasto creado:", this.state)
+				window.location.reload()
 			})
-			.catch(error => console.error('Hubo un error mano:', error))
-		}else{
+			.catch(error => console.error('Hubo un error creando gasto para el residente:', error))
+		}else {
 			fetch("https://myco-backend.herokuapp.com/residency/expense", {
 				method: 'POST',
 				headers: {
@@ -63,33 +70,19 @@ class CrearPropiedad extends Component {
 			.then(res => {
 				console.log("Gasto creado:",this.state)
 			})
-			.catch(error => console.error('Hubo un error mano:', error))
+			.catch(error => console.error('Hubo un error creando gasto para la residencia:', error))
 		}
     }
 
 	render() {
-
-        var fecha = new Date() //fecha del dia de hoy
-        fecha = fecha.toISOString().slice(0,10)//se pasa a formato ISO
-        localStorage.setItem("creation_date", fecha)//se guarda en almacenamiento local
+        
 		return (
-            
 			<Modal size="med" open={this.props.open} toggle={this.props.toggle}>
 				<Card>
                     <ModalHeader>Crear Gasto</ModalHeader>
                     <i className="navy">Fecha de Creacion</i><div className="navy small title">{this.state.creation_date}</div>
 					<CardBody className="mx-0 mb-n2">
-						
 						<Form onSubmit={this.fetchData}>
-							<FormGroup>
-								<InputGroup className="mb-1">
-									<InputGroupAddon type="prepend" >
-										<InputGroupText className="navy">Concepto de Gasto</InputGroupText>
-									</InputGroupAddon>
-									<FormInput size="med" type="text" name="concept" placeholder="Concepto de Gasto" onChange={this.handleChange} />
-								</InputGroup>
-							</FormGroup>
-
 							<FormGroup>
 								<FormRadio
 									inline
@@ -116,10 +109,28 @@ class CrearPropiedad extends Component {
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend" >
+										<InputGroupText className="navy">Concepto de Gasto</InputGroupText>
+									</InputGroupAddon>
+									<FormInput size="med" type="text" name="concept" placeholder="Concepto de Gasto" onChange={this.handleChange} />
+								</InputGroup>
+							</FormGroup>
+
+							<FormGroup>
+								<InputGroup className="mb-1">
+									<InputGroupAddon type="prepend" >
 										<InputGroupText className="navy">Costo(Bs.)</InputGroupText>
 									</InputGroupAddon>
                                     <FormInput size="med" type="text" name="amount" placeholder="2000" onChange={this.handleChange} />
 								</InputGroup>
+							</FormGroup>
+
+							<FormGroup>
+									<FormSelect name="user_id" onChange={this.handleChange}>
+										<option value="def">Seleccione al propietario</option>
+										{this.users.map((user, i) => 
+											<option key={i} value={user.id}>{user.name}{' '}{user.lastname}</option>
+										)}
+									</FormSelect>
 							</FormGroup>
 
                             <button type="submit" className="btn btn-primary">Crear</button>
@@ -131,4 +142,4 @@ class CrearPropiedad extends Component {
 	}
 }
 
-export default withRouter(CrearPropiedad)
+export default withRouter(CrearGasto)

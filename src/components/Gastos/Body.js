@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import ListItem from '../Utilities/ListItem/ListItem'
-import CrearPropiedad from './CrearGasto'
+import CrearGasto from './CrearGasto'
 
 export default class Body extends Component {
 
@@ -30,7 +30,7 @@ export default class Body extends Component {
                 )} 
                 </div>
             )
-        }else{
+        }else {
             return (
             <div className="medium aquamarine title">
                 No hay ningun gasto
@@ -39,7 +39,7 @@ export default class Body extends Component {
     }
 
     render() {
-        const titulos = ['Concepto','Fecha de Creacion','Costo Total']
+        const titulos = ['Concepto','Propietario','Costo Total']
 
         return(
             <div className="admin text-center">
@@ -53,10 +53,10 @@ export default class Body extends Component {
                 {this.isEmpty(titulos)}
 
                 {this.props.expenses.map( (expense,i) => 
-                    <ListItem title='Gastos' key={i} expense={expense}/>)
-                }
+                    <ListItem title='Gastos' key={i} expense={expense} />
+                )}
 
-                <CrearPropiedad open={this.state.open} toggle={this.toggle} ></CrearPropiedad>
+                <CrearGasto open={this.state.open} toggle={this.toggle} />
             </div>
         );
     }

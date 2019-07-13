@@ -32,7 +32,7 @@ class Propiedades extends Component {
         .catch(error => console.error('Hubo un error cargando las propiedades:', error))
 
         //get para filtrar los residentes a la hora de crear una nueva propiedad
-        fetch("https://myco-backend.herokuapp.com/residency/residents", {
+        /*fetch("https://myco-backend.herokuapp.com/residency/residents", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ class Propiedades extends Component {
             console.log("users: ", this.users)
             localStorage.setItem("users", JSON.stringify(this.users)) //guardarlos en localstorage
         })
-        .catch(error => console.error('Hubo un error filtrando los usuarios:', error))
+        .catch(error => console.error('Hubo un error filtrando los usuarios:', error))*/
 
         //get para obtener los tipos de propiedad de la residencia seleccionada
         fetch(`https://myco-backend.herokuapp.com/residency/property-types?residency_id=${encodeURIComponent(query)}`, {
