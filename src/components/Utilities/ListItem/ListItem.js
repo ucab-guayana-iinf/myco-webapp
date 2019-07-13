@@ -48,7 +48,7 @@ export default class ListItem extends Component {
                 debt:'3',
                 special_fee:'4',
                 other:'5',
-                confirmation: '1'
+                confirmation: 1
             })
         })
 		.then(res => res.json())
@@ -174,7 +174,7 @@ export default class ListItem extends Component {
                 var fecha = new Date(this.props.payment.creation_date)
                 fecha = fecha.toISOString().slice(0,10)
 
-                if(this.props.payment.confirmation == '0'){
+                if(this.props.payment.confirmation == 0){
                     return (
                         <div className="d-flex flex-row">
                             <Card className="Litem">                    
@@ -190,7 +190,7 @@ export default class ListItem extends Component {
                             <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">cancel_presentation</i></a>
                         </div>
                     )
-                }else if(this.props.payment.confirmation == '1'){
+                }else if(this.props.payment.confirmation == 1){
                     return (
                         <div className="d-flex flex-row">
                             <Card className="extraO Litem">                    
@@ -203,7 +203,7 @@ export default class ListItem extends Component {
                             </Card>
                         </div>
                     )        
-                }else if(this.props.payment.confirmation == '-1'){
+                }else if(this.props.payment.confirmation == -1){
                     return (
                         <div className="d-flex flex-row">
                             <Card className="deuda Litem">                    
