@@ -58,23 +58,9 @@ export default class ListItem extends Component {
                         <Card className="Litem">                    
                             <CardBody className="white d-flex justify-content-around">
                                 <span className="item navy text-left">{this.props.expense.concept}</span>
-                                <span className="item navy text-left">{this.props.expense.creation_date}</span>
-                                <span className="item navy text-left">{this.props.expense.amount} Bs.</span>            
-                            </CardBody>
-                        </Card>
-                    </div>
-                )
-            }
-            case 'Ver Gastos': {
-                var fecha = new Date(this.props.expense.creation_date)
-                
-                return(
-                    <div className="d-flex flex-row">
-                        <Card className="Litem">                    
-                            <CardBody className="white d-flex justify-content-around">
-                                <span className="item navy text-center">{this.props.expense.concept}</span>
-                                <span className="item navy text-center">{fecha.toISOString().slice(0,10)}</span>
-                                <span className="item navy text-center">Bs. {this.props.expense.amount}</span>           
+                                <span className="item navy text-left">{this.buscarNombre(this.props.expense.user_id)}</span>
+                                <span className="item navy text-left">{this.props.expense.amount} Bs.</span>
+                                <a href="javascript:void(0)"><i className="navy expand white big material-icons align-top">expand_more</i></a>             
                             </CardBody>
                         </Card>
                     </div>

@@ -27,14 +27,18 @@ class MycoCard extends Component {
                             <CardTitle className="white mb-0">{name}<i className=" ml-2 navy material-icons"> edit</i></CardTitle>
                         </CardHeader>
                         <CardBody>
-                            <div className="navy bold"><i className="medium align-bottom material-icons">home</i> X propiedades</div><br></br>
+                            <div className="navy bold">
+                                <i className="medium align-bottom material-icons">home</i>
+                                {this.props.nroPropiedades[this.props.index]} propiedades
+                            </div>
+                            <br></br>
                             <ul className="px-0 lista text-center">
                                 <li>X deudas</li>
                                 <li>{yardage} metros</li>
                             </ul>
                         </CardBody>
                     </div>
-                    )
+                )
             }
             case 'Ingresos Y Egresos': {
                 return(

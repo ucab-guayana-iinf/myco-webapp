@@ -4,17 +4,6 @@ import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/Gastos/Body'
 
 class Gastos extends Component {
-    
-/*
-        body
-            {
-                id : '', 
-                responsible_user_id : '',  
-                amount : '',
-                concept : '',
-                creation_date: localStorage.getItem("creation_date")
-            }
-*/
 
     state = {
         expenses : [],
@@ -22,32 +11,45 @@ class Gastos extends Component {
     }
 
     componentDidMount() {
-        const query = localStorage.getItem("admin_id")
-
-        fetch(`https://myco-backend.herokuapp.com/resident/expenses?user_id=${encodeURIComponent(query)}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer ' + localStorage.getItem("token")
-            }
-        })
-		.then(res => res.json())
-		.then(res => {
-            console.log("respuesta cargarResidencias", res)
-            this.setState({residencies: res.residency}) //en res.residency esta el array con las residencias
-        })
-        .catch(error => console.error('Hubo un error cargando las residencias:', error))
+        const users = JSON.parse(localStorage.getItem("users"))
+        //ciclo para mostrar los gastos de todo el mundo xd
+        for (let i=0; i<users.length ; i++) {
+            let query = users[i].id
+            console.log("buscando gastos de id", query)
+            fetch(`https://myco-backend.herokuapp.com/residency/expense?user_id=${encodeURIComponent(query)}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'bearer ' + localStorage.getItem("token")
+                }
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log("respuesta cargar gastos[",i,"] ", res.expense)
+                res.expense.map((gasto)=> {
+                    this.setState({
+                        expenses: [...this.state.expenses, gasto],
+                        total: this.state.total + gasto.amount
+                    })         
+                })
+            })
+            .catch(error => console.error('Hubo un error cargando los gastos:', error))
+        }
     }
 
     render() {
         return (
             <div className="gastos">
                 <MainSidebar/>
-                <GHeader title="Gastos"
-                total={this.state.total}/>
-                <Body title="Gastos" 
-                expenses={this.state.expenses}
-            />
+                <GHeader 
+                    title="Gastos"
+                    total={this.state.total}
+                />
+                <Body 
+                    title="Gastos" 
+                    expenses={this.state.expenses}
+                />
+                {console.log("state: ",this.state.expenses)}
             </div>
         );
     }
