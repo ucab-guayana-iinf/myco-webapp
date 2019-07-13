@@ -19,6 +19,23 @@ export default class Body extends Component {
 		});
     }
 
+    isEmpty = (titulos) => {
+        if(this.props.servicios != ''){
+            return(
+                <div className="titulos-servicios bold navy justify-content-around mb-3 ">
+                {titulos.map( (titulo,i) => 
+                    <span className="item text-left " key={i}>{titulo}</span>        
+                )} 
+                </div>
+            )
+        }else{
+            return (
+            <div className="medium aquamarine title">
+                No se ha creado ningun servicio
+            </div>)
+        }
+    }
+
     render() {
         const titulos = ['Servicio','Tipo de servicio','Monto mensual']
 
@@ -31,11 +48,7 @@ export default class Body extends Component {
                     onClick={this.toggle}>add_circle</i></a>
                 </div> 
 
-                <div className="titulos-servicios bold navy justify-content-around mb-3 ">
-                    {titulos.map( (titulo,i) => 
-                        <span className="item text-center " key={i}>{titulo}</span>        
-                    )} 
-                </div>
+                {this.isEmpty(titulos)}
 
                 {this.props.servicios.map( (servicio,i) => 
                     <ListItem title={this.props.title} key={i} servicios={servicio}/>)

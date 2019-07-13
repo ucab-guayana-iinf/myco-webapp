@@ -1,10 +1,17 @@
 
+
+
+
 .body {
     background: #fafafa;
 }
 
 .body .title {
     margin-bottom: 60px;
+}
+
+.blockcontainer {
+    min-width: 480px;
 }
 
 .body-container {
@@ -29,6 +36,24 @@
     background: #1bb98f;
     border-radius: 10px;
     border-top-left-radius: 100px;
+}
+
+.uno {
+    background: url('./vector.png') center no-repeat;
+    background-size: 200px;
+    z-index: 3;
+}
+
+.dos {
+    background: url('./condo2.png') center no-repeat;
+    background-size: 200px;
+    z-index: 3;
+}
+
+.tres {
+    background: url('./characters.png') center no-repeat;
+    background-size: 200px;
+    z-index: 3;
 }
 
 .text {

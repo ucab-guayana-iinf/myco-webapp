@@ -19,8 +19,7 @@
 @media (min-width: 768px) {
     .Litem {
         width: 85%;
-        height: 80px;
-        margin: 5px auto;        
+        height: 80px;       
     }
 }
 

@@ -1,9 +1,16 @@
 export default function() {
+
+  if(localStorage.getItem("role") === 'ADMIN'){
   return [
     {
       title: "Residencias",
       htmlBefore: '<i class="material-icons">location_city</i>',
       to: "/Residencias",
+    },
+    {
+      title: "Tipos de propiedades",
+      htmlBefore: '<i class="material-icons">category</i>',
+      to: "/TiposDePropiedades",
     },
     {
       title: "Propiedades",
@@ -21,29 +28,33 @@ export default function() {
       to: "/Gastos",
     },
     {
-      title: "Ingresos y Egresos",
-      htmlBefore: '<i class="material-icons">account_balance</i>',
-      to: "/IngresosYegresos",
-    },
-    {
       title: "Cuentas por cobrar",
       htmlBefore: '<i class="material-icons">attach_money</i>',
       to: "/CuentasPorCobrar",
     },
     {
-      title: "Tipos de propiedades",
-      htmlBefore: '<i class="material-icons">category</i>',
-      to: "/TiposDePropiedades",
-    },
-    {
       title: "Cargar pago",
       htmlBefore: '<i class="material-icons">payment</i>',
       to: "/CargarPago",
-    },
-    {
-      title: "Generar factura",
-      htmlBefore: '<i class="material-icons">receipt</i>',
-      to: "/GenerarFactura",
     }
   ];
+  }else{
+    return[
+      {
+        title: "Deudas",
+        htmlBefore: '<i class="material-icons">attach_money</i>',
+        to: "/Deudas",
+      },      
+      {
+        title: "Formular Pago",
+        htmlBefore: '<i class="material-icons">payment</i>',
+        to: "/SubirPago",
+      }, 
+      {
+        title: "Ver Gastos",
+        htmlBefore: '<i class="material-icons">account_balance</i>',
+        to: "/VerGastos",
+      }  
+    ]
+  }
 }

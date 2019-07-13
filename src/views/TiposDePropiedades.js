@@ -11,7 +11,7 @@ class TiposDePropiedades extends Component {
 
     componentDidMount() {
         const query = localStorage.getItem("residency_id")
-
+        
         fetch(`https://myco-backend.herokuapp.com/residency/property-types?residency_id=${encodeURIComponent(query)}`, {
             method: 'GET',
             headers: {

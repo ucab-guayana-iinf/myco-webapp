@@ -31,6 +31,26 @@ export default class Body extends Component {
         });
     }
 
+
+    isEmpty = (titulos) => {
+        const propertyTypes = this.props.propertyTypes
+        if( propertyTypes != ''){
+            return(
+                <div className="fill residencias-body">
+                    {this.props.propertyTypes.map( (propertyType, i) => 
+                        <MycoCard key={i} title='Tipos de Propiedades' propertyType={propertyType} toggle2={this.toggle2} />
+                    )}
+                </div>
+            )
+        }else{
+            return (
+                <div className="medium aquamarine title">
+                    No se ha creado ningun tipo de residencia
+                </div>
+            )
+        }
+    }
+
     render() {
         return (    
             <div className="admin text-center">
@@ -40,11 +60,7 @@ export default class Body extends Component {
                     className="aquamarine material-icons align-middle" 
                     onClick={this.toggle}>add_circle</i></a>
                 </div>
-                <div className="fill residencias-body">
-                    {this.props.propertyTypes.map( (propertyType, i) => 
-                        <MycoCard key={i} title='Tipos de Propiedades' propertyType={propertyType} toggle2={this.toggle2} />
-                    )}
-                </div>
+                {this.isEmpty(this.titulos)}
                 <CrearTipoDePropiedad open={this.state.open} toggle={this.toggle} />
                 <EditarTipoDePropiedad open={this.state.open2} toggle={this.toggle2} id={this.idTipoDePropiedad}/>
             </div>

@@ -18,6 +18,25 @@ export default class Body extends Component {
 		});
     }
 
+    isEmpty = (titulos) => {
+        // eslint-disable-next-line eqeqeq
+        if(this.props.propiedades != ''){
+            return(
+                <div className="titulos-propiedades bold navy justify-content-around mb-3 ">
+                    {titulos.map( (titulo,i) => 
+                        <span className="item text-center" key={i}>{titulo}</span>        
+                    )} 
+                </div>
+            )
+        }else{
+            return (
+            <div className="medium aquamarine title">
+                No se ha registrado ninguna propiedad
+            </div>)
+        }
+    }
+
+
     render() {
         const titulos = ['Propiedad','Propietario','Estado de pago']
 
@@ -29,17 +48,13 @@ export default class Body extends Component {
                     <a href="javascript:void(0)"><i className="aquamarine material-icons align-middle" onClick={this.toggle}>add_circle</i></a>
                 </div>
 
-                <div className="titulos-servicios bold navy justify-content-around mb-3 ">
-                    {titulos.map( (titulo,i) => 
-                        <span className="item text-center" key={i}>{titulo}</span>        
-                    )} 
-                </div>
+                {this.isEmpty(titulos)}
 
                 {this.props.propiedades.map( (propiedad,i) => 
                     <ListItem title={this.props.title} key={i} propiedad={propiedad} />
                 )}
 
-                <CrearPropiedad open={this.state.open} toggle={this.state.toggle} />
+                <CrearPropiedad open={this.state.open} toggle={this.toggle} propertyTypes={this.props.propertyTypes} />
             </div>
         );
     }

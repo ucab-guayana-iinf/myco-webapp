@@ -36,7 +36,8 @@ class CrearResidencia extends Component {
         })
 		.then(res => res.json())
 		.then(res => {
-            console.log("respuesta crearResidencia", res)
+			console.log("respuesta crearResidencia", res)
+			window.location.reload()
         })
         .catch(error => console.error('Hubo un error creando la residencia:', error))
     }

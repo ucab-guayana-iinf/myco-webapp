@@ -1,59 +1,60 @@
-import React from 'react';
+import React, {Component} from 'react';
 import GHeader from '../components/Utilities/GHeader/GHeader'
 import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/CuentasPorCobrar/Body.js'
 
-const CuentasPorCobrar = () => {
+class CuentasPorCobrar extends Component {
 
-    const propsEnMora = 5;
-    const deudaAvg = 13000;
-    const totalPorCobrar = 67000;
 
-    const cuentasPorCobrar = [
-        {
-            department_number : 'NC-18',
-            username : 'Rafael Rodriguez',
-            alicuota : 1.5,
-            price : 13000
-        },
-        {
-            department_number : 'MH-21',
-            username : 'Rafael Rodriguez',
-            alicuota : 1.5,
-            price : 13000
-        },
-        {
-            department_number : 'MH-22',
-            username : 'Rafael Rodriguez',
-            alicuota : 0.5,
-            price : 13000
-        },
-        {
-            department_number : 'ND-23',
-            username : 'Rafael Rodriguez',
-            alicuota : 0.8,
-            price : 13000
-        },
-        {
-            department_number : 'MZ-34',
-            username : 'Rafael Rodriguez',
-            alicuota : 0.8,
-            price : 13000
-        },
-    ]
+/*
+        body
+            {
+                property_id : '',
+                amount : '',
+                description : '',
+                creation_date : ''
+            }
+*/
 
-    return (
-        <div className="cuentaspc">
-            <MainSidebar/>
-            <GHeader title="Cuentas por cobrar"
-                propsEnMora={propsEnMora}
-                deudaAvg={deudaAvg}
-                totalPorCobrar={totalPorCobrar}
-            />
-            <Body title="Cuentas por cobrar"
-                cuentasPorCobrar={cuentasPorCobrar}/>
-        </div>
-    );
+    state = {
+        debts : [],
+        propsEnMora : 0,
+        deudaAvg : 0,
+        totalPorCobrar : 0
+    }
+
+    componentDidMount() {
+        const query = localStorage.getItem("residency_id")
+        fetch(`https://myco-backend.herokuapp.com/residency/debts?residency_id=${encodeURIComponent(query)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + localStorage.getItem("token")
+            }
+        })
+		.then(res => res.json())
+		.then(res => {
+            console.log("respuesta cargarServicios", res)
+            this.setState({debts:res.debts})
+        })
+        .catch(error => console.error('Hubo un error cargando los servicios:', error))
+    }
+
+    render(){
+        return (
+            <div className="cuentaspc">
+                <MainSidebar/>
+                <GHeader title="Cuentas por cobrar"
+                    propsEnMora={this.state.propsEnMora}
+                    deudaAvg={this.state.deudaAvg}
+                    totalPorCobrar={this.state.totalPorCobrar}
+                />
+                <Body title="Cuentas por cobrar"
+                    debts={this.state.debts}/>
+            </div>
+        );
+    }
+
 };
 
 export default CuentasPorCobrar;

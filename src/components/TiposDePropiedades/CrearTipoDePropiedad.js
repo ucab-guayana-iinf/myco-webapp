@@ -52,7 +52,7 @@ class CrearTipoDePropiedad extends Component {
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend">
-										<InputGroupText className="navy">Tipo de Propiedad</InputGroupText>
+										<InputGroupText className="navy">Nombre</InputGroupText>
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="name" placeholder="Tipo de Propiedad" onChange={this.handleChange}/>
 								</InputGroup>

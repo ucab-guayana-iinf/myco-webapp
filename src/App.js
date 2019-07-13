@@ -8,10 +8,6 @@ import './assets/App.css';
 
 class App extends Component {
 
-	state = {
-		session : ['user', 'admin', 'guest']
-	}
-
 	render(){
 		return(
 			<BrowserRouter>

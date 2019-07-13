@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import GHeader from '../components/Utilities/GHeader/GHeader'
 import MainSidebar from '../components/Utilities/MainSidebar/MainSidebar'
 import Body from '../components/Servicios/Body'
+import { parse } from 'path';
 
 class Servicios extends Component {
 
     state = {
-        services: []
+        services: [],
+        tBasico: 0,
+        tExtra : 0
     }
 
     componentDidMount() {
@@ -23,38 +26,23 @@ class Servicios extends Component {
 		.then(res => {
             console.log("respuesta cargarServicios", res)
             this.setState({services: res.services}) 
+
+            var basicoAcum = 0
+            var extraordinarioAcum = 0
+            this.state.services.map((service,i) => {
+                if(service.type === 0){
+                    basicoAcum += service.price
+                }else{
+                    extraordinarioAcum += service.price
+                }
+            })
+            this.setState({tBasico : basicoAcum})
+            this.setState({tExtra : extraordinarioAcum})
+
         })
         .catch(error => console.error('Hubo un error cargando los servicios:', error))
     }
 
-    //Se obtiene el obj a partir de get /service?
-    serviciosDefault = [
-        {
-            id: 12345,
-            price: 1300,
-            name: 'Agua Potable',
-            type: 'Basico'
-        },
-        {
-            id: 12346,
-            price: 5300,
-            name: 'Luz',
-            type: 'Basico'
-        },
-        {
-            id: 12347,
-            price: 1300,
-            name: 'Reparacion de tuberias',
-            type: 'Extraordinario'
-        },
-        {
-            id: 12348,
-            price: 2400,
-            name: 'Gas',
-            type: 'Basico'
-        }
-
-    ]
 
     render() {
         return (
@@ -62,9 +50,9 @@ class Servicios extends Component {
                 <MainSidebar/>
                 <GHeader 
                     title="Servicios"
-                    tBasico={1000}
-                    tExtraordinario={1200}
-                    tMensual={6969}
+                    tBasico={this.state.tBasico}
+                    tExtraordinario={this.state.tExtra}
+                    tMensual={this.state.tBasico + this.state.tExtra}
                 />
                 <Body 
                     title="Servicios"
