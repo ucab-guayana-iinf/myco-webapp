@@ -6,6 +6,7 @@ import Body from '../components/CargarPago/Body.js'
 class CargarPago extends Component{
 
 /*
+        body
             {
                 user_id:'',
                 bill_id:'',

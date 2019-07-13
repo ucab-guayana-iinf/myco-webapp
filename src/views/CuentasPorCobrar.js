@@ -7,6 +7,7 @@ class CuentasPorCobrar extends Component {
 
 
 /*
+        body
             {
                 property_id : '',
                 amount : '',

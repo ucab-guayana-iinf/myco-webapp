@@ -68,33 +68,6 @@ class Propiedades extends Component {
         .catch(error => console.error('Hubo un error cargando los tipos de propiedades:', error))
     }
 
-    propiedadesDefault = [
-        {
-            department_number : 'MH-30', 
-            username : 'Jesus Perez',
-            property_type_id : 'Penthouse',
-            yardage : 'Pagado'
-        },
-        {
-            department_number : 'MH-30', 
-            username  : 'Jesus Perez',
-            property_type_id : 'Penthouse',
-            yardage : 'Pagado'
-        },
-        {
-            department_number : 'MH-30', 
-            username : 'Jesus Perez',
-            property_type_id : 'Penthouse',
-            yardage : 'Por Cobrar'
-        },
-        {
-            department_number : 'MH-30', 
-            username : 'Jesus Perez',
-            property_type_id : 'Penthouse',
-            yardage : 'Pagado'
-        }
-    ]
-
     Npropiedades = 99
     Npropietarios = 99
     Nendeudados = 99

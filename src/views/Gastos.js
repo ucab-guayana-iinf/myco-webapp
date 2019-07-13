@@ -6,6 +6,7 @@ import Body from '../components/Gastos/Body'
 class Gastos extends Component {
     
 /*
+        body
             {
                 id : '', 
                 responsible_user_id : '',  

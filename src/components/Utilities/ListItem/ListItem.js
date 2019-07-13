@@ -28,14 +28,18 @@ export default class ListItem extends Component {
             case 'Propiedades': {
                 if (this.props.propiedad.yardage){ //aqui lo cambie mientras decidimos lo del estado de pago
                     return( 
-                        <Card className=" Litem">
-                            <CardBody className="navy d-flex justify-content-around">
-                                <span className="item text-left">{this.props.propiedad.department_num}</span>
-                                <span className="item text-left">{this.buscarNombre(this.props.propiedad.user_id)}</span>
-                                <span className="item text-left">{this.props.propiedad.yardage}</span>
-                                <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
-                            </CardBody>    
-                        </Card>
+                        <div className="d-flex flex-row">
+                            <Card className=" Litem">
+                                <CardBody className="navy d-flex justify-content-around">
+                                    <span className="item text-left">{this.props.propiedad.department_num}</span>
+                                    <span className="item text-left">{this.buscarNombre(this.props.propiedad.user_id)}</span>
+                                    <span className="item text-left">{this.props.propiedad.yardage}</span>
+                                    <a href="javascript:void(0)"><i className=" expand navy big material-icons align-top">expand_more</i></a>             
+                                </CardBody>    
+                            </Card>
+                            <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">edit</i></a>
+                            <a href="javascript:void(0)" className="pen-container mx-auto"><i className="pen medium navy material-icons">delete</i></a>
+                        </div>
                     )
                 }else {
                     return( 
