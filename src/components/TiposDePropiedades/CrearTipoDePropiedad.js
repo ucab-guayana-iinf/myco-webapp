@@ -6,7 +6,8 @@ class CrearTipoDePropiedad extends Component {
 
     state = {
 		residency_id : localStorage.getItem("residency_id"),
-        name : '',
+		name : '',
+		yardage:'0'
 	}
 
 	handleChange = (event) => {

@@ -38,7 +38,8 @@ class EditarTipoDePropiedad extends Component {
             },
             body: JSON.stringify({
                 name: this.state.name,
-                id: this.props.id
+				id: this.props.id,
+				yardage:'0'
             })
         })
 		.then(res => res.json())

@@ -52,7 +52,7 @@ export default class ListItem extends Component {
             })
         })
 		.then(res => res.json())
-		.then(() => window.location.reload())
+		.then()
         .catch(error => console.error('Hubo un error editando el tipo de propiedad:', error))
     }
 
