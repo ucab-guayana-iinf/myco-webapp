@@ -6,7 +6,7 @@ class CrearResidencia extends Component {
     state = {
         admin_id : localStorage.getItem("admin_id"), 
         name : '',
-        yardage : ''
+		yardage : ''
 	}
 	
 	handleChange = (event) => {
@@ -37,6 +37,7 @@ class CrearResidencia extends Component {
 		.then(res => res.json())
 		.then(res => {
 			console.log("respuesta crearResidencia", res)
+			localStorage.setItem('yardage',this.state.yardage)
 			window.location.reload()
         })
         .catch(error => console.error('Hubo un error creando la residencia:', error))

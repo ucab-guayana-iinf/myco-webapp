@@ -57,20 +57,18 @@ class CrearPropiedad extends Component {
 						<Form onSubmit={this.fetchData}>
 							<FormGroup>
 								<InputGroup className="mb-1">
-									<InputGroupAddon type="prepend" >
+									<InputGroupAddon type="prepend">
 										<InputGroupText className="navy">Numero</InputGroupText>
 									</InputGroupAddon>
 									<FormInput size="med" type="text" name="department_num" placeholder="Numero de Departamento" onChange={this.handleChange} />
 								</InputGroup>
 							</FormGroup>
-
 							<FormGroup>
 								<InputGroup className="mb-1">
 									<InputGroupAddon type="prepend">
-										<InputGroupText className="navy">Mt. Cuadrados</InputGroupText>
+										<InputGroupText className="navy">Alicuota</InputGroupText>
 									</InputGroupAddon>
-									<FormInput size="med" type="text" name="yardage" placeholder="2000" onChange={this.handleChange} />
-
+									<FormInput size="med" type="text" name="yardage" placeholder="10%" onChange={this.handleChange} />
 									<FormSelect name="property_type_id" onChange={this.handleChange} style={{marginTop: 9.5}}>
 										<option value="def">Tipo de Propiedad</option>
 										{this.props.propertyTypes.map((propType, i) => 
@@ -79,7 +77,6 @@ class CrearPropiedad extends Component {
 									</FormSelect>
 								</InputGroup>
 							</FormGroup>
-
 							<FormGroup>
 									<FormSelect name="user_id" onChange={this.handleChange}>
 										<option value="def">Seleccione al propietario</option>
@@ -88,7 +85,6 @@ class CrearPropiedad extends Component {
 										)}
 									</FormSelect>
 							</FormGroup>
-
                             <button type="submit" className="btn btn-primary">Crear</button>
 						</Form>
 					</CardBody>

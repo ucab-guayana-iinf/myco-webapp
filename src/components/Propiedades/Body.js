@@ -38,7 +38,7 @@ export default class Body extends Component {
 
 
     render() {
-        const titulos = ['Propiedad','Propietario','Estado de pago']
+        const titulos = ['Propiedad','Propietario','Alicuota']
 
         return(
             <div className="admin text-center">

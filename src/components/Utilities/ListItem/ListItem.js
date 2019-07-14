@@ -77,8 +77,8 @@ export default class ListItem extends Component {
                                 <CardBody className="navy d-flex justify-content-around">
                                     <span className="item text-left">{this.props.propiedad.department_num}</span>
                                     <span className="item text-left">{this.buscarNombre(this.props.propiedad.user_id)}</span>
-                                    <span className="item text-left">{this.props.propiedad.yardage}</span>          
-                                </CardBody>    
+                                    <span className="item text-left">{this.props.propiedad.yardage} %</span>          
+                                </CardBody>
                             </Card>
                         </div>
                     )
@@ -89,7 +89,7 @@ export default class ListItem extends Component {
                                 <CardBody className=" white d-flex justify-content-around">
                                     <span className="item text-left">{this.props.propiedad.department_number}</span>
                                     <span className="item text-left">{this.props.propiedad.username}</span>
-                                    <span className="item text-left">{this.props.propiedad.yardage}</span>            
+                                    <span className="item text-left">{this.props.propiedad.yardage} %</span>            
                                 </CardBody>
                             </Card>
                         </div>

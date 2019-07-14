@@ -58,8 +58,8 @@ class Login extends Component {
             localStorage.setItem("token", res.token)
 			localStorage.setItem("logged", true)
 			localStorage.setItem("admin_id", res.id)
-			localStorage.setItem("role",this.state.role)
-			console.log("respuesta login: ", res)
+			localStorage.setItem("role", this.state.role)
+			console.log(localStorage.getItem("role"))
         })
 		.then( () =>{
 			if(this.state.role === 'ADMIN'){

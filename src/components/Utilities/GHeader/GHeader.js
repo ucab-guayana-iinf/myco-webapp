@@ -8,6 +8,8 @@ class GHeader extends Component {
     
     logoff = () => {
         localStorage.clear()
+        sessionStorage.clear()
+        console.log(localStorage.getItem("role"))
         console.log("sesion cerrada")
         this.props.history.push('/Landing')
     }

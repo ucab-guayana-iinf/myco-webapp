@@ -25,6 +25,7 @@ class CuentasPorCobrar extends Component {
 
     componentDidMount() {
         const query = localStorage.getItem("residency_id")
+        
         fetch(`https://myco-backend.herokuapp.com/residency/debts?residency_id=${encodeURIComponent(query)}`, {
             method: 'GET',
             headers: {
@@ -34,7 +35,7 @@ class CuentasPorCobrar extends Component {
         })
 		.then(res => res.json())
 		.then(res => {
-            console.log("respuesta cargarServicios", res)
+            console.log("respuesta cuentas por cobrar", res)
             this.setState({debts:res.debts})
         })
         .catch(error => console.error('Hubo un error cargando los servicios:', error))
